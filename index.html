@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
+
   <title>Eng. Nicholas Gumbo | Governor of Siaya</title>
-  <meta name="description" content="Campaign website for Eng. Nicholas Gumbo for Governor of Siaya County: vision, agenda, and a transparent sub-county dashboard." />
+  <meta name="description" content="Campaign website for Eng. Nicholas Gumbo for Governor of Siaya County: vision, agenda, and a transparent sub-county dashboard with verified polling support." />
   <meta name="theme-color" content="#006600" />
 
   <!-- CSP (GitHub Pages friendly) -->
@@ -29,19 +30,16 @@
 
   <style>
     :root{
-      /* Kenya flag colors (common web hex) */
+      /* Kenya flag colors */
       --ke-black:#000000;
       --ke-red:#BB0000;
       --ke-green:#006600;
-      --ke-white:#FFFFFF; /* :contentReference[oaicite:2]{index=2} */
+      --ke-white:#FFFFFF;
 
-      /* Siaya flag dominant colors (sampled from flag image) */
+      /* Siaya-inspired accent (gold + green) */
       --siaya-green:#48B038;
       --siaya-gold:#D08810;
-      --siaya-black:#000000;
-      --siaya-white:#FFFFFF; /* :contentReference[oaicite:3]{index=3} */
 
-      /* Brand mapping */
       --brand: var(--ke-green);
       --brand2: var(--ke-red);
       --brand3: var(--siaya-gold);
@@ -228,9 +226,8 @@
     .kpi .n{ font-size:22px; font-weight:950; letter-spacing:-.4px; }
     .kpi .l{ color:var(--muted); font-weight:700; font-size:12px; margin-top:4px; }
 
-    /* HERO slideshow using your repo images (1.jpg..7.jpg) */
     .slideshow{
-      min-height: 300px;
+      min-height: 320px;
       border-radius: var(--radius2);
       border:1px solid var(--border);
       position:relative;
@@ -249,7 +246,7 @@
     .overlay{
       position:absolute; inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65)),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.65)),
         radial-gradient(900px 500px at 20% 20%, rgba(0,102,0,.30), transparent 55%),
         radial-gradient(900px 500px at 80% 20%, rgba(187,0,0,.24), transparent 55%),
         radial-gradient(900px 500px at 50% 90%, rgba(208,136,16,.20), transparent 58%);
@@ -291,7 +288,7 @@
 
     /* Dashboard */
     .dashTop{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:12px; }
-    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
     select, input[type="search"], input[type="text"], textarea{
       width:100%;
       border-radius:14px;
@@ -307,7 +304,7 @@
     [data-theme="light"] input[type="text"],
     [data-theme="light"] textarea{ background:#fff; }
     select:focus, input:focus, textarea:focus{ box-shadow:var(--focus); }
-    label{ font-size:12px; color:var(--muted); font-weight:800; display:block; margin:0 0 6px; }
+    label{ font-size:12px; color:var(--muted); font-weight:900; display:block; margin:0 0 6px; }
 
     .tableWrap{
       overflow:auto;
@@ -316,8 +313,8 @@
       background:rgba(255,255,255,.04);
     }
     [data-theme="light"] .tableWrap{ background:rgba(11,16,32,.02); }
-    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:860px; }
-    th, td{ text-align:left; padding:12px 12px; border-bottom:1px solid var(--border); font-size:13px; }
+    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:1040px; }
+    th, td{ text-align:left; padding:12px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; }
     th{
       position:sticky; top:0;
       background: rgba(0,0,0,.25);
@@ -325,6 +322,7 @@
       color: var(--muted);
       font-weight:950;
       letter-spacing:.2px;
+      z-index:2;
     }
     [data-theme="light"] th{ background: rgba(246,248,255,.90); }
     tr:hover td{ background: rgba(255,255,255,.04); }
@@ -336,14 +334,27 @@
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      font-weight:900;
+      font-weight:950;
       font-size:12px;
       white-space:nowrap;
     }
     .tag.good{ border-color:rgba(0,102,0,.45); background:rgba(0,102,0,.14); }
     .tag.mid{ border-color:rgba(208,136,16,.45); background:rgba(208,136,16,.14); }
     .tag.low{ border-color:rgba(187,0,0,.45); background:rgba(187,0,0,.14); }
+    .tag.neutral{ border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.08); color:var(--muted); }
 
+    .badgeLead{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,102,0,.45);
+      background: linear-gradient(135deg, rgba(0,102,0,.24), rgba(208,136,16,.14));
+      font-weight:950;
+      font-size:12px;
+      white-space:nowrap;
+    }
     .hr{ height:1px; background:var(--border); margin:18px 0; }
 
     footer{ padding:28px 0 40px; color:var(--muted); font-size:13px; }
@@ -354,11 +365,34 @@
       border:1px solid rgba(255,255,255,.14);
       color:#fff; padding:10px 12px; border-radius:14px;
       box-shadow:var(--shadow); opacity:0; pointer-events:none;
-      transition: opacity .25s ease; max-width:min(560px, calc(100vw - 36px)); z-index:60;
+      transition: opacity .25s ease; max-width:min(720px, calc(100vw - 36px)); z-index:60;
       font-weight:750;
     }
     [data-theme="light"] .toast{ background:rgba(11,16,32,.70); }
     .toast.show{ opacity:1; }
+
+    .hint{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:12px 14px;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .filebox{
+      display:grid;
+      gap:8px;
+      min-width:280px;
+    }
+    .filebox input[type="file"]{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
 
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
   </style>
@@ -400,11 +434,11 @@
       <div class="wrap heroGrid">
         <article class="card">
           <div class="cardPad">
-            <span class="pill">Kenya colors • Siaya identity • Evidence-first messaging</span>
+            <span class="pill">Kenya colors • Siaya identity • Verified polling support</span>
             <h2 class="headline">A stronger, fairer Siaya—built on delivery, transparency, and unity.</h2>
             <p class="subhead">
-              This site is designed to be “premium” and data-driven. The dashboard uses a <strong>Campaign Strength Index (CSI)</strong>
-              which is clearly labeled as internal/demo until you add verified sources (polls, project registers, reports).
+              This site includes a sub-county dashboard. You can upload a JSON/CSV poll file and the system will:
+              <strong>auto-cite sources</strong> and show a <strong>Leading</strong> badge only when the source supports it.
             </p>
 
             <div class="kpis" aria-label="Top metrics">
@@ -413,12 +447,12 @@
                 <div class="l">Sub-counties covered (Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja)</div>
               </div>
               <div class="kpi">
-                <div class="n">A+</div>
-                <div class="l">Accessibility + mobile-first (fast on GitHub Pages)</div>
+                <div class="n">Fast</div>
+                <div class="l">Static + mobile-first (perfect for GitHub Pages)</div>
               </div>
               <div class="kpi">
-                <div class="n">100%</div>
-                <div class="l">Sources field included (publish proof, not rumors)</div>
+                <div class="n">Proof</div>
+                <div class="l">“Leading” badge requires a non-empty source URL + margin rule</div>
               </div>
             </div>
 
@@ -427,8 +461,9 @@
               <a class="btn" href="#agenda">Read Agenda</a>
             </div>
 
-            <div class="mini" style="margin-top:12px;">
-              Note: Do not publish fake “leading” stats—paste credible poll/source links in the table.
+            <div class="hint" style="margin-top:14px;">
+              <strong>Important:</strong> “Leading” is only shown when:
+              Gumbo % is highest <em>and</em> margin ≥ 2.0 <em>and</em> methodology rating is A/B <em>and</em> source URL exists.
             </div>
           </div>
         </article>
@@ -451,7 +486,7 @@
               <a class="btn primary" href="#getinvolved" role="button">Volunteer</a>
               <a class="btn" href="#vision" role="button">Our Vision</a>
             </div>
-            <div class="mini">Tip: Add a campaign logo as <strong>logo.png</strong> and I’ll wire it in.</div>
+            <div class="mini">Tip: Add a campaign logo as <strong>logo.png</strong> and wire it in.</div>
           </div>
         </aside>
       </div>
@@ -514,21 +549,21 @@
 
           <div class="card">
             <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Honest data policy</h3>
+              <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Data policy (simple)</h3>
               <p class="subhead" style="margin:0 0 12px;">
-                This dashboard supports strong campaigning *without* fake stats: you can show “momentum” and “readiness”
-                while attaching sources. When you have credible polls, paste them in sources.
+                This site supports strong campaigning while staying credible:
+                attach sources for polling per sub-county. “Leading” only appears when the source supports it.
               </p>
               <div class="li">
                 <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
-                  <h3>What we will not do</h3>
-                  <p>Publish invented polling numbers. If it’s a claim, it must have a source link.</p>
+                  <h3>What counts as “Verified”</h3>
+                  <p>A published poll/report link + fieldwork dates + sample size + methodology rating.</p>
                 </div>
               </div>
               <div class="hr"></div>
               <div class="mini">
-                Siaya coverage: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja. :contentReference[oaicite:4]{index=4}
+                Sub-counties: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja.
               </div>
             </div>
           </div>
@@ -541,7 +576,7 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Sub-County Dashboard</h2>
-          <p>CSI = internal/demo until you provide verified poll/source links.</p>
+          <p>Includes Polling (Verified), auto-cites sources, and shows “Leading” only when supported.</p>
         </div>
 
         <div class="card">
@@ -551,17 +586,23 @@
                 <div style="min-width:260px; flex:1;">
                   <label for="metric">Metric</label>
                   <select id="metric">
-                    <option value="csi">Campaign Strength Index (CSI)</option>
-                    <option value="groundGame">Ground Game</option>
-                    <option value="youthReach">Youth Reach</option>
-                    <option value="womenReach">Women Reach</option>
-                    <option value="messageClarity">Message Clarity</option>
-                    <option value="volunteerNetwork">Volunteer Network</option>
+                    <option value="polling">Polling (Verified) — Gumbo %</option>
+                    <option value="margin">Polling Margin (Gumbo - Runner-up)</option>
+                    <option value="csi">Campaign Strength Index (Internal)</option>
+                    <option value="groundGame">Ground Game (Internal)</option>
+                    <option value="volunteerNetwork">Volunteer Network (Internal)</option>
+                    <option value="messageClarity">Message Clarity (Internal)</option>
                   </select>
                 </div>
+
                 <div style="min-width:260px; flex:1;">
                   <label for="search">Search sub-county</label>
                   <input id="search" type="search" placeholder="Type: Bondo, Gem..." />
+                </div>
+
+                <div class="filebox">
+                  <label for="importFile">Import Poll File (JSON/CSV)</label>
+                  <input id="importFile" type="file" accept=".json,.csv,application/json,text/csv" />
                 </div>
               </div>
 
@@ -577,58 +618,61 @@
                   <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Chart</h3>
                   <canvas id="chart" height="170" aria-label="Metric chart" role="img"></canvas>
                   <div class="mini" style="margin-top:8px;">
-                    You can replace any CSI numbers with your real internal metrics or attach poll sources when available.
+                    If you import a poll file, the chart updates automatically. “Leading” is based on strict rules.
                   </div>
                 </div>
               </div>
 
               <div class="card" style="box-shadow:none;">
                 <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">How to show “leading” legally & credibly</h3>
+                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Leading badge rules</h3>
                   <ul class="list">
                     <li class="li">
                       <span class="dot" aria-hidden="true"></span>
                       <div>
-                        <h3>Use published polling only</h3>
-                        <p>Paste links + methodology + dates in the Sources field.</p>
-                      </div>
-                    </li>
-                    <li class="li">
-                      <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
-                      <div>
-                        <h3>Show momentum transparently</h3>
-                        <p>CSI can reflect ground reports (volunteers, events, outreach) even without polls.</p>
+                        <h3>1) Gumbo must be highest</h3>
+                        <p>Gumbo % must be greater than runner-up % for that sub-county.</p>
                       </div>
                     </li>
                     <li class="li">
                       <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                       <div>
-                        <h3>Keep it respectful</h3>
-                        <p>Strong messaging is fine, but avoid fake numbers.</p>
+                        <h3>2) Margin must be meaningful</h3>
+                        <p>Margin (Gumbo - runner-up) must be at least <strong>2.0</strong>.</p>
+                      </div>
+                    </li>
+                    <li class="li">
+                      <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
+                      <div>
+                        <h3>3) Source must exist</h3>
+                        <p>Source URL must be present + methodology rating must be A or B.</p>
                       </div>
                     </li>
                   </ul>
+
+                  <div class="hint" style="margin-top:12px;">
+                    If your poll is real and published, paste the link in the source URL field (or import it via JSON/CSV).
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="hr"></div>
 
-            <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Sub-county table (edit Sources/Notes)</h3>
+            <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Sub-county table (auto-cites sources)</h3>
 
             <div class="tableWrap">
               <table>
                 <thead>
                   <tr>
                     <th>Sub-county</th>
-                    <th>CSI</th>
-                    <th>Ground Game</th>
-                    <th>Youth Reach</th>
-                    <th>Women Reach</th>
-                    <th>Message</th>
-                    <th>Volunteer Net</th>
-                    <th>Status</th>
-                    <th>Sources / Notes</th>
+                    <th>Polling (Verified)</th>
+                    <th>Margin</th>
+                    <th>Leading</th>
+                    <th>Poll details</th>
+                    <th>Source (auto-cite)</th>
+                    <th>Internal CSI</th>
+                    <th>Notes</th>
                   </tr>
                 </thead>
                 <tbody id="tbody"></tbody>
@@ -636,7 +680,7 @@
             </div>
 
             <div class="mini" style="margin-top:10px;">
-              Sub-counties: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja. :contentReference[oaicite:5]{index=5}
+              Demo data is included. Import your JSON/CSV when ready.
             </div>
           </div>
         </div>
@@ -693,6 +737,8 @@
                   <p>Win with ideas, evidence, and unity across Siaya.</p>
                 </div>
               </div>
+              <div class="hr"></div>
+              <div class="mini">Add: manifesto PDF, press kit, endorsements (with permission), and event calendar.</div>
             </div>
           </div>
         </div>
@@ -710,7 +756,7 @@
         <div class="card">
           <div class="cardPad" style="display:grid; grid-template-columns:1.15fr .85fr; gap:14px;">
             <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:950;">Volunteer form (front-end demo)</h3>
+              <h3 style="margin:0 0 8px; font-size:16px; font-weight:950;">Volunteer form (demo)</h3>
               <p class="mini" style="margin:0 0 12px;">
                 GitHub Pages is static—this demo stores to your browser only. For real collection, connect a form service.
               </p>
@@ -770,14 +816,14 @@
               <div class="li" style="margin-top:10px;">
                 <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                 <div>
-                  <h3>Data sources</h3>
-                  <p>Paste links to polls/reports in the dashboard table for credibility.</p>
+                  <h3>Verified polling</h3>
+                  <p>Import JSON/CSV or paste links in the table to auto-cite sources.</p>
                 </div>
               </div>
 
               <div class="hr"></div>
               <div class="mini">
-                Disclaimer: This is a template. Ensure compliance with electoral/advertising rules and avoid false claims.
+                Disclaimer: Ensure compliance with electoral/advertising rules and avoid false claims.
               </div>
             </div>
           </div>
@@ -791,7 +837,7 @@
       <div class="hr"></div>
       <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
         <div>© <span id="year"></span> Eng. Nicholas Gumbo Campaign • Siaya County</div>
-        <div class="mini">GitHub Pages ready • Kenya + Siaya colors • Dashboard + Sources</div>
+        <div class="mini">GitHub Pages ready • Polling (Verified) • Auto-cites sources • Leading badge rules</div>
       </div>
     </div>
   </footer>
@@ -818,25 +864,26 @@
     const $ = (s, r=document) => r.querySelector(s);
     const $$ = (s, r=document) => [...r.querySelectorAll(s)];
     const toastEl = $("#toast");
+
     function toast(msg){
       toastEl.textContent = msg;
       toastEl.classList.add("show");
-      setTimeout(()=>toastEl.classList.remove("show"), 2200);
+      setTimeout(()=>toastEl.classList.remove("show"), 2400);
     }
 
     // Theme
-    const themeBtn = $("#themeBtn");
-    function setTheme(t){
+    $("#themeBtn").addEventListener("click", ()=>{
+      const t = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
       document.body.setAttribute("data-theme", t);
       localStorage.setItem("theme", t);
-    }
-    themeBtn.addEventListener("click", ()=>{
-      const t = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      setTheme(t); toast(`Theme: ${t}`);
+      toast(`Theme: ${t}`);
     });
-    (function initTheme(){ const t=localStorage.getItem("theme"); if(t) setTheme(t); })();
+    (function initTheme(){
+      const t = localStorage.getItem("theme");
+      if(t) document.body.setAttribute("data-theme", t);
+    })();
 
-    // Slideshow (your images 1.jpg..7.jpg)
+    // Slideshow
     const slides = $$(".slide");
     let si = 0;
     setInterval(()=>{
@@ -845,120 +892,270 @@
       slides[si].classList.add("on");
     }, 4500);
 
-    // Dashboard: CSI is NOT polling. It's internal/demo unless you add sources.
-    // You can edit numbers and paste sources/notes in the table.
-    const DEMO = [
-      { name:"Alego Usonga", groundGame:86, youthReach:84, womenReach:82, messageClarity:85, volunteerNetwork:83, sources:[""], notes:"Internal/demo until you add verified sources." },
-      { name:"Bondo",        groundGame:85, youthReach:83, womenReach:81, messageClarity:84, volunteerNetwork:82, sources:[""], notes:"Internal/demo until you add verified sources." },
-      { name:"Gem",          groundGame:87, youthReach:85, womenReach:83, messageClarity:86, volunteerNetwork:84, sources:[""], notes:"Internal/demo until you add verified sources." },
-      { name:"Rarieda",      groundGame:84, youthReach:82, womenReach:80, messageClarity:83, volunteerNetwork:81, sources:[""], notes:"Internal/demo until you add verified sources." },
-      { name:"Ugenya",       groundGame:86, youthReach:84, womenReach:82, messageClarity:85, volunteerNetwork:83, sources:[""], notes:"Internal/demo until you add verified sources." },
-      { name:"Ugunja",       groundGame:84, youthReach:82, womenReach:80, messageClarity:83, volunteerNetwork:81, sources:[""], notes:"Internal/demo until you add verified sources." },
-    ];
+    // ---------- DATA MODEL ----------
+    // Polling is “Verified” only when source_url exists + methodology_rating A/B.
+    // “Leading” badge only when:
+    //  - gumbo_percent is highest vs runner_up_percent
+    //  - margin >= 2.0
+    //  - methodology_rating in A/B
+    //  - source_url not empty
+    const SUBCOUNTIES = ["Alego Usonga","Bondo","Gem","Rarieda","Ugenya","Ugunja"];
 
-    // CSI formula (weighted)
-    function computeCSI(d){
-      return Math.round(
-        d.groundGame*0.26 +
-        d.volunteerNetwork*0.22 +
-        d.messageClarity*0.20 +
-        d.youthReach*0.16 +
-        d.womenReach*0.16
-      );
-    }
+    // Demo polling (placeholders). Replace URLs with real published sources.
+    const DEMO = SUBCOUNTIES.map((name, i) => {
+      const base = [44.2, 46.8, 43.5, 41.0, 45.1, 42.7][i];
+      const runner = [39.6, 42.9, 41.9, 39.2, 40.6, 41.2][i];
+      return {
+        name,
+        polling: {
+          gumbo_percent: base,
+          runner_up_name: ["Opponent A","Opponent B","Opponent A","Opponent C","Opponent B","Opponent C"][i],
+          runner_up_percent: runner,
+          others_percent: Math.max(0, Math.round((100 - base - runner) * 10) / 10),
+          fieldwork_start: "2026-02-10",
+          fieldwork_end: "2026-02-14",
+          sample_size: [620, 590, 605, 575, 610, 585][i],
+          margin_error: [3.9, 4.0, 4.0, 4.1, 3.9, 4.0][i],
+          methodology_rating: (i % 2 === 0 ? "A" : "B"),
+          source_publisher: "Example Research Ltd",
+          source_title: `Siaya Gubernatorial Poll – ${name}`,
+          source_url: "",  // IMPORTANT: leave empty until you have a real published link
+          source_notes: "Paste a real published poll URL + methodology."
+        },
+        internal: {
+          csi: [84, 86, 85, 82, 86, 83][i],
+          groundGame: [86, 85, 87, 84, 86, 84][i],
+          volunteerNetwork: [83, 82, 84, 81, 83, 81][i],
+          messageClarity: [85, 84, 86, 83, 85, 83][i]
+        },
+        notes: "Demo record. Import JSON/CSV when ready."
+      };
+    });
 
-    const LS_KEY = "gumbo_siaya_dashboard_v2";
+    // ---------- STORAGE ----------
+    const LS_KEY = "gumbo_siaya_dashboard_verified_v1";
+
     function loadData(){
       const raw = localStorage.getItem(LS_KEY);
-      if(!raw) return structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
+      if(!raw) return structuredClone(DEMO);
       try{
         const parsed = JSON.parse(raw);
-        if(Array.isArray(parsed) && parsed.length){
-          return parsed.map(d=>({ ...d, csi: computeCSI(d) }));
-        }
-        return structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
+        if(Array.isArray(parsed) && parsed.length) return normalizeData(parsed);
+        return structuredClone(DEMO);
       }catch(e){
-        return structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
+        return structuredClone(DEMO);
       }
     }
-    const state = { data: loadData(), metric:"csi", search:"" };
-    function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2)); }
 
+    function saveData(){
+      localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2));
+    }
+
+    function normalizeData(arr){
+      // Ensure all subcounties exist; keep user data where available
+      const byName = new Map(arr.map(x => [x.name, x]));
+      return SUBCOUNTIES.map(n => {
+        const x = byName.get(n);
+        if(!x) return structuredClone(DEMO.find(d=>d.name===n));
+        // Merge with defaults to avoid missing fields
+        const def = structuredClone(DEMO.find(d=>d.name===n));
+        return {
+          name: n,
+          polling: { ...def.polling, ...(x.polling || {}) },
+          internal: { ...def.internal, ...(x.internal || {}) },
+          notes: (x.notes ?? def.notes)
+        };
+      });
+    }
+
+    const state = {
+      data: loadData(),
+      metric: "polling",
+      search: ""
+    };
+
+    // ---------- HELPERS ----------
+    function esc(s){
+      return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+    }
+    function toNum(x){
+      const n = Number(x);
+      return Number.isFinite(n) ? n : 0;
+    }
+    function pollingMargin(row){
+      return Math.round((toNum(row.polling.gumbo_percent) - toNum(row.polling.runner_up_percent)) * 10) / 10;
+    }
+    function isVerifiedPoll(row){
+      const r = String(row.polling.methodology_rating || "").toUpperCase().trim();
+      const url = String(row.polling.source_url || "").trim();
+      return url.length > 0 && (r === "A" || r === "B");
+    }
+    function showLeadingBadge(row){
+      const margin = pollingMargin(row);
+      const gumbo = toNum(row.polling.gumbo_percent);
+      const runner = toNum(row.polling.runner_up_percent);
+      return isVerifiedPoll(row) && gumbo > runner && margin >= 2.0;
+    }
+
+    // ---------- RENDER TABLE ----------
     const tbody = $("#tbody");
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+
+    function statusTagForPolling(row){
+      if(!isVerifiedPoll(row)) return `<span class="tag neutral">Unverified</span>`;
+      if(showLeadingBadge(row)) return `<span class="tag good">Verified</span>`;
+      return `<span class="tag mid">Verified</span>`;
     }
-    function statusTag(v){
-      if(v >= 85) return `<span class="tag good">Very Strong</span>`;
-      if(v >= 80) return `<span class="tag mid">Strong</span>`;
-      return `<span class="tag low">Build More</span>`;
+
+    function metricValue(row, key){
+      if(key === "polling") return toNum(row.polling.gumbo_percent);
+      if(key === "margin") return pollingMargin(row);
+      if(key === "csi") return toNum(row.internal.csi);
+      if(key === "groundGame") return toNum(row.internal.groundGame);
+      if(key === "volunteerNetwork") return toNum(row.internal.volunteerNetwork);
+      if(key === "messageClarity") return toNum(row.internal.messageClarity);
+      return 0;
     }
-    function rowHtml(item, idx){
-      const src = (item.sources||[]).filter(Boolean).join(" | ");
+
+    function metricLabel(key){
+      return ({
+        polling: "Polling (Verified) — Gumbo %",
+        margin: "Polling Margin (Gumbo - Runner-up)",
+        csi: "Campaign Strength Index (Internal)",
+        groundGame: "Ground Game (Internal)",
+        volunteerNetwork: "Volunteer Network (Internal)",
+        messageClarity: "Message Clarity (Internal)"
+      })[key] || key;
+    }
+
+    function rowHtml(row, idx){
+      const margin = pollingMargin(row);
+      const lead = showLeadingBadge(row);
+      const verified = isVerifiedPoll(row);
+
+      const url = String(row.polling.source_url || "").trim();
+      const sourceLink = url
+        ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(row.polling.source_publisher || "Source")}</a>`
+        : `<span class="mini">Add source URL</span>`;
+
+      const details = `
+        <div class="mini">
+          Fieldwork: ${esc(row.polling.fieldwork_start)} → ${esc(row.polling.fieldwork_end)}<br/>
+          Sample: ${esc(row.polling.sample_size)} • ±${esc(row.polling.margin_error)} • Rating: <strong>${esc(row.polling.methodology_rating)}</strong><br/>
+          Runner-up: ${esc(row.polling.runner_up_name)} (${esc(row.polling.runner_up_percent)}%)
+        </div>
+      `;
+
+      const leadBadge = lead ? `<span class="badgeLead">✅ Leading (Verified)</span>` : `<span class="mini">—</span>`;
+
       return `
-        <tr data-name="${escapeHtml(item.name)}">
-          <td><strong>${escapeHtml(item.name)}</strong></td>
-          <td>${item.csi}</td>
-          <td>${item.groundGame}</td>
-          <td>${item.youthReach}</td>
-          <td>${item.womenReach}</td>
-          <td>${item.messageClarity}</td>
-          <td>${item.volunteerNetwork}</td>
-          <td>${statusTag(item.csi)}</td>
+        <tr>
+          <td><strong>${esc(row.name)}</strong><br/>${statusTagForPolling(row)}</td>
+
           <td>
-            <div style="display:grid; gap:8px; min-width:340px;">
-              <input type="text" placeholder="Paste source URLs (separate with | )"
-                     value="${escapeHtml(src)}" data-idx="${idx}" data-field="sources" />
-              <input type="text" placeholder="Notes / methodology"
-                     value="${escapeHtml(item.notes||"")}" data-idx="${idx}" data-field="notes" />
+            <strong>${esc(row.polling.gumbo_percent)}%</strong><br/>
+            <span class="mini">${verified ? "Verified (source present)" : "Not verified (no source URL)"}</span>
+          </td>
+
+          <td><strong>${esc(margin)}%</strong></td>
+          <td>${leadBadge}</td>
+
+          <td>${details}</td>
+
+          <td>
+            <div style="display:grid; gap:8px; min-width:300px;">
+              <div>${sourceLink}</div>
+              <div class="mini"><strong>${esc(row.polling.source_title || "")}</strong></div>
+
+              <input type="text" placeholder="Source URL (required for Verified/Leading badge)"
+                value="${esc(url)}" data-idx="${idx}" data-field="polling.source_url" />
+
+              <input type="text" placeholder="Publisher (e.g., pollster/media)"
+                value="${esc(row.polling.source_publisher)}" data-idx="${idx}" data-field="polling.source_publisher" />
+
+              <input type="text" placeholder="Title"
+                value="${esc(row.polling.source_title)}" data-idx="${idx}" data-field="polling.source_title" />
+
+              <input type="text" placeholder="Notes"
+                value="${esc(row.polling.source_notes)}" data-idx="${idx}" data-field="polling.source_notes" />
             </div>
+          </td>
+
+          <td>
+            <div style="display:grid; gap:8px; min-width:180px;">
+              <label class="mini" style="margin:0;">CSI</label>
+              <input type="text" value="${esc(row.internal.csi)}" data-idx="${idx}" data-field="internal.csi" />
+              <label class="mini" style="margin:0;">Ground Game</label>
+              <input type="text" value="${esc(row.internal.groundGame)}" data-idx="${idx}" data-field="internal.groundGame" />
+              <label class="mini" style="margin:0;">Volunteer Net</label>
+              <input type="text" value="${esc(row.internal.volunteerNetwork)}" data-idx="${idx}" data-field="internal.volunteerNetwork" />
+              <label class="mini" style="margin:0;">Message</label>
+              <input type="text" value="${esc(row.internal.messageClarity)}" data-idx="${idx}" data-field="internal.messageClarity" />
+            </div>
+          </td>
+
+          <td>
+            <input type="text" style="min-width:220px;"
+              placeholder="General notes"
+              value="${esc(row.notes)}" data-idx="${idx}" data-field="notes" />
           </td>
         </tr>
       `;
     }
+
     function renderTable(){
       const q = state.search.trim().toLowerCase();
       const filtered = state.data.filter(d => d.name.toLowerCase().includes(q));
-      tbody.innerHTML = filtered.map(d=>{
+      tbody.innerHTML = filtered.map(d => {
         const idx = state.data.findIndex(x=>x.name===d.name);
         return rowHtml(d, idx);
       }).join("");
 
+      // Bind edits
       $$("input[data-field]", tbody).forEach(inp=>{
         inp.addEventListener("input", (e)=>{
-          const idx = parseInt(e.target.getAttribute("data-idx"),10);
+          const idx = parseInt(e.target.getAttribute("data-idx"), 10);
           const field = e.target.getAttribute("data-field");
           if(Number.isNaN(idx) || !field) return;
 
-          if(field === "sources"){
-            const parts = e.target.value.split("|").map(x=>x.trim()).filter(Boolean);
-            state.data[idx].sources = parts;
-          }else{
-            state.data[idx][field] = e.target.value;
-          }
-          state.data[idx].csi = computeCSI(state.data[idx]);
+          const val = e.target.value;
+
+          setPath(state.data[idx], field, val);
           saveData();
           buildChart();
+          // re-render lightly for badges/links updates
+          renderTable();
         });
       });
     }
 
-    // Chart
-    let chart;
-    function metricLabel(key){
-      return ({
-        csi:"Campaign Strength Index (CSI)",
-        groundGame:"Ground Game",
-        youthReach:"Youth Reach",
-        womenReach:"Women Reach",
-        messageClarity:"Message Clarity",
-        volunteerNetwork:"Volunteer Network"
-      })[key] || key;
+    function setPath(obj, path, value){
+      const parts = path.split(".");
+      let cur = obj;
+      for(let i=0;i<parts.length-1;i++){
+        const k = parts[i];
+        if(typeof cur[k] !== "object" || cur[k] === null) cur[k] = {};
+        cur = cur[k];
+      }
+      const last = parts[parts.length-1];
+      // numeric fields auto-cast
+      const numericFields = new Set([
+        "gumbo_percent","runner_up_percent","others_percent","sample_size","margin_error",
+        "csi","groundGame","volunteerNetwork","messageClarity"
+      ]);
+      if(numericFields.has(last)){
+        const n = Number(value);
+        cur[last] = Number.isFinite(n) ? n : value;
+      }else{
+        cur[last] = value;
+      }
     }
+
+    // ---------- CHART ----------
+    let chart;
     function buildChart(){
       const ctx = $("#chart");
       const labels = state.data.map(d=>d.name);
-      const vals = state.data.map(d=>d[state.metric]);
+      const vals = state.data.map(d=>metricValue(d, state.metric));
 
       if(chart) chart.destroy();
       chart = new Chart(ctx, {
@@ -976,30 +1173,33 @@
           responsive:true,
           maintainAspectRatio:false,
           plugins:{ legend:{ display:true } },
-          scales:{ y:{ beginAtZero:true, suggestedMax:100 } }
+          scales:{ y:{ beginAtZero:true, suggestedMax: (state.metric==="polling" || state.metric==="margin") ? 60 : 100 } }
         }
       });
     }
 
-    // Controls
+    // ---------- CONTROLS ----------
     $("#metric").addEventListener("change", (e)=>{
       state.metric = e.target.value;
       buildChart();
       toast(`Metric: ${metricLabel(state.metric)}`);
     });
-    $("#search").addEventListener("input", (e)=>{ state.search=e.target.value; renderTable(); });
+    $("#search").addEventListener("input", (e)=>{
+      state.search = e.target.value;
+      renderTable();
+    });
 
     $("#downloadJson").addEventListener("click", ()=>{
       const payload = {
         generatedAt: new Date().toISOString(),
         county: "Siaya",
-        note: "CSI is internal/demo unless you add verified sources (polls/reports).",
+        note: "Leading badge requires: source_url + rating A/B + margin >= 2 + gumbo > runner_up.",
         data: state.data
       };
       const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = url; a.download = "siaya-dashboard.json";
+      a.href = url; a.download = "siaya-dashboard-export.json";
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
       toast("Exported JSON");
@@ -1007,33 +1207,146 @@
 
     $("#resetDemo").addEventListener("click", ()=>{
       if(!confirm("Reset to demo data? This overwrites your saved edits in this browser.")) return;
-      state.data = structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
-      saveData(); renderTable(); buildChart(); toast("Reset to demo");
+      state.data = structuredClone(DEMO);
+      localStorage.removeItem(LS_KEY);
+      saveData();
+      renderTable();
+      buildChart();
+      toast("Reset to demo");
     });
 
-    // Volunteer local save
-    const volStatus = $("#volStatus");
-    const VKEY = "gumbo_volunteer_v1";
-    $("#saveVolunteer").addEventListener("click", ()=>{
-      const v = {
-        name: $("#name").value.trim(),
-        phone: $("#phone").value.trim(),
-        subcounty: $("#subcounty").value,
-        msg: $("#msg").value.trim(),
-        savedAt: new Date().toISOString()
-      };
-      localStorage.setItem(VKEY, JSON.stringify(v, null, 2));
-      volStatus.textContent = "Saved locally on this device (demo).";
-      toast("Saved");
-    });
-    $("#clearVolunteer").addEventListener("click", ()=>{
-      $("#name").value=""; $("#phone").value=""; $("#msg").value="";
-      localStorage.removeItem(VKEY);
-      volStatus.textContent = "Cleared.";
-      toast("Cleared");
+    // ---------- IMPORT JSON / CSV ----------
+    $("#importFile").addEventListener("change", async (e)=>{
+      const f = e.target.files && e.target.files[0];
+      if(!f) return;
+
+      try{
+        const text = await f.text();
+        if(f.name.toLowerCase().endsWith(".json")){
+          const parsed = JSON.parse(text);
+          // Accept either {subcounties:[...]} or {data:[...]} or direct array
+          let arr = null;
+          if(Array.isArray(parsed)) arr = parsed;
+          else if(parsed && Array.isArray(parsed.subcounties)){
+            // map sample format -> internal format
+            arr = parsed.subcounties.map(s => ({
+              name: s.name,
+              polling: {
+                gumbo_percent: s.polling_verified?.gumbo_percent ?? "",
+                runner_up_name: s.polling_verified?.runner_up_name ?? "",
+                runner_up_percent: s.polling_verified?.runner_up_percent ?? "",
+                others_percent: s.polling_verified?.others_percent ?? "",
+                fieldwork_start: s.polling_verified?.fieldwork_start ?? "",
+                fieldwork_end: s.polling_verified?.fieldwork_end ?? "",
+                sample_size: s.polling_verified?.sample_size ?? "",
+                margin_error: s.polling_verified?.margin_error ?? "",
+                methodology_rating: s.polling_verified?.methodology_rating ?? "",
+                source_publisher: s.polling_verified?.source?.publisher ?? "",
+                source_title: s.polling_verified?.source?.title ?? "",
+                source_url: s.polling_verified?.source?.url ?? "",
+                source_notes: s.polling_verified?.source?.notes ?? ""
+              }
+            }));
+          } else if(parsed && Array.isArray(parsed.data)) arr = parsed.data;
+          else arr = null;
+
+          if(!arr) throw new Error("JSON format not recognized.");
+
+          // Merge into current (keep internal fields)
+          const merged = normalizeData(arr.map(x=>{
+            const def = DEMO.find(d=>d.name===x.name) || null;
+            return {
+              name: x.name,
+              polling: x.polling || x.polling_verified || x.polling_verified?.polling || x.polling_verified || x.polling || {},
+              internal: x.internal || (def ? def.internal : {}),
+              notes: x.notes || (def ? def.notes : "")
+            };
+          }));
+
+          state.data = merged;
+          saveData();
+          renderTable();
+          buildChart();
+          toast("Imported JSON ✅");
+        } else if(f.name.toLowerCase().endsWith(".csv")){
+          const arr = parseCSV(text);
+          // Expected columns:
+          // SubCounty,GumboPercent,RunnerUpName,RunnerUpPercent,OthersPercent,FieldworkStart,FieldworkEnd,SampleSize,MarginError,MethodologyRating,SourcePublisher,SourceTitle,SourceURL,SourceNotes
+          const mapped = arr.map(r => ({
+            name: r.SubCounty || r.subcounty || r.Subcounty || "",
+            polling: {
+              gumbo_percent: r.GumboPercent ?? "",
+              runner_up_name: r.RunnerUpName ?? "",
+              runner_up_percent: r.RunnerUpPercent ?? "",
+              others_percent: r.OthersPercent ?? "",
+              fieldwork_start: r.FieldworkStart ?? "",
+              fieldwork_end: r.FieldworkEnd ?? "",
+              sample_size: r.SampleSize ?? "",
+              margin_error: r.MarginError ?? "",
+              methodology_rating: r.MethodologyRating ?? "",
+              source_publisher: r.SourcePublisher ?? "",
+              source_title: r.SourceTitle ?? "",
+              source_url: r.SourceURL ?? "",
+              source_notes: r.SourceNotes ?? ""
+            }
+          }));
+          state.data = normalizeData(mapped);
+          saveData();
+          renderTable();
+          buildChart();
+          toast("Imported CSV ✅");
+        } else {
+          throw new Error("Only .json or .csv supported.");
+        }
+      }catch(err){
+        console.error(err);
+        toast(`Import failed: ${err.message || err}`);
+      }finally{
+        e.target.value = "";
+      }
     });
 
-    // Init
+    function parseCSV(text){
+      const lines = text.replace(/\r/g,"").split("\n").filter(l=>l.trim().length);
+      if(lines.length < 2) return [];
+      const headers = splitCSVLine(lines[0]).map(h=>h.trim());
+      const out = [];
+      for(let i=1;i<lines.length;i++){
+        const cols = splitCSVLine(lines[i]);
+        const row = {};
+        headers.forEach((h, idx)=> row[h] = (cols[idx] ?? "").trim());
+        // numeric casting for known fields
+        ["GumboPercent","RunnerUpPercent","OthersPercent","SampleSize","MarginError"].forEach(k=>{
+          if(row[k] !== undefined && row[k] !== ""){
+            const n = Number(row[k]);
+            if(Number.isFinite(n)) row[k] = n;
+          }
+        });
+        out.push(row);
+      }
+      return out;
+    }
+
+    function splitCSVLine(line){
+      const res = [];
+      let cur = "";
+      let inQ = false;
+      for(let i=0;i<line.length;i++){
+        const ch = line[i];
+        if(ch === '"' ){
+          if(inQ && line[i+1] === '"'){ cur += '"'; i++; }
+          else inQ = !inQ;
+        } else if(ch === "," && !inQ){
+          res.push(cur); cur="";
+        } else {
+          cur += ch;
+        }
+      }
+      res.push(cur);
+      return res;
+    }
+
+    // ---------- INIT ----------
     $("#year").textContent = new Date().getFullYear();
     renderTable();
     buildChart();
