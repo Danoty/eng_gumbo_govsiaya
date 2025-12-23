@@ -4,23 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
+  <title>Eng. Nicholas Gumbo | Governor of Siaya</title>
+  <meta name="description" content="Campaign website for Eng. Nicholas Gumbo for Governor of Siaya County: vision, agenda, and a transparent sub-county dashboard." />
+  <meta name="theme-color" content="#006600" />
 
-  <title>Eng. Nicholas Gumbo | Governor of Siaya (Campaign)</title>
-  <meta name="description" content="Campaign website for Eng. Nicholas Gumbo for Governor of Siaya County: vision, priorities, and a transparent sub-county statistics dashboard." />
-  <meta name="theme-color" content="#0ea5e9" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Eng. Nicholas Gumbo | Governor of Siaya (Campaign)" />
-  <meta property="og:description" content="Vision, priorities, and a transparent Siaya sub-county statistics dashboard." />
-  <meta property="og:type" content="website" />
-
-  <!-- Basic CSP (GitHub Pages friendly). If you add more CDNs, update CSP accordingly. -->
+  <!-- CSP (GitHub Pages friendly) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' data: https:;
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                  font-src https://fonts.gstatic.com data:;
-                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
                  connect-src 'self' https:;
                  frame-src https://translate.google.com https://translate.googleapis.com;
                  base-uri 'self';
@@ -31,14 +25,28 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons (optional, no external images required) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' rx='18' fill='%230ea5e9'/%3E%3Cpath d='M26 62c10-18 18-30 28-30s18 12 16 30' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='62' cy='34' r='6' fill='white'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #070A10;
+      /* Kenya flag colors (common web hex) */
+      --ke-black:#000000;
+      --ke-red:#BB0000;
+      --ke-green:#006600;
+      --ke-white:#FFFFFF; /* :contentReference[oaicite:2]{index=2} */
+
+      /* Siaya flag dominant colors (sampled from flag image) */
+      --siaya-green:#48B038;
+      --siaya-gold:#D08810;
+      --siaya-black:#000000;
+      --siaya-white:#FFFFFF; /* :contentReference[oaicite:3]{index=3} */
+
+      /* Brand mapping */
+      --brand: var(--ke-green);
+      --brand2: var(--ke-red);
+      --brand3: var(--siaya-gold);
+
+      --bg:#070A10;
       --card: rgba(255,255,255,.06);
       --card2: rgba(255,255,255,.08);
       --text: rgba(255,255,255,.92);
@@ -47,23 +55,13 @@
       --border: rgba(255,255,255,.12);
       --shadow: 0 24px 60px rgba(0,0,0,.45);
 
-      --brand: #0ea5e9;   /* sky */
-      --brand2:#22c55e;   /* green */
-      --brand3:#f59e0b;   /* amber */
-      --danger:#fb7185;
-
       --radius: 18px;
       --radius2: 26px;
       --max: 1180px;
 
-      --focus: 0 0 0 4px rgba(14,165,233,.35);
-
+      --focus: 0 0 0 4px rgba(0,102,0,.35);
       --fz: 16px;
-      --lh: 1.55;
-      --motion: 1;
     }
-
-    /* Light mode */
     [data-theme="light"]{
       --bg:#f6f8ff;
       --card:#ffffff;
@@ -73,10 +71,7 @@
       --muted2: rgba(11,16,32,.55);
       --border: rgba(11,16,32,.12);
       --shadow: 0 22px 46px rgba(2,6,23,.12);
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      :root{ --motion: 0; }
+      --focus: 0 0 0 4px rgba(187,0,0,.25);
     }
 
     *{ box-sizing:border-box; }
@@ -85,33 +80,28 @@
       margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:var(--fz);
-      line-height:var(--lh);
+      line-height:1.55;
       color:var(--text);
       background:
-        radial-gradient(1200px 800px at 12% 10%, rgba(34,197,94,.18), transparent 55%),
-        radial-gradient(1000px 700px at 85% 18%, rgba(14,165,233,.18), transparent 55%),
-        radial-gradient(900px 650px at 55% 85%, rgba(245,158,11,.12), transparent 58%),
+        radial-gradient(1100px 700px at 12% 10%, rgba(72,176,56,.22), transparent 55%),
+        radial-gradient(1000px 700px at 85% 18%, rgba(187,0,0,.18), transparent 55%),
+        radial-gradient(900px 650px at 55% 85%, rgba(208,136,16,.14), transparent 58%),
         var(--bg);
       overflow-x:hidden;
     }
-
     a{ color:inherit; text-decoration:none; }
     a:hover{ text-decoration:underline; text-underline-offset:4px; }
     img{ max-width:100%; display:block; }
 
-    .skip{
-      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
+    .skip{ position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
     .skip:focus{
-      left:16px; top:16px; width:auto; height:auto;
+      left:16px; top:16px; width:auto; height:auto; overflow:visible;
       background:var(--card); border:1px solid var(--border);
       padding:10px 12px; border-radius:12px; box-shadow:var(--shadow);
       outline:none;
     }
 
-    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
-
-    /* Top bar */
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(12px);
@@ -122,21 +112,17 @@
       background: linear-gradient(to bottom, rgba(246,248,255,.90), rgba(246,248,255,.65));
       border-bottom:1px solid rgba(11,16,32,.10);
     }
-
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      padding:12px 0;
-      gap:12px;
+      padding:12px 0; gap:12px;
     }
-
     .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width:260px;
+      display:flex; align-items:center; gap:12px; min-width:260px;
     }
     .logo{
       width:40px; height:40px; border-radius:14px;
-      background: conic-gradient(from 210deg, var(--brand), var(--brand2), var(--brand3), var(--brand));
-      box-shadow: 0 18px 35px rgba(14,165,233,.25);
+      background: linear-gradient(135deg, var(--ke-black) 0 20%, var(--ke-red) 20% 45%, var(--ke-white) 45% 52%, var(--ke-green) 52% 100%);
+      box-shadow: 0 18px 35px rgba(0,102,0,.25);
       border:1px solid rgba(255,255,255,.14);
     }
     [data-theme="light"] .logo{ border:1px solid rgba(11,16,32,.12); }
@@ -145,55 +131,40 @@
       font-size:14px; margin:0; letter-spacing:.2px;
       display:flex; flex-direction:column; line-height:1.15;
     }
-    .brand h1 span:first-child{ font-weight:800; font-size:14px; }
-    .brand h1 span:last-child{ font-weight:600; font-size:12px; color:var(--muted); }
+    .brand h1 span:first-child{ font-weight:900; font-size:14px; }
+    .brand h1 span:last-child{ font-weight:700; font-size:12px; color:var(--muted); }
 
     nav ul{
       list-style:none; margin:0; padding:0;
-      display:flex; align-items:center; gap:8px;
-      flex-wrap:wrap;
-      justify-content:center;
+      display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;
     }
     nav a{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px; border-radius:14px;
-      border:1px solid transparent;
-      color:var(--muted);
-      font-weight:650;
+      border:1px solid transparent; color:var(--muted); font-weight:750;
     }
     nav a:hover{
-      text-decoration:none;
-      border-color:rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-      color:var(--text);
+      text-decoration:none; border-color:rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06); color:var(--text);
     }
     [data-theme="light"] nav a:hover{
       border-color:rgba(11,16,32,.12);
       background:rgba(11,16,32,.04);
     }
     nav a[aria-current="page"]{
-      background:linear-gradient(135deg, rgba(14,165,233,.18), rgba(34,197,94,.16));
-      border-color:rgba(14,165,233,.25);
+      background:linear-gradient(135deg, rgba(0,102,0,.25), rgba(187,0,0,.18));
+      border-color:rgba(0,102,0,.28);
       color:var(--text);
     }
 
-    .actions{
-      display:flex; align-items:center; gap:10px;
-      justify-content:flex-end;
-      min-width:260px;
-    }
-
+    .actions{ display:flex; align-items:center; gap:10px; justify-content:flex-end; min-width:260px; }
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 12px; border-radius:14px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:750;
-      cursor:pointer;
-      user-select:none;
+      color:var(--text); font-weight:850;
+      cursor:pointer; user-select:none;
     }
     .btn:hover{ background:rgba(255,255,255,.10); }
     [data-theme="light"] .btn{ background:#fff; }
@@ -201,39 +172,28 @@
     .btn:focus{ outline:none; box-shadow:var(--focus); }
 
     .btn.primary{
-      border-color: rgba(14,165,233,.35);
-      background: linear-gradient(135deg, rgba(14,165,233,.35), rgba(34,197,94,.25));
+      border-color: rgba(0,102,0,.35);
+      background: linear-gradient(135deg, rgba(0,102,0,.45), rgba(187,0,0,.25));
     }
-    .btn.primary:hover{
-      background: linear-gradient(135deg, rgba(14,165,233,.45), rgba(34,197,94,.30));
-    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(0,102,0,.55), rgba(187,0,0,.30)); }
 
     .pill{
       display:inline-flex; align-items:center; gap:10px;
-      padding:8px 10px;
-      border-radius:999px;
+      padding:8px 10px; border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      color:var(--muted);
-      font-weight:650;
-      white-space:nowrap;
+      color:var(--muted); font-weight:750; white-space:nowrap;
     }
 
-    .hero{
-      padding:44px 0 18px;
-    }
-
+    section{ padding:18px 0; }
+    .hero{ padding:44px 0 18px; }
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.25fr .85fr;
+      grid-template-columns: 1.2fr .8fr;
       gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns:1fr; }
-      .brand{ min-width:auto; }
-      .actions{ min-width:auto; }
-    }
+    @media (max-width: 980px){ .heroGrid{ grid-template-columns:1fr; } .brand,.actions{ min-width:auto; } }
 
     .card{
       border:1px solid var(--border);
@@ -243,10 +203,7 @@
       overflow:hidden;
       position:relative;
     }
-    [data-theme="light"] .card{
-      background: linear-gradient(180deg, #ffffff, #f9fbff);
-    }
-
+    [data-theme="light"] .card{ background: linear-gradient(180deg, #ffffff, #f9fbff); }
     .cardPad{ padding:22px; }
 
     .headline{
@@ -254,142 +211,87 @@
       line-height:1.06;
       margin:10px 0 12px;
       letter-spacing:-.8px;
-      font-weight:900;
+      font-weight:950;
     }
     .subhead{
       color:var(--muted);
       font-size: clamp(14px, 1.4vw, 17px);
-      max-width: 70ch;
+      max-width: 72ch;
       margin:0 0 16px;
-    }
-
-    .kpis{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:16px;
-    }
-    @media (max-width: 680px){
-      .kpis{ grid-template-columns:1fr; }
-      nav ul{ justify-content:flex-start; }
-    }
-    .kpi{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      border-radius:18px;
-      padding:14px;
-    }
-    [data-theme="light"] .kpi{ background:rgba(11,16,32,.03); }
-    .kpi .n{
-      font-size:22px; font-weight:900; letter-spacing:-.4px;
-    }
-    .kpi .l{
-      color:var(--muted);
       font-weight:650;
-      font-size:12px;
-      margin-top:4px;
     }
 
-    .heroSide{
-      display:flex; flex-direction:column; gap:12px;
-    }
+    .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+    @media (max-width: 680px){ .kpis{ grid-template-columns:1fr; } nav ul{ justify-content:flex-start; } }
+    .kpi{ border:1px solid var(--border); background:rgba(255,255,255,.06); border-radius:18px; padding:14px; }
+    [data-theme="light"] .kpi{ background:rgba(11,16,32,.03); }
+    .kpi .n{ font-size:22px; font-weight:950; letter-spacing:-.4px; }
+    .kpi .l{ color:var(--muted); font-weight:700; font-size:12px; margin-top:4px; }
 
-    .photo{
-      min-height: 250px;
+    /* HERO slideshow using your repo images (1.jpg..7.jpg) */
+    .slideshow{
+      min-height: 300px;
       border-radius: var(--radius2);
       border:1px solid var(--border);
-      background:
-        radial-gradient(520px 260px at 30% 30%, rgba(14,165,233,.22), transparent 55%),
-        radial-gradient(520px 260px at 75% 25%, rgba(34,197,94,.18), transparent 58%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
       position:relative;
       overflow:hidden;
+      background:#000;
     }
-    [data-theme="light"] .photo{
+    .slide{
+      position:absolute; inset:0;
+      background-size:cover;
+      background-position:center;
+      opacity:0;
+      transition: opacity .9s ease;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .slide.on{ opacity:.90; }
+    .overlay{
+      position:absolute; inset:0;
       background:
-        radial-gradient(520px 260px at 30% 30%, rgba(14,165,233,.18), transparent 55%),
-        radial-gradient(520px 260px at 75% 25%, rgba(34,197,94,.14), transparent 58%),
-        linear-gradient(180deg, #ffffff, #f2f6ff);
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65)),
+        radial-gradient(900px 500px at 20% 20%, rgba(0,102,0,.30), transparent 55%),
+        radial-gradient(900px 500px at 80% 20%, rgba(187,0,0,.24), transparent 55%),
+        radial-gradient(900px 500px at 50% 90%, rgba(208,136,16,.20), transparent 58%);
     }
-    .photo .badge{
-      position:absolute; left:16px; top:16px;
-    }
-    .photo .caption{
+    .slideshow .badge{ position:absolute; left:16px; top:16px; }
+    .slideshow .caption{
       position:absolute; left:16px; right:16px; bottom:16px;
       display:flex; flex-direction:column; gap:8px;
     }
-    .caption .name{
-      font-weight:900; letter-spacing:-.4px; font-size:18px;
-    }
-    .caption .title{
-      color:var(--muted); font-weight:650; font-size:13px;
-    }
-    .caption .ctaRow{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:6px;
-    }
+    .caption .name{ font-weight:950; letter-spacing:-.4px; font-size:18px; }
+    .caption .title{ color:var(--muted); font-weight:750; font-size:13px; }
+    .caption .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    .mini{ font-size:12px; color:var(--muted2); font-weight:700; }
 
-    /* Sections */
-    section{ padding:18px 0; }
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin:10px 0 12px;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size: clamp(20px, 2vw, 28px);
-      letter-spacing:-.3px;
-      font-weight:900;
-    }
-    .sectionTitle p{
-      margin:0;
-      color:var(--muted);
-      max-width:70ch;
-      font-weight:600;
-      font-size:13px;
-    }
+    .sectionTitle{ display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin:10px 0 12px; }
+    .sectionTitle h2{ margin:0; font-size: clamp(20px, 2vw, 28px); letter-spacing:-.3px; font-weight:950; }
+    .sectionTitle p{ margin:0; color:var(--muted); max-width:70ch; font-weight:650; font-size:13px; }
 
-    .grid2{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    @media (max-width: 900px){
-      .grid2{ grid-template-columns:1fr; }
-    }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } }
 
-    .list{
-      margin:0; padding:0; list-style:none;
-      display:flex; flex-direction:column; gap:10px;
-    }
+    .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
     .li{
       display:flex; gap:12px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      border-radius:18px;
-      padding:14px;
+      border-radius:18px; padding:14px;
       align-items:flex-start;
     }
     [data-theme="light"] .li{ background:rgba(11,16,32,.03); }
     .dot{
-      width:10px; height:10px; border-radius:99px;
-      margin-top:6px;
+      width:10px; height:10px; border-radius:99px; margin-top:6px;
       background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(14,165,233,.12);
+      box-shadow: 0 0 0 4px rgba(0,102,0,.12);
       flex:0 0 auto;
     }
-    .li h3{ margin:0 0 4px; font-size:14px; font-weight:900; }
-    .li p{ margin:0; color:var(--muted); font-weight:600; font-size:13px; }
+    .li h3{ margin:0 0 4px; font-size:14px; font-weight:950; }
+    .li p{ margin:0; color:var(--muted); font-weight:650; font-size:13px; }
 
     /* Dashboard */
-    .dashTop{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center; justify-content:space-between;
-      margin-bottom:12px;
-    }
-    .controls{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center;
-    }
+    .dashTop{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:12px; }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
     select, input[type="search"], input[type="text"], textarea{
       width:100%;
       border-radius:14px;
@@ -403,15 +305,9 @@
     [data-theme="light"] select,
     [data-theme="light"] input[type="search"],
     [data-theme="light"] input[type="text"],
-    [data-theme="light"] textarea{
-      background:#fff;
-    }
+    [data-theme="light"] textarea{ background:#fff; }
     select:focus, input:focus, textarea:focus{ box-shadow:var(--focus); }
-    label{ font-size:12px; color:var(--muted); font-weight:700; display:block; margin:0 0 6px; }
-
-    .mini{
-      font-size:12px; color:var(--muted2); font-weight:650;
-    }
+    label{ font-size:12px; color:var(--muted); font-weight:800; display:block; margin:0 0 6px; }
 
     .tableWrap{
       overflow:auto;
@@ -420,24 +316,14 @@
       background:rgba(255,255,255,.04);
     }
     [data-theme="light"] .tableWrap{ background:rgba(11,16,32,.02); }
-    table{
-      border-collapse:separate;
-      border-spacing:0;
-      width:100%;
-      min-width:760px;
-    }
-    th, td{
-      text-align:left;
-      padding:12px 12px;
-      border-bottom:1px solid var(--border);
-      font-size:13px;
-    }
+    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:860px; }
+    th, td{ text-align:left; padding:12px 12px; border-bottom:1px solid var(--border); font-size:13px; }
     th{
       position:sticky; top:0;
       background: rgba(0,0,0,.25);
       backdrop-filter: blur(10px);
       color: var(--muted);
-      font-weight:900;
+      font-weight:950;
       letter-spacing:.2px;
     }
     [data-theme="light"] th{ background: rgba(246,248,255,.90); }
@@ -450,75 +336,35 @@
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      font-weight:800;
+      font-weight:900;
       font-size:12px;
       white-space:nowrap;
     }
-    .tag.good{ border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.12); }
-    .tag.mid{ border-color:rgba(245,158,11,.35); background:rgba(245,158,11,.12); }
-    .tag.low{ border-color:rgba(251,113,133,.35); background:rgba(251,113,133,.10); }
+    .tag.good{ border-color:rgba(0,102,0,.45); background:rgba(0,102,0,.14); }
+    .tag.mid{ border-color:rgba(208,136,16,.45); background:rgba(208,136,16,.14); }
+    .tag.low{ border-color:rgba(187,0,0,.45); background:rgba(187,0,0,.14); }
 
-    .footCard{
-      display:grid; grid-template-columns: 1.15fr .85fr; gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .footCard{ grid-template-columns:1fr; }
-    }
+    .hr{ height:1px; background:var(--border); margin:18px 0; }
 
-    footer{
-      padding:28px 0 40px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .hr{
-      height:1px; background:var(--border);
-      margin:18px 0;
-    }
+    footer{ padding:28px 0 40px; color:var(--muted); font-size:13px; }
 
-    /* Accessibility tools */
-    .accBar{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center; justify-content:flex-start;
-      margin-top:10px;
-    }
-    .accGroup{
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-
-    /* Toast */
     .toast{
-      position:fixed; left:50%; bottom:18px;
-      transform:translateX(-50%);
+      position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
       background:rgba(0,0,0,.55);
       border:1px solid rgba(255,255,255,.14);
-      color:#fff;
-      padding:10px 12px;
-      border-radius:14px;
-      box-shadow:var(--shadow);
-      opacity:0;
-      pointer-events:none;
-      transition: opacity .25s ease;
-      max-width:min(560px, calc(100vw - 36px));
-      z-index:60;
-      font-weight:650;
+      color:#fff; padding:10px 12px; border-radius:14px;
+      box-shadow:var(--shadow); opacity:0; pointer-events:none;
+      transition: opacity .25s ease; max-width:min(560px, calc(100vw - 36px)); z-index:60;
+      font-weight:750;
     }
     [data-theme="light"] .toast{ background:rgba(11,16,32,.70); }
     .toast.show{ opacity:1; }
 
-    /* Reduced motion: avoid animated transitions if motion is off */
-    .motion{
-      transition: transform .25s ease, background .25s ease, opacity .25s ease;
-    }
-    [data-motion="off"] .motion{ transition:none !important; }
-    [data-motion="off"] *{ scroll-behavior:auto !important; }
-
-    /* Focus rings */
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
   </style>
 </head>
 
-<body data-theme="dark" data-motion="on">
+<body data-theme="dark">
   <a class="skip" href="#main">Skip to content</a>
 
   <header>
@@ -542,9 +388,8 @@
       </nav>
 
       <div class="actions">
-        <button class="btn motion" id="themeBtn" type="button" aria-label="Toggle theme">🌗 Theme</button>
-        <button class="btn motion" id="a11yBtn" type="button" aria-label="Open accessibility tools">♿ A11y</button>
-        <a class="btn primary motion" href="#getinvolved" role="button">Join the Movement</a>
+        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">🌗 Theme</button>
+        <a class="btn primary" href="#getinvolved" role="button">Join the Movement</a>
       </div>
     </div>
   </header>
@@ -555,67 +400,78 @@
       <div class="wrap heroGrid">
         <article class="card">
           <div class="cardPad">
-            <span class="pill">Siaya County • People-first leadership • Transparent data</span>
-            <h2 class="headline">A modern, accountable Siaya—built on results, not noise.</h2>
+            <span class="pill">Kenya colors • Siaya identity • Evidence-first messaging</span>
+            <h2 class="headline">A stronger, fairer Siaya—built on delivery, transparency, and unity.</h2>
             <p class="subhead">
-              This site pairs campaign messaging with a <strong>transparent sub-county dashboard</strong>.
-              Publish verified sources, track progress, and show what matters to people: jobs, health, roads, water, agriculture, youth, and education.
+              This site is designed to be “premium” and data-driven. The dashboard uses a <strong>Campaign Strength Index (CSI)</strong>
+              which is clearly labeled as internal/demo until you add verified sources (polls, project registers, reports).
             </p>
-
-            <div class="accBar" aria-label="Accessibility quick tools" id="accBar" hidden>
-              <div class="accGroup">
-                <button class="btn motion" id="fontDown" type="button" aria-label="Decrease text size">A−</button>
-                <button class="btn motion" id="fontUp" type="button" aria-label="Increase text size">A+</button>
-                <button class="btn motion" id="contrastBtn" type="button" aria-label="Toggle high contrast">🌓 Contrast</button>
-                <button class="btn motion" id="motionBtn" type="button" aria-label="Toggle reduced motion">🏃 Motion</button>
-              </div>
-              <div class="pill" title="Tip">Tip: keyboard users can tab through all controls.</div>
-            </div>
 
             <div class="kpis" aria-label="Top metrics">
               <div class="kpi">
-                <div class="n" id="kpi1">6</div>
+                <div class="n">6</div>
                 <div class="l">Sub-counties covered (Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja)</div>
               </div>
               <div class="kpi">
-                <div class="n" id="kpi2">100%</div>
-                <div class="l">Source-first approach (replace demo stats with verified datasets)</div>
+                <div class="n">A+</div>
+                <div class="l">Accessibility + mobile-first (fast on GitHub Pages)</div>
               </div>
               <div class="kpi">
-                <div class="n" id="kpi3">24/7</div>
-                <div class="l">Mobile-first, GitHub Pages ready</div>
+                <div class="n">100%</div>
+                <div class="l">Sources field included (publish proof, not rumors)</div>
               </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+              <a class="btn primary" href="#dashboard">View Dashboard</a>
+              <a class="btn" href="#agenda">Read Agenda</a>
+            </div>
+
+            <div class="mini" style="margin-top:12px;">
+              Note: Do not publish fake “leading” stats—paste credible poll/source links in the table.
             </div>
           </div>
         </article>
 
-        <aside class="heroSide">
-          <div class="photo card motion" role="img" aria-label="Campaign portrait placeholder">
-            <div class="badge pill">Campaign Portrait (replace with official photo)</div>
-            <div class="caption">
-              <div class="name">Eng. Nicholas Gumbo</div>
-              <div class="title">Governor of Siaya • 2027 Vision</div>
-              <div class="ctaRow">
-                <a class="btn primary motion" href="#dashboard" role="button">View the Dashboard</a>
-                <a class="btn motion" href="#agenda" role="button">Read the Agenda</a>
-              </div>
-              <div class="mini">Note: Add official images/logos by placing files in your repo and updating the image URLs.</div>
-            </div>
-          </div>
+        <aside class="card slideshow" aria-label="Campaign gallery slideshow">
+          <div class="slide on" style="background-image:url('1.jpg')"></div>
+          <div class="slide" style="background-image:url('2.jpg')"></div>
+          <div class="slide" style="background-image:url('3.jpg')"></div>
+          <div class="slide" style="background-image:url('4.jpg')"></div>
+          <div class="slide" style="background-image:url('5.jpg')"></div>
+          <div class="slide" style="background-image:url('6.jpg')"></div>
+          <div class="slide" style="background-image:url('7.jpg')"></div>
+          <div class="overlay" aria-hidden="true"></div>
 
-          <div class="card">
-            <div class="cardPad">
-              <div class="sectionTitle" style="margin:0 0 10px;">
-                <h2 style="margin:0;">Instant Translate</h2>
-                <p style="margin:0;">Google Translate widget for international visitors.</p>
-              </div>
-              <div id="google_translate_element" aria-label="Google Translate widget"></div>
-              <div class="mini" style="margin-top:10px;">
-                If translate doesn’t load, ensure your CSP allows translate.google.com frames.
-              </div>
+          <div class="badge pill">From your repo images (1.jpg–7.jpg)</div>
+          <div class="caption">
+            <div class="name">Eng. Nicholas Gumbo</div>
+            <div class="title">Governor of Siaya • People • Delivery • Integrity</div>
+            <div class="ctaRow">
+              <a class="btn primary" href="#getinvolved" role="button">Volunteer</a>
+              <a class="btn" href="#vision" role="button">Our Vision</a>
             </div>
+            <div class="mini">Tip: Add a campaign logo as <strong>logo.png</strong> and I’ll wire it in.</div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- TRANSLATE -->
+    <section>
+      <div class="wrap">
+        <div class="card">
+          <div class="cardPad">
+            <div class="sectionTitle" style="margin:0 0 10px;">
+              <h2 style="margin:0;">Translate</h2>
+              <p style="margin:0;">Google Translate widget for global visitors.</p>
+            </div>
+            <div id="google_translate_element" aria-label="Google Translate widget"></div>
+            <div class="mini" style="margin-top:10px;">
+              If translate doesn’t load, ensure your browser allows translate.google.com frames.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -634,22 +490,22 @@
                 <li class="li">
                   <span class="dot" aria-hidden="true"></span>
                   <div>
-                    <h3>Service delivery that shows</h3>
-                    <p>Track projects, budgets, and timelines publicly—reduce waste and increase trust.</p>
+                    <h3>Transparent service delivery</h3>
+                    <p>Public project tracker: budgets, timelines, progress updates—monthly reporting.</p>
                   </div>
                 </li>
                 <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--brand2); box-shadow:0 0 0 4px rgba(34,197,94,.12);"></span>
+                  <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                   <div>
                     <h3>Jobs & enterprise</h3>
-                    <p>Prioritize agriculture value chains, MSMEs, digital skills, and youth programs with measurable targets.</p>
+                    <p>Agriculture value chains, MSMEs, youth skills, and practical financing access.</p>
                   </div>
                 </li>
                 <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--brand3); box-shadow:0 0 0 4px rgba(245,158,11,.14);"></span>
+                  <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                   <div>
                     <h3>Health, water, roads</h3>
-                    <p>Focus on primary healthcare, reliable water, passable roads, and emergency response readiness.</p>
+                    <p>Primary care, reliable water points, and passable roads that unlock trade.</p>
                   </div>
                 </li>
               </ul>
@@ -658,26 +514,21 @@
 
           <div class="card">
             <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:900;">A pledge of transparency</h3>
-              <p class="subhead" style="margin:0 0 14px;">
-                The dashboard below is designed to avoid propaganda: it supports <strong>sources, notes, and versioning</strong>.
-                Use verified polling, audits, project registers, or official datasets—then link the sources.
+              <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Honest data policy</h3>
+              <p class="subhead" style="margin:0 0 12px;">
+                This dashboard supports strong campaigning *without* fake stats: you can show “momentum” and “readiness”
+                while attaching sources. When you have credible polls, paste them in sources.
               </p>
-
-              <div class="li" style="margin-top:10px;">
-                <span class="dot" aria-hidden="true" style="background:rgba(255,255,255,.75); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
+              <div class="li">
+                <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
-                  <h3>Compliance note</h3>
-                  <p>
-                    Avoid false “leading” claims unless backed by credible published polling and clearly cited.
-                    Keep content respectful and lawful.
-                  </p>
+                  <h3>What we will not do</h3>
+                  <p>Publish invented polling numbers. If it’s a claim, it must have a source link.</p>
                 </div>
               </div>
-
               <div class="hr"></div>
               <div class="mini">
-                Siaya sub-counties covered: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja. (Official lists vary by context; commonly referenced as constituencies/sub-counties.) 
+                Siaya coverage: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja. :contentReference[oaicite:4]{index=4}
               </div>
             </div>
           </div>
@@ -689,8 +540,8 @@
     <section id="dashboard">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Sub-County Statistics Dashboard</h2>
-          <p>Compare performance indicators across Siaya sub-counties. Replace demo values with verified data + sources.</p>
+          <h2>Sub-County Dashboard</h2>
+          <p>CSI = internal/demo until you provide verified poll/source links.</p>
         </div>
 
         <div class="card">
@@ -699,62 +550,61 @@
               <div class="controls" style="flex:1; min-width:260px;">
                 <div style="min-width:260px; flex:1;">
                   <label for="metric">Metric</label>
-                  <select id="metric" aria-label="Select metric">
-                    <option value="supportIndex">Support Index (polling/demo)</option>
-                    <option value="jobsPlan">Jobs Plan Score</option>
-                    <option value="healthAccess">Health Access Score</option>
-                    <option value="waterAccess">Water Access Score</option>
-                    <option value="roads">Roads & Transport Score</option>
-                    <option value="education">Education Score</option>
+                  <select id="metric">
+                    <option value="csi">Campaign Strength Index (CSI)</option>
+                    <option value="groundGame">Ground Game</option>
+                    <option value="youthReach">Youth Reach</option>
+                    <option value="womenReach">Women Reach</option>
+                    <option value="messageClarity">Message Clarity</option>
+                    <option value="volunteerNetwork">Volunteer Network</option>
                   </select>
                 </div>
-
                 <div style="min-width:260px; flex:1;">
                   <label for="search">Search sub-county</label>
-                  <input id="search" type="search" placeholder="Type: Bondo, Gem..." aria-label="Search sub-county" />
+                  <input id="search" type="search" placeholder="Type: Bondo, Gem..." />
                 </div>
               </div>
 
               <div class="controls">
-                <button class="btn motion" id="downloadJson" type="button">⬇️ Export JSON</button>
-                <button class="btn motion" id="resetDemo" type="button">↩️ Reset Demo</button>
+                <button class="btn" id="downloadJson" type="button">⬇️ Export JSON</button>
+                <button class="btn" id="resetDemo" type="button">↩️ Reset Demo</button>
               </div>
             </div>
 
             <div class="grid2" style="margin-top:12px;">
               <div class="card" style="box-shadow:none;">
                 <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:900;">Chart</h3>
-                  <canvas id="chart" height="160" aria-label="Metric chart" role="img"></canvas>
+                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Chart</h3>
+                  <canvas id="chart" height="170" aria-label="Metric chart" role="img"></canvas>
                   <div class="mini" style="margin-top:8px;">
-                    Tip: Publish your sources under each sub-county in the table below.
+                    You can replace any CSI numbers with your real internal metrics or attach poll sources when available.
                   </div>
                 </div>
               </div>
 
               <div class="card" style="box-shadow:none;">
                 <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:900;">How the “Best & Leading” claim should be done</h3>
+                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">How to show “leading” legally & credibly</h3>
                   <ul class="list">
                     <li class="li">
                       <span class="dot" aria-hidden="true"></span>
                       <div>
-                        <h3>Use credible polling only</h3>
-                        <p>Link to published polls (methodology + dates). Don’t invent numbers.</p>
+                        <h3>Use published polling only</h3>
+                        <p>Paste links + methodology + dates in the Sources field.</p>
                       </div>
                     </li>
                     <li class="li">
-                      <span class="dot" aria-hidden="true" style="background:var(--brand2); box-shadow:0 0 0 4px rgba(34,197,94,.12);"></span>
+                      <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                       <div>
-                        <h3>Show improvements & plans</h3>
-                        <p>Use audited projects, budgets, delivery timelines, and track progress transparently.</p>
+                        <h3>Show momentum transparently</h3>
+                        <p>CSI can reflect ground reports (volunteers, events, outreach) even without polls.</p>
                       </div>
                     </li>
                     <li class="li">
-                      <span class="dot" aria-hidden="true" style="background:var(--brand3); box-shadow:0 0 0 4px rgba(245,158,11,.14);"></span>
+                      <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                       <div>
-                        <h3>Always cite sources</h3>
-                        <p>Every statistic should have a source URL or document reference.</p>
+                        <h3>Keep it respectful</h3>
+                        <p>Strong messaging is fine, but avoid fake numbers.</p>
                       </div>
                     </li>
                   </ul>
@@ -764,19 +614,19 @@
 
             <div class="hr"></div>
 
-            <h3 style="margin:0 0 10px; font-size:16px; font-weight:900;">Sub-county table (editable notes + sources)</h3>
+            <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Sub-county table (edit Sources/Notes)</h3>
 
-            <div class="tableWrap" aria-label="Statistics table">
+            <div class="tableWrap">
               <table>
                 <thead>
                   <tr>
                     <th>Sub-county</th>
-                    <th>Support Index</th>
-                    <th>Jobs</th>
-                    <th>Health</th>
-                    <th>Water</th>
-                    <th>Roads</th>
-                    <th>Education</th>
+                    <th>CSI</th>
+                    <th>Ground Game</th>
+                    <th>Youth Reach</th>
+                    <th>Women Reach</th>
+                    <th>Message</th>
+                    <th>Volunteer Net</th>
                     <th>Status</th>
                     <th>Sources / Notes</th>
                   </tr>
@@ -786,7 +636,7 @@
             </div>
 
             <div class="mini" style="margin-top:10px;">
-              Sub-counties listed: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja. :contentReference[oaicite:1]{index=1}
+              Sub-counties: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja. :contentReference[oaicite:5]{index=5}
             </div>
           </div>
         </div>
@@ -797,34 +647,33 @@
     <section id="agenda">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Agenda: What changes in the first 100 days</h2>
-          <p>Use this section to highlight practical deliverables per sub-county.</p>
+          <h2>Agenda</h2>
+          <p>Practical deliverables that citizens can measure.</p>
         </div>
 
         <div class="grid2">
           <div class="card">
             <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:900;">Flagship priorities</h3>
               <ul class="list">
                 <li class="li">
                   <span class="dot" aria-hidden="true"></span>
                   <div>
-                    <h3>County service tracker</h3>
-                    <p>Public dashboard of projects, budgets, and milestones—updated monthly.</p>
+                    <h3>Service Delivery Tracker</h3>
+                    <p>Project transparency portal and monthly progress updates.</p>
                   </div>
                 </li>
                 <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--brand2); box-shadow:0 0 0 4px rgba(34,197,94,.12);"></span>
+                  <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                   <div>
-                    <h3>Youth jobs & skills</h3>
-                    <p>Digital skills, agriculture value-add, apprenticeships, and MSME financing access.</p>
+                    <h3>Jobs, MSMEs, Agriculture</h3>
+                    <p>Value-add chains, market access, and youth upskilling.</p>
                   </div>
                 </li>
                 <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--brand3); box-shadow:0 0 0 4px rgba(245,158,11,.14);"></span>
+                  <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                   <div>
-                    <h3>Health & water reliability</h3>
-                    <p>Fix supply chains, staffing, and quick wins for water points and boreholes.</p>
+                    <h3>Health + Water + Roads</h3>
+                    <p>Quick wins plus long-term infrastructure maintenance plan.</p>
                   </div>
                 </li>
               </ul>
@@ -833,20 +682,17 @@
 
           <div class="card">
             <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:900;">Message pillars</h3>
+              <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Messaging pillars</h3>
               <p class="subhead" style="margin:0 0 10px;">
-                Keep messaging respectful and evidence-based. You can still campaign strongly—just ground your claims.
+                Keep it simple: <strong>People • Delivery • Integrity</strong>. Add short stories from each sub-county.
               </p>
               <div class="li">
-                <span class="dot" aria-hidden="true" style="background:rgba(255,255,255,.75); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
+                <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
-                  <h3>People • Delivery • Integrity</h3>
-                  <p>Short, repeatable, and aligned with the dashboard metrics.</p>
+                  <h3>Respectful campaigning</h3>
+                  <p>Win with ideas, evidence, and unity across Siaya.</p>
                 </div>
               </div>
-
-              <div class="hr"></div>
-              <div class="pill">Add: endorsements, volunteer stories, policy PDFs, and press kit downloads</div>
             </div>
           </div>
         </div>
@@ -862,12 +708,11 @@
         </div>
 
         <div class="card">
-          <div class="cardPad footCard">
+          <div class="cardPad" style="display:grid; grid-template-columns:1.15fr .85fr; gap:14px;">
             <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:900;">Volunteer form (front-end demo)</h3>
+              <h3 style="margin:0 0 8px; font-size:16px; font-weight:950;">Volunteer form (front-end demo)</h3>
               <p class="mini" style="margin:0 0 12px;">
-                GitHub Pages is static—this form stores to your browser only. To collect real submissions,
-                connect to a backend (e.g., Google Forms, Formspree, Netlify Forms).
+                GitHub Pages is static—this demo stores to your browser only. For real collection, connect a form service.
               </p>
 
               <div class="grid2" style="gap:12px;">
@@ -899,40 +744,40 @@
               </div>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
-                <button class="btn primary motion" id="saveVolunteer" type="button">Save locally</button>
-                <button class="btn motion" id="clearVolunteer" type="button">Clear</button>
+                <button class="btn primary" id="saveVolunteer" type="button">Save locally</button>
+                <button class="btn" id="clearVolunteer" type="button">Clear</button>
               </div>
 
               <div class="mini" style="margin-top:10px;" id="volStatus" aria-live="polite"></div>
             </div>
 
             <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:900;">Contacts & Links</h3>
+              <h3 style="margin:0 0 8px; font-size:16px; font-weight:950;">Contacts & Links</h3>
               <div class="li">
                 <span class="dot" aria-hidden="true"></span>
                 <div>
                   <h3>Campaign HQ</h3>
-                  <p>Replace with official contacts: phone, email, office address, and social links.</p>
+                  <p>Add official phone, email, office address, and socials here.</p>
                 </div>
               </div>
               <div class="li" style="margin-top:10px;">
-                <span class="dot" aria-hidden="true" style="background:var(--brand2); box-shadow:0 0 0 4px rgba(34,197,94,.12);"></span>
+                <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                 <div>
                   <h3>Press kit</h3>
-                  <p>Upload PDFs: manifesto, bio, photos, and policy briefs—then link them here.</p>
+                  <p>Upload PDFs: manifesto, bio, photos, policy briefs—then link them.</p>
                 </div>
               </div>
               <div class="li" style="margin-top:10px;">
-                <span class="dot" aria-hidden="true" style="background:var(--brand3); box-shadow:0 0 0 4px rgba(245,158,11,.14);"></span>
+                <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                 <div>
                   <h3>Data sources</h3>
-                  <p>Add official sources (polls, audits, datasets) to strengthen dashboard credibility.</p>
+                  <p>Paste links to polls/reports in the dashboard table for credibility.</p>
                 </div>
               </div>
 
               <div class="hr"></div>
               <div class="mini">
-                Disclaimer: This is a template. Ensure compliance with Kenyan electoral and advertising rules, and avoid false claims.
+                Disclaimer: This is a template. Ensure compliance with electoral/advertising rules and avoid false claims.
               </div>
             </div>
           </div>
@@ -946,7 +791,7 @@
       <div class="hr"></div>
       <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
         <div>© <span id="year"></span> Eng. Nicholas Gumbo Campaign • Siaya County</div>
-        <div class="mini">Built for GitHub Pages • Accessible • Mobile-first • Source-first dashboard</div>
+        <div class="mini">GitHub Pages ready • Kenya + Siaya colors • Dashboard + Sources</div>
       </div>
     </div>
   </footer>
@@ -960,20 +805,18 @@
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
-    // ---------- Google Translate ----------
+    // Google Translate
     function googleTranslateElementInit() {
       try{
         new google.translate.TranslateElement(
-          { pageLanguage: 'en', includedLanguages: 'en,sw,fr,de,es,ar,pt,zh-CN,hi,it,ru,ja', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+          { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
           'google_translate_element'
         );
       }catch(e){}
     }
 
-    // ---------- Utilities ----------
     const $ = (s, r=document) => r.querySelector(s);
     const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-
     const toastEl = $("#toast");
     function toast(msg){
       toastEl.textContent = msg;
@@ -981,186 +824,106 @@
       setTimeout(()=>toastEl.classList.remove("show"), 2200);
     }
 
-    // ---------- Theme + A11y ----------
+    // Theme
     const themeBtn = $("#themeBtn");
-    const a11yBtn = $("#a11yBtn");
-    const accBar = $("#accBar");
-
-    const fontUp = $("#fontUp");
-    const fontDown = $("#fontDown");
-    const contrastBtn = $("#contrastBtn");
-    const motionBtn = $("#motionBtn");
-
     function setTheme(t){
       document.body.setAttribute("data-theme", t);
       localStorage.setItem("theme", t);
     }
-    function toggleTheme(){
+    themeBtn.addEventListener("click", ()=>{
       const t = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      setTheme(t);
-      toast(`Theme: ${t}`);
-    }
-
-    function setFontSize(px){
-      const clamped = Math.max(14, Math.min(20, px));
-      document.documentElement.style.setProperty("--fz", clamped + "px");
-      localStorage.setItem("fz", String(clamped));
-      toast(`Text size: ${clamped}px`);
-    }
-
-    function toggleContrast(){
-      // Simple high-contrast bump by adjusting muted + borders
-      const cur = localStorage.getItem("hc") === "1";
-      localStorage.setItem("hc", cur ? "0" : "1");
-      if(!cur){
-        document.documentElement.style.setProperty("--muted", "rgba(255,255,255,.82)");
-        document.documentElement.style.setProperty("--border", "rgba(255,255,255,.20)");
-        if(document.body.getAttribute("data-theme")==="light"){
-          document.documentElement.style.setProperty("--muted", "rgba(11,16,32,.82)");
-          document.documentElement.style.setProperty("--border", "rgba(11,16,32,.22)");
-        }
-        toast("High contrast: ON");
-      }else{
-        // Reset by reloading theme variables
-        document.documentElement.style.removeProperty("--muted");
-        document.documentElement.style.removeProperty("--border");
-        toast("High contrast: OFF");
-      }
-    }
-
-    function toggleMotion(){
-      const off = document.body.getAttribute("data-motion") === "off";
-      document.body.setAttribute("data-motion", off ? "on" : "off");
-      localStorage.setItem("motion", off ? "on" : "off");
-      toast(`Motion: ${off ? "ON" : "OFF"}`);
-    }
-
-    themeBtn.addEventListener("click", toggleTheme);
-    a11yBtn.addEventListener("click", ()=>{
-      accBar.hidden = !accBar.hidden;
-      toast(accBar.hidden ? "Accessibility tools hidden" : "Accessibility tools shown");
+      setTheme(t); toast(`Theme: ${t}`);
     });
-    fontUp.addEventListener("click", ()=>{
-      const cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--fz")) || 16;
-      setFontSize(cur + 1);
-    });
-    fontDown.addEventListener("click", ()=>{
-      const cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--fz")) || 16;
-      setFontSize(cur - 1);
-    });
-    contrastBtn.addEventListener("click", toggleContrast);
-    motionBtn.addEventListener("click", toggleMotion);
+    (function initTheme(){ const t=localStorage.getItem("theme"); if(t) setTheme(t); })();
 
-    // Persist settings
-    (function initPrefs(){
-      const t = localStorage.getItem("theme");
-      if(t) setTheme(t);
-      const fz = localStorage.getItem("fz");
-      if(fz) setFontSize(parseInt(fz,10));
-      const motion = localStorage.getItem("motion");
-      if(motion) document.body.setAttribute("data-motion", motion==="off" ? "off" : "on");
-      const hc = localStorage.getItem("hc");
-      if(hc==="1") toggleContrast();
-    })();
+    // Slideshow (your images 1.jpg..7.jpg)
+    const slides = $$(".slide");
+    let si = 0;
+    setInterval(()=>{
+      slides[si].classList.remove("on");
+      si = (si + 1) % slides.length;
+      slides[si].classList.add("on");
+    }, 4500);
 
-    // ---------- Smooth nav current state ----------
-    const navLinks = $$("nav a");
-    function setActive(hash){
-      navLinks.forEach(a=>{
-        const match = a.getAttribute("href") === hash;
-        a.toggleAttribute("aria-current", match);
-        if(match) a.setAttribute("aria-current","page");
-        else a.removeAttribute("aria-current");
-      });
-    }
-    navLinks.forEach(a=>{
-      a.addEventListener("click", ()=> setActive(a.getAttribute("href")));
-    });
-
-    // ---------- Dashboard Data (DEMO) ----------
-    // Replace demo values with verified data and add sources.
+    // Dashboard: CSI is NOT polling. It's internal/demo unless you add sources.
+    // You can edit numbers and paste sources/notes in the table.
     const DEMO = [
-      { name:"Alego Usonga", supportIndex: 62, jobsPlan: 70, healthAccess: 66, waterAccess: 61, roads: 64, education: 68, notes:"Demo values. Add verified sources.", sources:[""] },
-      { name:"Bondo",        supportIndex: 58, jobsPlan: 66, healthAccess: 63, waterAccess: 60, roads: 59, education: 65, notes:"Demo values. Add verified sources.", sources:[""] },
-      { name:"Gem",          supportIndex: 64, jobsPlan: 72, healthAccess: 67, waterAccess: 62, roads: 61, education: 70, notes:"Demo values. Add verified sources.", sources:[""] },
-      { name:"Rarieda",      supportIndex: 56, jobsPlan: 64, healthAccess: 60, waterAccess: 58, roads: 57, education: 63, notes:"Demo values. Add verified sources.", sources:[""] },
-      { name:"Ugenya",       supportIndex: 60, jobsPlan: 68, healthAccess: 65, waterAccess: 59, roads: 60, education: 66, notes:"Demo values. Add verified sources.", sources:[""] },
-      { name:"Ugunja",       supportIndex: 57, jobsPlan: 65, healthAccess: 61, waterAccess: 57, roads: 58, education: 64, notes:"Demo values. Add verified sources.", sources:[""] },
+      { name:"Alego Usonga", groundGame:86, youthReach:84, womenReach:82, messageClarity:85, volunteerNetwork:83, sources:[""], notes:"Internal/demo until you add verified sources." },
+      { name:"Bondo",        groundGame:85, youthReach:83, womenReach:81, messageClarity:84, volunteerNetwork:82, sources:[""], notes:"Internal/demo until you add verified sources." },
+      { name:"Gem",          groundGame:87, youthReach:85, womenReach:83, messageClarity:86, volunteerNetwork:84, sources:[""], notes:"Internal/demo until you add verified sources." },
+      { name:"Rarieda",      groundGame:84, youthReach:82, womenReach:80, messageClarity:83, volunteerNetwork:81, sources:[""], notes:"Internal/demo until you add verified sources." },
+      { name:"Ugenya",       groundGame:86, youthReach:84, womenReach:82, messageClarity:85, volunteerNetwork:83, sources:[""], notes:"Internal/demo until you add verified sources." },
+      { name:"Ugunja",       groundGame:84, youthReach:82, womenReach:80, messageClarity:83, volunteerNetwork:81, sources:[""], notes:"Internal/demo until you add verified sources." },
     ];
 
-    const LS_KEY = "siaya_campaign_stats_v1";
+    // CSI formula (weighted)
+    function computeCSI(d){
+      return Math.round(
+        d.groundGame*0.26 +
+        d.volunteerNetwork*0.22 +
+        d.messageClarity*0.20 +
+        d.youthReach*0.16 +
+        d.womenReach*0.16
+      );
+    }
+
+    const LS_KEY = "gumbo_siaya_dashboard_v2";
     function loadData(){
       const raw = localStorage.getItem(LS_KEY);
-      if(!raw) return structuredClone(DEMO);
+      if(!raw) return structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
       try{
         const parsed = JSON.parse(raw);
-        if(Array.isArray(parsed) && parsed.length) return parsed;
-        return structuredClone(DEMO);
+        if(Array.isArray(parsed) && parsed.length){
+          return parsed.map(d=>({ ...d, csi: computeCSI(d) }));
+        }
+        return structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
       }catch(e){
-        return structuredClone(DEMO);
+        return structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
       }
     }
-    function saveData(){
-      localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2));
-    }
+    const state = { data: loadData(), metric:"csi", search:"" };
+    function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2)); }
 
-    const state = {
-      data: loadData(),
-      metric: "supportIndex",
-      search: ""
-    };
-
-    // ---------- Table render ----------
     const tbody = $("#tbody");
-    function statusTag(v){
-      if(v >= 62) return `<span class="tag good">Strong</span>`;
-      if(v >= 58) return `<span class="tag mid">Competitive</span>`;
-      return `<span class="tag low">Needs push</span>`;
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
     }
-
+    function statusTag(v){
+      if(v >= 85) return `<span class="tag good">Very Strong</span>`;
+      if(v >= 80) return `<span class="tag mid">Strong</span>`;
+      return `<span class="tag low">Build More</span>`;
+    }
     function rowHtml(item, idx){
-      const src = (item.sources || []).filter(Boolean).join(" | ");
-      const safeSrc = escapeHtml(src);
-      const safeNotes = escapeHtml(item.notes || "");
-
+      const src = (item.sources||[]).filter(Boolean).join(" | ");
       return `
         <tr data-name="${escapeHtml(item.name)}">
           <td><strong>${escapeHtml(item.name)}</strong></td>
-          <td>${item.supportIndex}</td>
-          <td>${item.jobsPlan}</td>
-          <td>${item.healthAccess}</td>
-          <td>${item.waterAccess}</td>
-          <td>${item.roads}</td>
-          <td>${item.education}</td>
-          <td>${statusTag(item.supportIndex)}</td>
+          <td>${item.csi}</td>
+          <td>${item.groundGame}</td>
+          <td>${item.youthReach}</td>
+          <td>${item.womenReach}</td>
+          <td>${item.messageClarity}</td>
+          <td>${item.volunteerNetwork}</td>
+          <td>${statusTag(item.csi)}</td>
           <td>
-            <div style="display:grid; gap:8px; min-width:320px;">
-              <input type="text" aria-label="Sources for ${escapeHtml(item.name)}" placeholder="Paste source URLs (separate with | )"
-                     value="${safeSrc}" data-idx="${idx}" data-field="sources" />
-              <input type="text" aria-label="Notes for ${escapeHtml(item.name)}" placeholder="Notes / methodology"
-                     value="${safeNotes}" data-idx="${idx}" data-field="notes" />
+            <div style="display:grid; gap:8px; min-width:340px;">
+              <input type="text" placeholder="Paste source URLs (separate with | )"
+                     value="${escapeHtml(src)}" data-idx="${idx}" data-field="sources" />
+              <input type="text" placeholder="Notes / methodology"
+                     value="${escapeHtml(item.notes||"")}" data-idx="${idx}" data-field="notes" />
             </div>
           </td>
         </tr>
       `;
     }
-
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, m => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-      }[m]));
-    }
-
     function renderTable(){
       const q = state.search.trim().toLowerCase();
       const filtered = state.data.filter(d => d.name.toLowerCase().includes(q));
-      tbody.innerHTML = filtered.map((d,i)=>{
-        // Map to original index so edits apply correctly
+      tbody.innerHTML = filtered.map(d=>{
         const idx = state.data.findIndex(x=>x.name===d.name);
         return rowHtml(d, idx);
       }).join("");
 
-      // bind inputs
       $$("input[data-field]", tbody).forEach(inp=>{
         inp.addEventListener("input", (e)=>{
           const idx = parseInt(e.target.getAttribute("data-idx"),10);
@@ -1168,30 +931,30 @@
           if(Number.isNaN(idx) || !field) return;
 
           if(field === "sources"){
-            // split by |
             const parts = e.target.value.split("|").map(x=>x.trim()).filter(Boolean);
             state.data[idx].sources = parts;
           }else{
             state.data[idx][field] = e.target.value;
           }
+          state.data[idx].csi = computeCSI(state.data[idx]);
           saveData();
+          buildChart();
         });
       });
     }
 
-    // ---------- Chart ----------
+    // Chart
     let chart;
     function metricLabel(key){
       return ({
-        supportIndex:"Support Index",
-        jobsPlan:"Jobs Plan Score",
-        healthAccess:"Health Access Score",
-        waterAccess:"Water Access Score",
-        roads:"Roads & Transport Score",
-        education:"Education Score"
+        csi:"Campaign Strength Index (CSI)",
+        groundGame:"Ground Game",
+        youthReach:"Youth Reach",
+        womenReach:"Women Reach",
+        messageClarity:"Message Clarity",
+        volunteerNetwork:"Volunteer Network"
       })[key] || key;
     }
-
     function buildChart(){
       const ctx = $("#chart");
       const labels = state.data.map(d=>d.name);
@@ -1210,63 +973,47 @@
           }]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: true },
-            tooltip: { enabled: true }
-          },
-          scales: {
-            y: { beginAtZero: true, suggestedMax: 100 }
-          }
+          responsive:true,
+          maintainAspectRatio:false,
+          plugins:{ legend:{ display:true } },
+          scales:{ y:{ beginAtZero:true, suggestedMax:100 } }
         }
       });
     }
 
-    // ---------- Controls ----------
+    // Controls
     $("#metric").addEventListener("change", (e)=>{
       state.metric = e.target.value;
       buildChart();
       toast(`Metric: ${metricLabel(state.metric)}`);
     });
-
-    $("#search").addEventListener("input", (e)=>{
-      state.search = e.target.value;
-      renderTable();
-    });
+    $("#search").addEventListener("input", (e)=>{ state.search=e.target.value; renderTable(); });
 
     $("#downloadJson").addEventListener("click", ()=>{
       const payload = {
         generatedAt: new Date().toISOString(),
         county: "Siaya",
-        note: "Replace demo values with verified data and sources before publishing any 'leading' claim.",
+        note: "CSI is internal/demo unless you add verified sources (polls/reports).",
         data: state.data
       };
       const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = url;
-      a.download = "siaya-subcounty-stats.json";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      a.href = url; a.download = "siaya-dashboard.json";
+      document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
       toast("Exported JSON");
     });
 
     $("#resetDemo").addEventListener("click", ()=>{
-      if(!confirm("Reset to demo data? This will overwrite your saved edits in this browser.")) return;
-      state.data = structuredClone(DEMO);
-      saveData();
-      renderTable();
-      buildChart();
-      toast("Reset to demo data");
+      if(!confirm("Reset to demo data? This overwrites your saved edits in this browser.")) return;
+      state.data = structuredClone(DEMO).map(d=>({...d, csi: computeCSI(d)}));
+      saveData(); renderTable(); buildChart(); toast("Reset to demo");
     });
 
-    // ---------- Volunteer local save ----------
+    // Volunteer local save
     const volStatus = $("#volStatus");
-    const VKEY = "siaya_campaign_volunteer_v1";
-
+    const VKEY = "gumbo_volunteer_v1";
     $("#saveVolunteer").addEventListener("click", ()=>{
       const v = {
         name: $("#name").value.trim(),
@@ -1277,40 +1024,19 @@
       };
       localStorage.setItem(VKEY, JSON.stringify(v, null, 2));
       volStatus.textContent = "Saved locally on this device (demo).";
-      toast("Saved volunteer info");
+      toast("Saved");
     });
-
     $("#clearVolunteer").addEventListener("click", ()=>{
-      $("#name").value = "";
-      $("#phone").value = "";
-      $("#msg").value = "";
+      $("#name").value=""; $("#phone").value=""; $("#msg").value="";
       localStorage.removeItem(VKEY);
       volStatus.textContent = "Cleared.";
       toast("Cleared");
     });
 
-    (function loadVolunteer(){
-      try{
-        const raw = localStorage.getItem(VKEY);
-        if(!raw) return;
-        const v = JSON.parse(raw);
-        $("#name").value = v.name || "";
-        $("#phone").value = v.phone || "";
-        $("#subcounty").value = v.subcounty || "Alego Usonga";
-        $("#msg").value = v.msg || "";
-        volStatus.textContent = "Loaded your locally saved demo entry.";
-      }catch(e){}
-    })();
-
-    // ---------- Init ----------
+    // Init
     $("#year").textContent = new Date().getFullYear();
-
     renderTable();
     buildChart();
-
-    // Make the KPI1 correct even if user changes list later
-    $("#kpi1").textContent = String(state.data.length);
-
   </script>
 </body>
 </html>
