@@ -8,13 +8,13 @@
   <meta name="description" content="Campaign site for Eng. Gumbo Wajonya for Governor of Siaya County. Premium visuals, sub-county dashboard, and verified polling support." />
   <meta name="theme-color" content="#006600" />
 
-  <!-- CSP (static hosting friendly) -->
+  <!-- Security (static hosting friendly) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' data: https:;
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                  font-src https://fonts.gstatic.com data:;
-                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://translate.google.com;
                  connect-src 'self' https:;
                  frame-src https://translate.google.com https://translate.googleapis.com;
                  base-uri 'self';
@@ -22,6 +22,9 @@
                  object-src 'none';
                  frame-ancestors 'none';
                  upgrade-insecure-requests">
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,18 +90,26 @@
         linear-gradient(180deg, rgba(0,0,0,.18), transparent 22%),
         var(--bg);
       overflow-x:hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a{ color:inherit; text-decoration:none; }
     a:hover{ text-decoration:underline; text-underline-offset:4px; }
     img{ max-width:100%; display:block; }
-
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
+
+    /* Accessibility */
     .skip{ position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
     .skip:focus{
       left:16px; top:16px; width:auto; height:auto; overflow:visible;
       background:var(--card); border:1px solid var(--border);
       padding:10px 12px; border-radius:12px; box-shadow:var(--shadow2);
       outline:none;
+    }
+    :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
     }
 
     header{
@@ -115,9 +126,7 @@
       display:flex; align-items:center; justify-content:space-between;
       padding:12px 0; gap:12px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:260px;
-    }
+    .brand{ display:flex; align-items:center; gap:12px; min-width:260px; }
     .logo{
       width:42px; height:42px; border-radius:16px;
       background: linear-gradient(135deg, var(--ke-black) 0 20%, var(--ke-red) 20% 45%, var(--ke-white) 45% 52%, var(--ke-green) 52% 100%);
@@ -125,7 +134,6 @@
       border:1px solid rgba(255,255,255,.14);
     }
     [data-theme="light"] .logo{ border:1px solid rgba(11,16,32,.12); }
-
     .brand h1{
       font-size:14px; margin:0; letter-spacing:.2px;
       display:flex; flex-direction:column; line-height:1.15;
@@ -163,7 +171,6 @@
     .btn:hover{ background:rgba(255,255,255,.10); }
     [data-theme="light"] .btn{ background:#fff; }
     [data-theme="light"] .btn:hover{ background:rgba(11,16,32,.04); }
-    .btn:focus{ outline:none; box-shadow:var(--focus); }
 
     .btn.primary{
       border-color: rgba(0,102,0,.35);
@@ -201,7 +208,6 @@
     [data-theme="light"] .card{ background: linear-gradient(180deg, #ffffff, #f9fbff); }
     .cardPad{ padding:22px; }
 
-    /* Premium hero texture */
     .heroCard::before{
       content:"";
       position:absolute; inset:-2px;
@@ -210,7 +216,6 @@
         radial-gradient(900px 520px at 82% 18%, rgba(187,0,0,.22), transparent 60%),
         radial-gradient(900px 520px at 52% 90%, rgba(208,136,16,.18), transparent 62%);
       pointer-events:none;
-      filter: blur(0px);
       opacity:.9;
     }
     .heroCard .cardPad{ position:relative; }
@@ -258,7 +263,6 @@
     .kpi .n{ font-size:22px; font-weight:980; letter-spacing:-.4px; }
     .kpi .l{ color:var(--muted); font-weight:780; font-size:12px; margin-top:4px; }
 
-    /* Slideshow */
     .slideshow{
       min-height: 340px;
       border-radius: var(--radius2);
@@ -295,7 +299,6 @@
     .caption .title{ color:var(--muted); font-weight:850; font-size:13px; }
     .caption .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
 
-    /* Sections */
     .sectionTitle{
       display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
       margin:10px 0 12px;
@@ -334,7 +337,6 @@
 
     .mini{ font-size:12px; color:var(--muted2); font-weight:750; }
 
-    /* Infographic cards */
     .infoCard{
       padding:16px;
       border-radius:20px;
@@ -369,7 +371,6 @@
     }
     [data-theme="light"] .spark{ background: rgba(11,16,32,.04); }
 
-    /* Dashboard */
     .dashTop{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; justify-content:space-between; margin-bottom:12px; }
     .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
     select, input[type="search"], input[type="text"], textarea{
@@ -386,7 +387,6 @@
     [data-theme="light"] input[type="search"],
     [data-theme="light"] input[type="text"],
     [data-theme="light"] textarea{ background:#fff; }
-    select:focus, input:focus, textarea:focus{ box-shadow:var(--focus); }
     label{ font-size:12px; color:var(--muted); font-weight:980; display:block; margin:0 0 6px; }
 
     .tableWrap{
@@ -421,35 +421,21 @@
       font-size:12px;
       white-space:nowrap;
     }
-    .tag.good{ border-color:rgba(0,102,0,.45); background:rgba(0,102,0,.14); }
-    .tag.mid{ border-color:rgba(208,136,16,.45); background:rgba(208,136,16,.14); }
-    .tag.low{ border-color:rgba(187,0,0,.45); background:rgba(187,0,0,.14); }
     .tag.neutral{ border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.08); color:var(--muted); }
 
     .badgeLead{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
       border:1px solid rgba(0,102,0,.45);
       background: linear-gradient(135deg, rgba(0,102,0,.24), rgba(208,136,16,.14));
-      font-weight:980;
-      font-size:12px;
-      white-space:nowrap;
+      font-weight:980; font-size:12px; white-space:nowrap;
     }
-
     .badgePref{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
       border:1px solid rgba(208,136,16,.55);
       background: linear-gradient(135deg, rgba(208,136,16,.18), rgba(0,102,0,.14));
-      font-weight:980;
-      font-size:12px;
-      white-space:nowrap;
+      font-weight:980; font-size:12px; white-space:nowrap;
     }
 
     .hr{ height:1px; background:var(--border); margin:18px 0; }
@@ -466,36 +452,6 @@
     }
     [data-theme="light"] .toast{ background:rgba(11,16,32,.78); }
     .toast.show{ opacity:1; }
-
-    .hint{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      border-radius:18px;
-      padding:12px 14px;
-      font-size:13px;
-      color:var(--muted);
-      font-weight:780;
-      box-shadow: var(--shadow2);
-    }
-
-    .filebox{
-      display:grid;
-      gap:8px;
-      min-width:280px;
-    }
-    .filebox input[type="file"]{
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-    }
-
-    /* Accessibility */
-    :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
-    @media (prefers-reduced-motion: reduce){
-      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
-    }
   </style>
 </head>
 
@@ -517,7 +473,7 @@
           <li><a href="#home" aria-current="page">Home</a></li>
           <li><a href="#vision">Vision</a></li>
           <li><a href="#impact">Impact</a></li>
-          <li><a href="#dashboard">Sub-County Dashboard</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
           <li><a href="#agenda">Agenda</a></li>
           <li><a href="#getinvolved">Get Involved</a></li>
         </ul>
@@ -539,34 +495,28 @@
             <span class="pill">Premium visuals • Transparent dashboard • Verified polling support</span>
             <h2 class="headline">A modern, united Siaya—built on delivery, dignity, and real results.</h2>
             <p class="subhead">
-              This website highlights <strong>Eng. Gumbo Wajonya</strong> as the <strong>preferred candidate</strong> using
-              <strong>internal momentum indicators</strong> (events, volunteer growth, outreach intensity).
-              If you add a real published poll source, the dashboard will automatically show <strong>Leading (Verified)</strong>.
+              This site highlights <strong>Eng. Gumbo Wajonya</strong> as <strong>Preferred (Internal)</strong> using internal momentum indicators.
+              “Leading (Verified)” only appears when you provide a published poll source URL and the rule is satisfied.
             </p>
 
             <div class="kpis" aria-label="Top metrics">
               <div class="kpi">
                 <div class="n">Preferred</div>
-                <div class="l">Candidate (internal momentum index)</div>
+                <div class="l">Candidate (internal momentum)</div>
               </div>
               <div class="kpi">
                 <div class="n">6</div>
-                <div class="l">Sub-counties fully covered</div>
+                <div class="l">Sub-counties covered</div>
               </div>
               <div class="kpi">
                 <div class="n">Verified</div>
-                <div class="l">“Leading” badge appears only with source URL + rule</div>
+                <div class="l">Leading badge requires source</div>
               </div>
             </div>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
               <a class="btn primary" href="#dashboard">Explore Dashboard</a>
               <a class="btn" href="#impact">View Impact</a>
-            </div>
-
-            <div class="hint" style="margin-top:14px;">
-              <strong>Note:</strong> “Leading (Verified)” is only displayed when you paste a real published poll source URL
-              (plus rating A/B and margin ≥ 2.0). Internal “preferred” is separate and clearly labeled.
             </div>
           </div>
         </article>
@@ -653,24 +603,24 @@
             <div class="cardPad">
               <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Truthful data policy</h3>
               <p class="subhead" style="margin:0 0 12px;">
-                Internal “preferred” indicators are fine. Public “leading” claims must be backed by a published poll source.
+                “Preferred (Internal)” is based on internal momentum. “Leading (Verified)” requires published sources.
               </p>
               <div class="li">
                 <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
                   <h3>What counts as verified</h3>
-                  <p>Source URL + fieldwork dates + sample size + methodology rating (A/B).</p>
+                  <p>Source URL + methodology rating (A/B) + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
                 </div>
               </div>
               <div class="hr"></div>
-              <div class="mini">Sub-counties covered: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja.</div>
+              <div class="mini">Sub-counties: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- IMPACT / GRAPHICS -->
+    <!-- IMPACT -->
     <section id="impact">
       <div class="wrap">
         <div class="sectionTitle">
@@ -753,7 +703,7 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Sub-County Dashboard</h2>
-          <p>Internal “preferred” is shown. “Leading (Verified)” only appears when a published poll source is added.</p>
+          <p>Compact, readable chart + auto-cite sources. “Leading (Verified)” only appears with published sources.</p>
         </div>
 
         <div class="card">
@@ -790,7 +740,12 @@
               <div class="card" style="box-shadow:none;">
                 <div class="cardPad">
                   <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Graphs</h3>
-                  <canvas id="chart" height="170" aria-label="Metric chart" role="img"></canvas>
+
+                  <!-- Compact / viewable chart -->
+                  <div style="height:220px;">
+                    <canvas id="chart" height="110" aria-label="Metric chart" role="img"></canvas>
+                  </div>
+
                   <div class="mini" style="margin-top:8px;">
                     Add real poll source URLs to enable “Leading (Verified)”.
                   </div>
@@ -805,28 +760,24 @@
                       <span class="dot" aria-hidden="true"></span>
                       <div>
                         <h3>Leading (Verified)</h3>
-                        <p>Shows only if: source URL exists + rating A/B + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
+                        <p>Source URL exists + rating A/B + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
                       </div>
                     </li>
                     <li class="li">
                       <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                       <div>
                         <h3>Preferred (Internal)</h3>
-                        <p>Always shown as internal momentum (events, outreach, volunteers). Not polling.</p>
+                        <p>Shown as internal momentum. Not polling.</p>
                       </div>
                     </li>
                     <li class="li">
                       <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                       <div>
                         <h3>Auto-cite sources</h3>
-                        <p>When you paste a source URL, the table automatically turns it into a citation link.</p>
+                        <p>Paste a source URL and the table turns it into a citation link.</p>
                       </div>
                     </li>
                   </ul>
-
-                  <div class="hint" style="margin-top:12px;">
-                    Want a real “Leading” banner sitewide? Send published poll links and I’ll wire them cleanly.
-                  </div>
                 </div>
               </div>
             </div>
@@ -1021,12 +972,10 @@
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
   <!-- Google Translate -->
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
-    // Google Translate
     function googleTranslateElementInit() {
       try{
         new google.translate.TranslateElement(
@@ -1070,14 +1019,14 @@
     // ----- DATA -----
     const SUBCOUNTIES = ["Alego Usonga","Bondo","Gem","Rarieda","Ugenya","Ugunja"];
 
-    // INTERNAL: safe demo metrics (NOT polling)
-    // You can edit these freely; they represent internal momentum indicators.
+    // Internal momentum is safe demo data (NOT polling).
+    // Polling fields are present, but “Verified” requires a real published source URL.
     const DEMO = SUBCOUNTIES.map((name, i) => ({
       name,
       candidate: "Eng. Gumbo Wajonya",
-      preferred_internal: true, // this is “preferred” (internal), not polling
-      momentum: [89, 91, 90, 86, 92, 88][i], // internal momentum index 0-100
-      polling: { // verified polling requires source_url + rating A/B
+      preferred_internal: true,
+      momentum: [89, 91, 90, 86, 92, 88][i], // internal index 0–100
+      polling: {
         gumbo_percent: [44.2, 46.8, 43.5, 41.0, 45.1, 42.7][i],
         runner_up_name: ["Opponent A","Opponent B","Opponent A","Opponent C","Opponent B","Opponent C"][i],
         runner_up_percent: [39.6, 42.9, 41.9, 39.2, 40.6, 41.2][i],
@@ -1088,26 +1037,14 @@
         methodology_rating: (i % 2 === 0 ? "A" : "B"),
         source_publisher: "",
         source_title: "",
-        source_url: "", // paste real published poll link here to unlock Verified
+        source_url: "",
         source_notes: ""
       },
       notes: "Internal momentum view. Add published poll source URL to enable verified status."
     }));
 
-    // Storage
-    const LS_KEY = "siaya_gumbo_campaign_v3";
-    function structuredCloneSafe(x){
-      return (window.structuredClone) ? structuredClone(x) : JSON.parse(JSON.stringify(x));
-    }
-    function loadData(){
-      const raw = localStorage.getItem(LS_KEY);
-      if(!raw) return structuredCloneSafe(DEMO);
-      try{
-        const parsed = JSON.parse(raw);
-        if(Array.isArray(parsed) && parsed.length) return normalizeData(parsed);
-        return structuredCloneSafe(DEMO);
-      }catch(e){ return structuredCloneSafe(DEMO); }
-    }
+    const LS_KEY = "siaya_gumbo_campaign_final_v1";
+    function cloneSafe(x){ return (window.structuredClone) ? structuredClone(x) : JSON.parse(JSON.stringify(x)); }
     function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2)); }
 
     function normalizeData(arr){
@@ -1115,18 +1052,27 @@
       return SUBCOUNTIES.map(n=>{
         const def = DEMO.find(d=>d.name===n);
         const x = byName.get(n);
-        if(!x) return structuredCloneSafe(def);
+        if(!x) return cloneSafe(def);
         return {
-          ...structuredCloneSafe(def),
+          ...cloneSafe(def),
           ...x,
           polling: { ...def.polling, ...(x.polling||{}) }
         };
       });
     }
 
+    function loadData(){
+      const raw = localStorage.getItem(LS_KEY);
+      if(!raw) return cloneSafe(DEMO);
+      try{
+        const parsed = JSON.parse(raw);
+        if(Array.isArray(parsed) && parsed.length) return normalizeData(parsed);
+      }catch(e){}
+      return cloneSafe(DEMO);
+    }
+
     const state = { data: loadData(), metric: "momentum", search: "" };
 
-    // Helpers
     function esc(s){ return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m])); }
     function toNum(x){ const n = Number(x); return Number.isFinite(n) ? n : 0; }
     function pollingMargin(row){ return Math.round((toNum(row.polling.gumbo_percent) - toNum(row.polling.runner_up_percent)) * 10) / 10; }
@@ -1149,7 +1095,6 @@
         margin:"Polling Margin (Gumbo - Runner-up)"
       })[key] || key;
     }
-
     function metricValue(row, key){
       if(key === "momentum") return toNum(row.momentum);
       if(key === "polling") return isVerifiedPoll(row) ? toNum(row.polling.gumbo_percent) : 0;
@@ -1157,24 +1102,22 @@
       return 0;
     }
 
-    // Render Impact cards
     function renderImpact(){
       const avgMomentum = Math.round(state.data.reduce((a,b)=>a+toNum(b.momentum),0) / state.data.length);
       $("#momCounty").textContent = avgMomentum;
-      $("#volCounty").textContent = "+24%"; // keep as internal estimate placeholder
+      $("#volCounty").textContent = "+24%";
     }
 
-    // Render table
     const tbody = $("#tbody");
-
     function rowHtml(row, idx){
       const lead = showLeadingVerified(row);
       const verified = isVerifiedPoll(row);
       const margin = pollingMargin(row);
 
       const url = String(row.polling.source_url||"").trim();
-      const sourceLink = url
-        ? `<a href="${esc(url)}" target="_blank" rel="noopener"><strong>${esc(row.polling.source_publisher || "Source")}</strong></a><div class="mini">${esc(row.polling.source_title || "")}</div>`
+      const sourceBlock = url
+        ? `<a href="${esc(url)}" target="_blank" rel="noopener"><strong>${esc(row.polling.source_publisher || "Source")}</strong></a>
+           <div class="mini">${esc(row.polling.source_title || "")}</div>`
         : `<span class="mini">Paste a published poll URL to verify.</span>`;
 
       const pref = row.preferred_internal ? `<span class="badgePref">⭐ Preferred (Internal)</span>` : `<span class="mini">—</span>`;
@@ -1195,7 +1138,7 @@
           <td>${leading}</td>
           <td>
             <div style="display:grid; gap:8px; min-width:320px;">
-              <div>${sourceLink}</div>
+              <div>${sourceBlock}</div>
               <input type="text" placeholder="Source URL (required for Verified/Leading)"
                      value="${esc(url)}" data-idx="${idx}" data-field="polling.source_url" />
               <input type="text" placeholder="Publisher"
@@ -1223,15 +1166,11 @@
         cur = cur[k];
       }
       const last = parts[parts.length-1];
-
-      // numeric casting
       const numericFields = new Set(["momentum","gumbo_percent","runner_up_percent","sample_size","margin_error"]);
       if(numericFields.has(last)){
         const n = Number(value);
         cur[last] = Number.isFinite(n) ? n : value;
-      } else {
-        cur[last] = value;
-      }
+      } else cur[last] = value;
     }
 
     function renderTable(){
@@ -1251,7 +1190,6 @@
           saveData();
           buildChart();
           renderImpact();
-          // refresh to update verified/leading badges in real-time
           renderTable();
         });
       });
@@ -1277,10 +1215,32 @@
           }]
         },
         options: {
-          responsive:true,
-          maintainAspectRatio:false,
-          plugins:{ legend:{ display:true } },
-          scales:{ y:{ beginAtZero:true, suggestedMax: (state.metric==="momentum" ? 100 : 60) } }
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              labels: { boxWidth: 12, font: { size: 11, weight: "bold" } }
+            },
+            tooltip: {
+              enabled: true,
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: ${ctx.formattedValue}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { font: { size: 11 } },
+              grid: { display: false }
+            },
+            y: {
+              beginAtZero: true,
+              suggestedMax: (state.metric === "momentum" ? 100 : 60),
+              ticks: { font: { size: 11 } },
+              grid: { color: "rgba(255,255,255,.08)" }
+            }
+          }
         }
       });
     }
@@ -1313,7 +1273,7 @@
 
     $("#resetDemo").addEventListener("click", ()=>{
       if(!confirm("Reset to demo? This overwrites edits saved in this browser.")) return;
-      state.data = structuredCloneSafe(DEMO);
+      state.data = cloneSafe(DEMO);
       localStorage.removeItem(LS_KEY);
       saveData();
       renderImpact();
@@ -1322,11 +1282,10 @@
       toast("Reset done");
     });
 
-    // Import JSON / CSV
+    // Import JSON/CSV
     $("#importFile").addEventListener("change", async (e)=>{
       const f = e.target.files && e.target.files[0];
       if(!f) return;
-
       try{
         const text = await f.text();
         if(f.name.toLowerCase().endsWith(".json")){
@@ -1335,7 +1294,6 @@
 
           if(Array.isArray(parsed)) arr = parsed;
           else if(parsed && Array.isArray(parsed.subcounties)){
-            // sample format
             arr = parsed.subcounties.map(s => ({
               name: s.name,
               polling: {
@@ -1356,18 +1314,10 @@
           } else if(parsed && Array.isArray(parsed.data)) arr = parsed.data;
 
           if(!arr) throw new Error("JSON format not recognized.");
-
-          // Merge
-          const merged = normalizeData(arr.map(x=>{
+          state.data = normalizeData(arr.map(x=>{
             const def = DEMO.find(d=>d.name===x.name);
-            return {
-              ...structuredCloneSafe(def || {}),
-              ...x,
-              polling: { ...(def?.polling||{}), ...(x.polling||{}) }
-            };
+            return { ...cloneSafe(def||{}), ...x, polling: { ...(def?.polling||{}), ...(x.polling||{}) } };
           }));
-
-          state.data = merged;
           saveData();
           renderImpact();
           renderTable();
@@ -1398,9 +1348,7 @@
           renderTable();
           buildChart();
           toast("Imported CSV ✅");
-        } else {
-          throw new Error("Only .json or .csv supported.");
-        }
+        } else throw new Error("Only .json or .csv supported.");
       }catch(err){
         console.error(err);
         toast(`Import failed: ${err.message || err}`);
@@ -1428,21 +1376,18 @@
       }
       return out;
     }
-
     function splitCSVLine(line){
       const res = [];
       let cur = "";
       let inQ = false;
       for(let i=0;i<line.length;i++){
         const ch = line[i];
-        if(ch === '"' ){
+        if(ch === '"'){
           if(inQ && line[i+1] === '"'){ cur += '"'; i++; }
           else inQ = !inQ;
         } else if(ch === "," && !inQ){
           res.push(cur); cur="";
-        } else {
-          cur += ch;
-        }
+        } else cur += ch;
       }
       res.push(cur);
       return res;
