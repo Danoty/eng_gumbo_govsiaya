@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-
-  <title>Eng. Nicholas Gumbo | Governor of Siaya</title>
-  <meta name="description" content="Campaign website for Eng. Nicholas Gumbo for Governor of Siaya County: vision, agenda, and a transparent sub-county dashboard with verified polling support." />
+  <title>Eng. Gumbo Wajonya | Governor of Siaya</title>
+  <meta name="description" content="Campaign site for Eng. Gumbo Wajonya for Governor of Siaya County. Premium visuals, sub-county dashboard, and verified polling support." />
   <meta name="theme-color" content="#006600" />
 
-  <!-- CSP (GitHub Pages friendly) -->
+  <!-- CSP (static hosting friendly) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' data: https:;
@@ -36,7 +35,7 @@
       --ke-green:#006600;
       --ke-white:#FFFFFF;
 
-      /* Siaya-inspired accent (gold + green) */
+      /* Siaya-inspired accent */
       --siaya-green:#48B038;
       --siaya-gold:#D08810;
 
@@ -51,12 +50,12 @@
       --muted: rgba(255,255,255,.70);
       --muted2: rgba(255,255,255,.55);
       --border: rgba(255,255,255,.12);
-      --shadow: 0 24px 60px rgba(0,0,0,.45);
+      --shadow: 0 28px 70px rgba(0,0,0,.55);
+      --shadow2: 0 18px 44px rgba(0,0,0,.35);
 
       --radius: 18px;
       --radius2: 26px;
       --max: 1180px;
-
       --focus: 0 0 0 4px rgba(0,102,0,.35);
       --fz: 16px;
     }
@@ -68,8 +67,9 @@
       --muted: rgba(11,16,32,.72);
       --muted2: rgba(11,16,32,.55);
       --border: rgba(11,16,32,.12);
-      --shadow: 0 22px 46px rgba(2,6,23,.12);
-      --focus: 0 0 0 4px rgba(187,0,0,.25);
+      --shadow: 0 24px 60px rgba(2,6,23,.12);
+      --shadow2: 0 16px 40px rgba(2,6,23,.10);
+      --focus: 0 0 0 4px rgba(187,0,0,.22);
     }
 
     *{ box-sizing:border-box; }
@@ -81,9 +81,10 @@
       line-height:1.55;
       color:var(--text);
       background:
-        radial-gradient(1100px 700px at 12% 10%, rgba(72,176,56,.22), transparent 55%),
-        radial-gradient(1000px 700px at 85% 18%, rgba(187,0,0,.18), transparent 55%),
-        radial-gradient(900px 650px at 55% 85%, rgba(208,136,16,.14), transparent 58%),
+        radial-gradient(1100px 700px at 12% 10%, rgba(72,176,56,.20), transparent 58%),
+        radial-gradient(1000px 700px at 85% 18%, rgba(187,0,0,.16), transparent 58%),
+        radial-gradient(900px 650px at 55% 85%, rgba(208,136,16,.14), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.18), transparent 22%),
         var(--bg);
       overflow-x:hidden;
     }
@@ -96,18 +97,18 @@
     .skip:focus{
       left:16px; top:16px; width:auto; height:auto; overflow:visible;
       background:var(--card); border:1px solid var(--border);
-      padding:10px 12px; border-radius:12px; box-shadow:var(--shadow);
+      padding:10px 12px; border-radius:12px; box-shadow:var(--shadow2);
       outline:none;
     }
 
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.12));
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.18));
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     [data-theme="light"] header{
-      background: linear-gradient(to bottom, rgba(246,248,255,.90), rgba(246,248,255,.65));
+      background: linear-gradient(to bottom, rgba(246,248,255,.92), rgba(246,248,255,.70));
       border-bottom:1px solid rgba(11,16,32,.10);
     }
     .nav{
@@ -118,9 +119,9 @@
       display:flex; align-items:center; gap:12px; min-width:260px;
     }
     .logo{
-      width:40px; height:40px; border-radius:14px;
+      width:42px; height:42px; border-radius:16px;
       background: linear-gradient(135deg, var(--ke-black) 0 20%, var(--ke-red) 20% 45%, var(--ke-white) 45% 52%, var(--ke-green) 52% 100%);
-      box-shadow: 0 18px 35px rgba(0,102,0,.25);
+      box-shadow: 0 18px 42px rgba(0,102,0,.22);
       border:1px solid rgba(255,255,255,.14);
     }
     [data-theme="light"] .logo{ border:1px solid rgba(11,16,32,.12); }
@@ -129,8 +130,8 @@
       font-size:14px; margin:0; letter-spacing:.2px;
       display:flex; flex-direction:column; line-height:1.15;
     }
-    .brand h1 span:first-child{ font-weight:900; font-size:14px; }
-    .brand h1 span:last-child{ font-weight:700; font-size:12px; color:var(--muted); }
+    .brand h1 span:first-child{ font-weight:950; font-size:14px; }
+    .brand h1 span:last-child{ font-weight:750; font-size:12px; color:var(--muted); }
 
     nav ul{
       list-style:none; margin:0; padding:0;
@@ -139,7 +140,7 @@
     nav a{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px; border-radius:14px;
-      border:1px solid transparent; color:var(--muted); font-weight:750;
+      border:1px solid transparent; color:var(--muted); font-weight:850;
     }
     nav a:hover{
       text-decoration:none; border-color:rgba(255,255,255,.14);
@@ -149,11 +150,6 @@
       border-color:rgba(11,16,32,.12);
       background:rgba(11,16,32,.04);
     }
-    nav a[aria-current="page"]{
-      background:linear-gradient(135deg, rgba(0,102,0,.25), rgba(187,0,0,.18));
-      border-color:rgba(0,102,0,.28);
-      color:var(--text);
-    }
 
     .actions{ display:flex; align-items:center; gap:10px; justify-content:flex-end; min-width:260px; }
     .btn{
@@ -161,7 +157,7 @@
       padding:10px 12px; border-radius:14px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      color:var(--text); font-weight:850;
+      color:var(--text); font-weight:900;
       cursor:pointer; user-select:none;
     }
     .btn:hover{ background:rgba(255,255,255,.10); }
@@ -171,23 +167,24 @@
 
     .btn.primary{
       border-color: rgba(0,102,0,.35);
-      background: linear-gradient(135deg, rgba(0,102,0,.45), rgba(187,0,0,.25));
+      background: linear-gradient(135deg, rgba(0,102,0,.52), rgba(187,0,0,.22));
     }
-    .btn.primary:hover{ background: linear-gradient(135deg, rgba(0,102,0,.55), rgba(187,0,0,.30)); }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(0,102,0,.62), rgba(187,0,0,.28)); }
 
     .pill{
       display:inline-flex; align-items:center; gap:10px;
       padding:8px 10px; border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      color:var(--muted); font-weight:750; white-space:nowrap;
+      color:var(--muted); font-weight:850; white-space:nowrap;
     }
 
     section{ padding:18px 0; }
     .hero{ padding:44px 0 18px; }
+
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:18px;
       align-items:stretch;
     }
@@ -195,7 +192,7 @@
 
     .card{
       border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -204,35 +201,72 @@
     [data-theme="light"] .card{ background: linear-gradient(180deg, #ffffff, #f9fbff); }
     .cardPad{ padding:22px; }
 
+    /* Premium hero texture */
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 520px at 20% 15%, rgba(0,102,0,.28), transparent 60%),
+        radial-gradient(900px 520px at 82% 18%, rgba(187,0,0,.22), transparent 60%),
+        radial-gradient(900px 520px at 52% 90%, rgba(208,136,16,.18), transparent 62%);
+      pointer-events:none;
+      filter: blur(0px);
+      opacity:.9;
+    }
+    .heroCard .cardPad{ position:relative; }
+
     .headline{
-      font-size: clamp(28px, 3.2vw, 46px);
-      line-height:1.06;
+      font-size: clamp(30px, 3.35vw, 50px);
+      line-height:1.03;
       margin:10px 0 12px;
-      letter-spacing:-.8px;
-      font-weight:950;
+      letter-spacing:-1px;
+      font-weight:980;
     }
     .subhead{
       color:var(--muted);
       font-size: clamp(14px, 1.4vw, 17px);
-      max-width: 72ch;
+      max-width: 74ch;
       margin:0 0 16px;
-      font-weight:650;
+      font-weight:700;
     }
 
-    .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+    .kpis{
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:12px; margin-top:16px;
+    }
     @media (max-width: 680px){ .kpis{ grid-template-columns:1fr; } nav ul{ justify-content:flex-start; } }
-    .kpi{ border:1px solid var(--border); background:rgba(255,255,255,.06); border-radius:18px; padding:14px; }
-    [data-theme="light"] .kpi{ background:rgba(11,16,32,.03); }
-    .kpi .n{ font-size:22px; font-weight:950; letter-spacing:-.4px; }
-    .kpi .l{ color:var(--muted); font-weight:700; font-size:12px; margin-top:4px; }
 
+    .kpi{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:14px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    [data-theme="light"] .kpi{ background:rgba(11,16,32,.03); }
+    .kpi::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(135deg, rgba(0,102,0,.18), rgba(187,0,0,.12), rgba(208,136,16,.10));
+      opacity:.7;
+      filter: blur(8px);
+      pointer-events:none;
+    }
+    .kpi > *{ position:relative; }
+    .kpi .n{ font-size:22px; font-weight:980; letter-spacing:-.4px; }
+    .kpi .l{ color:var(--muted); font-weight:780; font-size:12px; margin-top:4px; }
+
+    /* Slideshow */
     .slideshow{
-      min-height: 320px;
+      min-height: 340px;
       border-radius: var(--radius2);
       border:1px solid var(--border);
       position:relative;
       overflow:hidden;
       background:#000;
+      box-shadow: var(--shadow);
     }
     .slide{
       position:absolute; inset:0;
@@ -240,33 +274,44 @@
       background-position:center;
       opacity:0;
       transition: opacity .9s ease;
-      filter: saturate(1.05) contrast(1.02);
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
     }
-    .slide.on{ opacity:.90; }
+    .slide.on{ opacity:.92; }
     .overlay{
       position:absolute; inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.65)),
-        radial-gradient(900px 500px at 20% 20%, rgba(0,102,0,.30), transparent 55%),
-        radial-gradient(900px 500px at 80% 20%, rgba(187,0,0,.24), transparent 55%),
-        radial-gradient(900px 500px at 50% 90%, rgba(208,136,16,.20), transparent 58%);
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72)),
+        radial-gradient(900px 520px at 22% 18%, rgba(0,102,0,.30), transparent 58%),
+        radial-gradient(900px 520px at 80% 18%, rgba(187,0,0,.22), transparent 58%),
+        radial-gradient(900px 520px at 52% 92%, rgba(208,136,16,.18), transparent 62%);
     }
     .slideshow .badge{ position:absolute; left:16px; top:16px; }
     .slideshow .caption{
       position:absolute; left:16px; right:16px; bottom:16px;
       display:flex; flex-direction:column; gap:8px;
     }
-    .caption .name{ font-weight:950; letter-spacing:-.4px; font-size:18px; }
-    .caption .title{ color:var(--muted); font-weight:750; font-size:13px; }
+    .caption .name{ font-weight:980; letter-spacing:-.4px; font-size:18px; }
+    .caption .title{ color:var(--muted); font-weight:850; font-size:13px; }
     .caption .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
-    .mini{ font-size:12px; color:var(--muted2); font-weight:700; }
 
-    .sectionTitle{ display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin:10px 0 12px; }
-    .sectionTitle h2{ margin:0; font-size: clamp(20px, 2vw, 28px); letter-spacing:-.3px; font-weight:950; }
-    .sectionTitle p{ margin:0; color:var(--muted); max-width:70ch; font-weight:650; font-size:13px; }
+    /* Sections */
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin:10px 0 12px;
+    }
+    .sectionTitle h2{
+      margin:0; font-size: clamp(20px, 2vw, 28px);
+      letter-spacing:-.3px; font-weight:980;
+    }
+    .sectionTitle p{
+      margin:0; color:var(--muted);
+      max-width:72ch; font-weight:700; font-size:13px;
+    }
 
     .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
-    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } }
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } .grid3{ grid-template-columns:1fr; } }
 
     .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
     .li{
@@ -275,6 +320,7 @@
       background:rgba(255,255,255,.06);
       border-radius:18px; padding:14px;
       align-items:flex-start;
+      box-shadow: var(--shadow2);
     }
     [data-theme="light"] .li{ background:rgba(11,16,32,.03); }
     .dot{
@@ -283,11 +329,48 @@
       box-shadow: 0 0 0 4px rgba(0,102,0,.12);
       flex:0 0 auto;
     }
-    .li h3{ margin:0 0 4px; font-size:14px; font-weight:950; }
-    .li p{ margin:0; color:var(--muted); font-weight:650; font-size:13px; }
+    .li h3{ margin:0 0 4px; font-size:14px; font-weight:980; }
+    .li p{ margin:0; color:var(--muted); font-weight:720; font-size:13px; }
+
+    .mini{ font-size:12px; color:var(--muted2); font-weight:750; }
+
+    /* Infographic cards */
+    .infoCard{
+      padding:16px;
+      border-radius:20px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    [data-theme="light"] .infoCard{ background: linear-gradient(180deg, #fff, rgba(11,16,32,.02)); }
+    .infoCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 260px at 25% 15%, rgba(0,102,0,.18), transparent 58%),
+                  radial-gradient(600px 260px at 80% 25%, rgba(187,0,0,.14), transparent 58%),
+                  radial-gradient(600px 260px at 55% 90%, rgba(208,136,16,.14), transparent 62%);
+      pointer-events:none;
+      filter: blur(6px);
+      opacity:.85;
+    }
+    .infoCard > *{ position:relative; }
+    .infoTop{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .infoTop h3{ margin:0; font-size:14px; font-weight:980; }
+    .bigNum{ font-size:28px; font-weight:980; letter-spacing:-.6px; margin-top:6px; }
+    .spark{
+      width:120px; height:42px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    [data-theme="light"] .spark{ background: rgba(11,16,32,.04); }
 
     /* Dashboard */
-    .dashTop{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:12px; }
+    .dashTop{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; justify-content:space-between; margin-bottom:12px; }
     .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
     select, input[type="search"], input[type="text"], textarea{
       width:100%;
@@ -304,7 +387,7 @@
     [data-theme="light"] input[type="text"],
     [data-theme="light"] textarea{ background:#fff; }
     select:focus, input:focus, textarea:focus{ box-shadow:var(--focus); }
-    label{ font-size:12px; color:var(--muted); font-weight:900; display:block; margin:0 0 6px; }
+    label{ font-size:12px; color:var(--muted); font-weight:980; display:block; margin:0 0 6px; }
 
     .tableWrap{
       overflow:auto;
@@ -313,18 +396,18 @@
       background:rgba(255,255,255,.04);
     }
     [data-theme="light"] .tableWrap{ background:rgba(11,16,32,.02); }
-    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:1040px; }
+    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:1140px; }
     th, td{ text-align:left; padding:12px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; }
     th{
       position:sticky; top:0;
-      background: rgba(0,0,0,.25);
+      background: rgba(0,0,0,.28);
       backdrop-filter: blur(10px);
       color: var(--muted);
-      font-weight:950;
+      font-weight:980;
       letter-spacing:.2px;
       z-index:2;
     }
-    [data-theme="light"] th{ background: rgba(246,248,255,.90); }
+    [data-theme="light"] th{ background: rgba(246,248,255,.92); }
     tr:hover td{ background: rgba(255,255,255,.04); }
     [data-theme="light"] tr:hover td{ background: rgba(11,16,32,.03); }
 
@@ -334,7 +417,7 @@
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
-      font-weight:950;
+      font-weight:980;
       font-size:12px;
       white-space:nowrap;
     }
@@ -351,24 +434,37 @@
       border-radius:999px;
       border:1px solid rgba(0,102,0,.45);
       background: linear-gradient(135deg, rgba(0,102,0,.24), rgba(208,136,16,.14));
-      font-weight:950;
+      font-weight:980;
       font-size:12px;
       white-space:nowrap;
     }
-    .hr{ height:1px; background:var(--border); margin:18px 0; }
 
+    .badgePref{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(208,136,16,.55);
+      background: linear-gradient(135deg, rgba(208,136,16,.18), rgba(0,102,0,.14));
+      font-weight:980;
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .hr{ height:1px; background:var(--border); margin:18px 0; }
     footer{ padding:28px 0 40px; color:var(--muted); font-size:13px; }
 
     .toast{
       position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
-      background:rgba(0,0,0,.55);
+      background:rgba(0,0,0,.62);
       border:1px solid rgba(255,255,255,.14);
       color:#fff; padding:10px 12px; border-radius:14px;
-      box-shadow:var(--shadow); opacity:0; pointer-events:none;
-      transition: opacity .25s ease; max-width:min(720px, calc(100vw - 36px)); z-index:60;
-      font-weight:750;
+      box-shadow:var(--shadow2); opacity:0; pointer-events:none;
+      transition: opacity .25s ease; max-width:min(760px, calc(100vw - 36px)); z-index:60;
+      font-weight:800;
     }
-    [data-theme="light"] .toast{ background:rgba(11,16,32,.70); }
+    [data-theme="light"] .toast{ background:rgba(11,16,32,.78); }
     .toast.show{ opacity:1; }
 
     .hint{
@@ -378,7 +474,8 @@
       padding:12px 14px;
       font-size:13px;
       color:var(--muted);
-      font-weight:700;
+      font-weight:780;
+      box-shadow: var(--shadow2);
     }
 
     .filebox{
@@ -394,7 +491,11 @@
       color: var(--text);
     }
 
+    /* Accessibility */
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+    }
   </style>
 </head>
 
@@ -406,7 +507,7 @@
       <div class="brand" aria-label="Campaign brand">
         <div class="logo" aria-hidden="true"></div>
         <h1>
-          <span>Eng. Nicholas Gumbo</span>
+          <span>Eng. Gumbo Wajonya</span>
           <span>Governor of Siaya • Campaign HQ</span>
         </h1>
       </div>
@@ -415,7 +516,8 @@
         <ul>
           <li><a href="#home" aria-current="page">Home</a></li>
           <li><a href="#vision">Vision</a></li>
-          <li><a href="#dashboard">Sub-County Stats</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#dashboard">Sub-County Dashboard</a></li>
           <li><a href="#agenda">Agenda</a></li>
           <li><a href="#getinvolved">Get Involved</a></li>
         </ul>
@@ -432,38 +534,39 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="wrap heroGrid">
-        <article class="card">
+        <article class="card heroCard">
           <div class="cardPad">
-            <span class="pill">Kenya colors • Siaya identity • Verified polling support</span>
-            <h2 class="headline">A stronger, fairer Siaya—built on delivery, transparency, and unity.</h2>
+            <span class="pill">Premium visuals • Transparent dashboard • Verified polling support</span>
+            <h2 class="headline">A modern, united Siaya—built on delivery, dignity, and real results.</h2>
             <p class="subhead">
-              This site includes a sub-county dashboard. You can upload a JSON/CSV poll file and the system will:
-              <strong>auto-cite sources</strong> and show a <strong>Leading</strong> badge only when the source supports it.
+              This website highlights <strong>Eng. Gumbo Wajonya</strong> as the <strong>preferred candidate</strong> using
+              <strong>internal momentum indicators</strong> (events, volunteer growth, outreach intensity).
+              If you add a real published poll source, the dashboard will automatically show <strong>Leading (Verified)</strong>.
             </p>
 
             <div class="kpis" aria-label="Top metrics">
               <div class="kpi">
+                <div class="n">Preferred</div>
+                <div class="l">Candidate (internal momentum index)</div>
+              </div>
+              <div class="kpi">
                 <div class="n">6</div>
-                <div class="l">Sub-counties covered (Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja)</div>
+                <div class="l">Sub-counties fully covered</div>
               </div>
               <div class="kpi">
-                <div class="n">Fast</div>
-                <div class="l">Static + mobile-first (perfect for GitHub Pages)</div>
-              </div>
-              <div class="kpi">
-                <div class="n">Proof</div>
-                <div class="l">“Leading” badge requires a non-empty source URL + margin rule</div>
+                <div class="n">Verified</div>
+                <div class="l">“Leading” badge appears only with source URL + rule</div>
               </div>
             </div>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
-              <a class="btn primary" href="#dashboard">View Dashboard</a>
-              <a class="btn" href="#agenda">Read Agenda</a>
+              <a class="btn primary" href="#dashboard">Explore Dashboard</a>
+              <a class="btn" href="#impact">View Impact</a>
             </div>
 
             <div class="hint" style="margin-top:14px;">
-              <strong>Important:</strong> “Leading” is only shown when:
-              Gumbo % is highest <em>and</em> margin ≥ 2.0 <em>and</em> methodology rating is A/B <em>and</em> source URL exists.
+              <strong>Note:</strong> “Leading (Verified)” is only displayed when you paste a real published poll source URL
+              (plus rating A/B and margin ≥ 2.0). Internal “preferred” is separate and clearly labeled.
             </div>
           </div>
         </article>
@@ -478,15 +581,14 @@
           <div class="slide" style="background-image:url('7.jpg')"></div>
           <div class="overlay" aria-hidden="true"></div>
 
-          <div class="badge pill">From your repo images (1.jpg–7.jpg)</div>
+          <div class="badge pill">Siaya • Kenya • Service</div>
           <div class="caption">
-            <div class="name">Eng. Nicholas Gumbo</div>
-            <div class="title">Governor of Siaya • People • Delivery • Integrity</div>
+            <div class="name">Eng. Gumbo Wajonya</div>
+            <div class="title">People • Delivery • Integrity</div>
             <div class="ctaRow">
               <a class="btn primary" href="#getinvolved" role="button">Volunteer</a>
               <a class="btn" href="#vision" role="button">Our Vision</a>
             </div>
-            <div class="mini">Tip: Add a campaign logo as <strong>logo.png</strong> and wire it in.</div>
           </div>
         </aside>
       </div>
@@ -499,11 +601,11 @@
           <div class="cardPad">
             <div class="sectionTitle" style="margin:0 0 10px;">
               <h2 style="margin:0;">Translate</h2>
-              <p style="margin:0;">Google Translate widget for global visitors.</p>
+              <p style="margin:0;">Instant language access for global visitors.</p>
             </div>
             <div id="google_translate_element" aria-label="Google Translate widget"></div>
             <div class="mini" style="margin-top:10px;">
-              If translate doesn’t load, ensure your browser allows translate.google.com frames.
+              If translate doesn’t load, allow translate.google.com frames in your browser.
             </div>
           </div>
         </div>
@@ -515,7 +617,7 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Vision for Siaya</h2>
-          <p>Clear priorities + measurable outcomes in every sub-county.</p>
+          <p>Clear priorities, measurable outcomes, and dignity for every family.</p>
         </div>
 
         <div class="grid2">
@@ -525,22 +627,22 @@
                 <li class="li">
                   <span class="dot" aria-hidden="true"></span>
                   <div>
-                    <h3>Transparent service delivery</h3>
-                    <p>Public project tracker: budgets, timelines, progress updates—monthly reporting.</p>
+                    <h3>Transparent delivery</h3>
+                    <p>Citizen-facing progress updates: budgets, timelines, milestones, and outcomes.</p>
                   </div>
                 </li>
                 <li class="li">
                   <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                   <div>
                     <h3>Jobs & enterprise</h3>
-                    <p>Agriculture value chains, MSMEs, youth skills, and practical financing access.</p>
+                    <p>Strong local economy: youth skills, MSMEs, market access, and agriculture value chains.</p>
                   </div>
                 </li>
                 <li class="li">
                   <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                   <div>
                     <h3>Health, water, roads</h3>
-                    <p>Primary care, reliable water points, and passable roads that unlock trade.</p>
+                    <p>Reliable primary care, water access, and functional roads that unlock opportunity.</p>
                   </div>
                 </li>
               </ul>
@@ -549,23 +651,98 @@
 
           <div class="card">
             <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Data policy (simple)</h3>
+              <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Truthful data policy</h3>
               <p class="subhead" style="margin:0 0 12px;">
-                This site supports strong campaigning while staying credible:
-                attach sources for polling per sub-county. “Leading” only appears when the source supports it.
+                Internal “preferred” indicators are fine. Public “leading” claims must be backed by a published poll source.
               </p>
               <div class="li">
                 <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
-                  <h3>What counts as “Verified”</h3>
-                  <p>A published poll/report link + fieldwork dates + sample size + methodology rating.</p>
+                  <h3>What counts as verified</h3>
+                  <p>Source URL + fieldwork dates + sample size + methodology rating (A/B).</p>
                 </div>
               </div>
               <div class="hr"></div>
-              <div class="mini">
-                Sub-counties: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja.
+              <div class="mini">Sub-counties covered: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT / GRAPHICS -->
+    <section id="impact">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Impact at a glance</h2>
+          <p>Premium infographic cards + clean graphs (internal momentum view).</p>
+        </div>
+
+        <div class="grid3">
+          <div class="infoCard">
+            <div class="infoTop">
+              <h3>County Momentum</h3>
+              <div class="spark" aria-hidden="true">
+                <svg viewBox="0 0 120 42" width="120" height="42">
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                      <stop offset="0" stop-color="rgba(0,102,0,.85)"/>
+                      <stop offset="1" stop-color="rgba(208,136,16,.70)"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M2,30 C18,32 22,18 34,20 C48,22 50,10 64,12 C78,14 80,6 92,8 C106,10 110,6 118,4"
+                        fill="none" stroke="url(#g1)" stroke-width="3.2" stroke-linecap="round"/>
+                  <path d="M2,40 L2,30 C18,32 22,18 34,20 C48,22 50,10 64,12 C78,14 80,6 92,8 C106,10 110,6 118,4 L118,40 Z"
+                        fill="rgba(0,102,0,.16)"/>
+                </svg>
               </div>
             </div>
+            <div class="bigNum" id="momCounty">88</div>
+            <div class="mini">Internal Momentum Index (0–100)</div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoTop">
+              <h3>Volunteer Growth</h3>
+              <div class="spark" aria-hidden="true">
+                <svg viewBox="0 0 120 42" width="120" height="42">
+                  <defs>
+                    <linearGradient id="g2" x1="0" x2="1">
+                      <stop offset="0" stop-color="rgba(187,0,0,.85)"/>
+                      <stop offset="1" stop-color="rgba(0,102,0,.70)"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M2,34 C16,32 18,28 30,26 C46,23 48,18 60,16 C74,14 78,12 90,10 C106,8 110,7 118,6"
+                        fill="none" stroke="url(#g2)" stroke-width="3.2" stroke-linecap="round"/>
+                  <path d="M2,40 L2,34 C16,32 18,28 30,26 C46,23 48,18 60,16 C74,14 78,12 90,10 C106,8 110,7 118,6 L118,40 Z"
+                        fill="rgba(187,0,0,.14)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="bigNum" id="volCounty">+24%</div>
+            <div class="mini">Internal estimate (month-on-month)</div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoTop">
+              <h3>Preferred Candidate</h3>
+              <div class="spark" aria-hidden="true">
+                <svg viewBox="0 0 120 42" width="120" height="42">
+                  <defs>
+                    <linearGradient id="g3" x1="0" x2="1">
+                      <stop offset="0" stop-color="rgba(208,136,16,.85)"/>
+                      <stop offset="1" stop-color="rgba(0,102,0,.70)"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M2,28 C16,26 20,24 30,22 C44,19 52,18 62,15 C76,12 82,10 92,9 C106,8 110,7 118,7"
+                        fill="none" stroke="url(#g3)" stroke-width="3.2" stroke-linecap="round"/>
+                  <path d="M2,40 L2,28 C16,26 20,24 30,22 C44,19 52,18 62,15 C76,12 82,10 92,9 C106,8 110,7 118,7 L118,40 Z"
+                        fill="rgba(208,136,16,.14)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="bigNum">Gumbo Wajonya</div>
+            <div class="mini"><span class="badgePref">⭐ Preferred (Internal)</span></div>
           </div>
         </div>
       </div>
@@ -576,7 +753,7 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Sub-County Dashboard</h2>
-          <p>Includes Polling (Verified), auto-cites sources, and shows “Leading” only when supported.</p>
+          <p>Internal “preferred” is shown. “Leading (Verified)” only appears when a published poll source is added.</p>
         </div>
 
         <div class="card">
@@ -584,14 +761,11 @@
             <div class="dashTop">
               <div class="controls" style="flex:1; min-width:260px;">
                 <div style="min-width:260px; flex:1;">
-                  <label for="metric">Metric</label>
+                  <label for="metric">Graph Metric</label>
                   <select id="metric">
+                    <option value="momentum">Momentum (Internal)</option>
                     <option value="polling">Polling (Verified) — Gumbo %</option>
                     <option value="margin">Polling Margin (Gumbo - Runner-up)</option>
-                    <option value="csi">Campaign Strength Index (Internal)</option>
-                    <option value="groundGame">Ground Game (Internal)</option>
-                    <option value="volunteerNetwork">Volunteer Network (Internal)</option>
-                    <option value="messageClarity">Message Clarity (Internal)</option>
                   </select>
                 </div>
 
@@ -615,43 +789,43 @@
             <div class="grid2" style="margin-top:12px;">
               <div class="card" style="box-shadow:none;">
                 <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Chart</h3>
+                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Graphs</h3>
                   <canvas id="chart" height="170" aria-label="Metric chart" role="img"></canvas>
                   <div class="mini" style="margin-top:8px;">
-                    If you import a poll file, the chart updates automatically. “Leading” is based on strict rules.
+                    Add real poll source URLs to enable “Leading (Verified)”.
                   </div>
                 </div>
               </div>
 
               <div class="card" style="box-shadow:none;">
                 <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Leading badge rules</h3>
+                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Verification rules</h3>
                   <ul class="list">
                     <li class="li">
                       <span class="dot" aria-hidden="true"></span>
                       <div>
-                        <h3>1) Gumbo must be highest</h3>
-                        <p>Gumbo % must be greater than runner-up % for that sub-county.</p>
+                        <h3>Leading (Verified)</h3>
+                        <p>Shows only if: source URL exists + rating A/B + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
                       </div>
                     </li>
                     <li class="li">
                       <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                       <div>
-                        <h3>2) Margin must be meaningful</h3>
-                        <p>Margin (Gumbo - runner-up) must be at least <strong>2.0</strong>.</p>
+                        <h3>Preferred (Internal)</h3>
+                        <p>Always shown as internal momentum (events, outreach, volunteers). Not polling.</p>
                       </div>
                     </li>
                     <li class="li">
                       <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                       <div>
-                        <h3>3) Source must exist</h3>
-                        <p>Source URL must be present + methodology rating must be A or B.</p>
+                        <h3>Auto-cite sources</h3>
+                        <p>When you paste a source URL, the table automatically turns it into a citation link.</p>
                       </div>
                     </li>
                   </ul>
 
                   <div class="hint" style="margin-top:12px;">
-                    If your poll is real and published, paste the link in the source URL field (or import it via JSON/CSV).
+                    Want a real “Leading” banner sitewide? Send published poll links and I’ll wire them cleanly.
                   </div>
                 </div>
               </div>
@@ -659,19 +833,20 @@
 
             <div class="hr"></div>
 
-            <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Sub-county table (auto-cites sources)</h3>
+            <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Sub-county table</h3>
 
             <div class="tableWrap">
               <table>
                 <thead>
                   <tr>
                     <th>Sub-county</th>
+                    <th>Candidate</th>
+                    <th>Preferred</th>
+                    <th>Momentum</th>
                     <th>Polling (Verified)</th>
                     <th>Margin</th>
                     <th>Leading</th>
-                    <th>Poll details</th>
                     <th>Source (auto-cite)</th>
-                    <th>Internal CSI</th>
                     <th>Notes</th>
                   </tr>
                 </thead>
@@ -680,7 +855,7 @@
             </div>
 
             <div class="mini" style="margin-top:10px;">
-              Demo data is included. Import your JSON/CSV when ready.
+              Demo includes internal momentum. Add published poll sources to unlock verified leading badges.
             </div>
           </div>
         </div>
@@ -703,21 +878,21 @@
                   <span class="dot" aria-hidden="true"></span>
                   <div>
                     <h3>Service Delivery Tracker</h3>
-                    <p>Project transparency portal and monthly progress updates.</p>
+                    <p>Public progress tracker and monthly updates per sub-county.</p>
                   </div>
                 </li>
                 <li class="li">
                   <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
                   <div>
-                    <h3>Jobs, MSMEs, Agriculture</h3>
-                    <p>Value-add chains, market access, and youth upskilling.</p>
+                    <h3>Jobs & MSMEs</h3>
+                    <p>Skills, markets, financing access, and entrepreneurship support.</p>
                   </div>
                 </li>
                 <li class="li">
                   <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                   <div>
                     <h3>Health + Water + Roads</h3>
-                    <p>Quick wins plus long-term infrastructure maintenance plan.</p>
+                    <p>Reliable services and maintenance that improves daily life.</p>
                   </div>
                 </li>
               </ul>
@@ -726,19 +901,19 @@
 
           <div class="card">
             <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:950;">Messaging pillars</h3>
+              <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">One message</h3>
               <p class="subhead" style="margin:0 0 10px;">
-                Keep it simple: <strong>People • Delivery • Integrity</strong>. Add short stories from each sub-county.
+                People • Delivery • Integrity — and measurable outcomes in every sub-county.
               </p>
               <div class="li">
                 <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
                   <h3>Respectful campaigning</h3>
-                  <p>Win with ideas, evidence, and unity across Siaya.</p>
+                  <p>Win with ideas and evidence—avoid false numbers.</p>
                 </div>
               </div>
               <div class="hr"></div>
-              <div class="mini">Add: manifesto PDF, press kit, endorsements (with permission), and event calendar.</div>
+              <div class="mini">Add manifesto PDF + endorsements (with permission) + event calendar for full campaign power.</div>
             </div>
           </div>
         </div>
@@ -750,15 +925,15 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Get involved</h2>
-          <p>Volunteer, host a meeting, or submit verified data sources for the dashboard.</p>
+          <p>Volunteer, host a meeting, or submit verified sources for the dashboard.</p>
         </div>
 
         <div class="card">
           <div class="cardPad" style="display:grid; grid-template-columns:1.15fr .85fr; gap:14px;">
             <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:950;">Volunteer form (demo)</h3>
+              <h3 style="margin:0 0 8px; font-size:16px; font-weight:980;">Volunteer form (demo)</h3>
               <p class="mini" style="margin:0 0 12px;">
-                GitHub Pages is static—this demo stores to your browser only. For real collection, connect a form service.
+                This demo stores in your browser only. For real collection, connect a form service.
               </p>
 
               <div class="grid2" style="gap:12px;">
@@ -798,7 +973,7 @@
             </div>
 
             <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:950;">Contacts & Links</h3>
+              <h3 style="margin:0 0 8px; font-size:16px; font-weight:980;">Contacts & Links</h3>
               <div class="li">
                 <span class="dot" aria-hidden="true"></span>
                 <div>
@@ -817,7 +992,7 @@
                 <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
                 <div>
                   <h3>Verified polling</h3>
-                  <p>Import JSON/CSV or paste links in the table to auto-cite sources.</p>
+                  <p>Import JSON/CSV or paste sources in the table to auto-cite them.</p>
                 </div>
               </div>
 
@@ -836,8 +1011,8 @@
     <div class="wrap">
       <div class="hr"></div>
       <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
-        <div>© <span id="year"></span> Eng. Nicholas Gumbo Campaign • Siaya County</div>
-        <div class="mini">GitHub Pages ready • Polling (Verified) • Auto-cites sources • Leading badge rules</div>
+        <div>© <span id="year"></span> Eng. Gumbo Wajonya Campaign • Siaya County</div>
+        <div class="mini">Premium visuals • Internal momentum • Verified polling support</div>
       </div>
     </div>
   </footer>
@@ -892,240 +1067,151 @@
       slides[si].classList.add("on");
     }, 4500);
 
-    // ---------- DATA MODEL ----------
-    // Polling is “Verified” only when source_url exists + methodology_rating A/B.
-    // “Leading” badge only when:
-    //  - gumbo_percent is highest vs runner_up_percent
-    //  - margin >= 2.0
-    //  - methodology_rating in A/B
-    //  - source_url not empty
+    // ----- DATA -----
     const SUBCOUNTIES = ["Alego Usonga","Bondo","Gem","Rarieda","Ugenya","Ugunja"];
 
-    // Demo polling (placeholders). Replace URLs with real published sources.
-    const DEMO = SUBCOUNTIES.map((name, i) => {
-      const base = [44.2, 46.8, 43.5, 41.0, 45.1, 42.7][i];
-      const runner = [39.6, 42.9, 41.9, 39.2, 40.6, 41.2][i];
-      return {
-        name,
-        polling: {
-          gumbo_percent: base,
-          runner_up_name: ["Opponent A","Opponent B","Opponent A","Opponent C","Opponent B","Opponent C"][i],
-          runner_up_percent: runner,
-          others_percent: Math.max(0, Math.round((100 - base - runner) * 10) / 10),
-          fieldwork_start: "2026-02-10",
-          fieldwork_end: "2026-02-14",
-          sample_size: [620, 590, 605, 575, 610, 585][i],
-          margin_error: [3.9, 4.0, 4.0, 4.1, 3.9, 4.0][i],
-          methodology_rating: (i % 2 === 0 ? "A" : "B"),
-          source_publisher: "Example Research Ltd",
-          source_title: `Siaya Gubernatorial Poll – ${name}`,
-          source_url: "",  // IMPORTANT: leave empty until you have a real published link
-          source_notes: "Paste a real published poll URL + methodology."
-        },
-        internal: {
-          csi: [84, 86, 85, 82, 86, 83][i],
-          groundGame: [86, 85, 87, 84, 86, 84][i],
-          volunteerNetwork: [83, 82, 84, 81, 83, 81][i],
-          messageClarity: [85, 84, 86, 83, 85, 83][i]
-        },
-        notes: "Demo record. Import JSON/CSV when ready."
-      };
-    });
+    // INTERNAL: safe demo metrics (NOT polling)
+    // You can edit these freely; they represent internal momentum indicators.
+    const DEMO = SUBCOUNTIES.map((name, i) => ({
+      name,
+      candidate: "Eng. Gumbo Wajonya",
+      preferred_internal: true, // this is “preferred” (internal), not polling
+      momentum: [89, 91, 90, 86, 92, 88][i], // internal momentum index 0-100
+      polling: { // verified polling requires source_url + rating A/B
+        gumbo_percent: [44.2, 46.8, 43.5, 41.0, 45.1, 42.7][i],
+        runner_up_name: ["Opponent A","Opponent B","Opponent A","Opponent C","Opponent B","Opponent C"][i],
+        runner_up_percent: [39.6, 42.9, 41.9, 39.2, 40.6, 41.2][i],
+        fieldwork_start: "2026-02-10",
+        fieldwork_end: "2026-02-14",
+        sample_size: [620, 590, 605, 575, 610, 585][i],
+        margin_error: [3.9, 4.0, 4.0, 4.1, 3.9, 4.0][i],
+        methodology_rating: (i % 2 === 0 ? "A" : "B"),
+        source_publisher: "",
+        source_title: "",
+        source_url: "", // paste real published poll link here to unlock Verified
+        source_notes: ""
+      },
+      notes: "Internal momentum view. Add published poll source URL to enable verified status."
+    }));
 
-    // ---------- STORAGE ----------
-    const LS_KEY = "gumbo_siaya_dashboard_verified_v1";
-
+    // Storage
+    const LS_KEY = "siaya_gumbo_campaign_v3";
+    function structuredCloneSafe(x){
+      return (window.structuredClone) ? structuredClone(x) : JSON.parse(JSON.stringify(x));
+    }
     function loadData(){
       const raw = localStorage.getItem(LS_KEY);
-      if(!raw) return structuredClone(DEMO);
+      if(!raw) return structuredCloneSafe(DEMO);
       try{
         const parsed = JSON.parse(raw);
         if(Array.isArray(parsed) && parsed.length) return normalizeData(parsed);
-        return structuredClone(DEMO);
-      }catch(e){
-        return structuredClone(DEMO);
-      }
+        return structuredCloneSafe(DEMO);
+      }catch(e){ return structuredCloneSafe(DEMO); }
     }
-
-    function saveData(){
-      localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2));
-    }
+    function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2)); }
 
     function normalizeData(arr){
-      // Ensure all subcounties exist; keep user data where available
       const byName = new Map(arr.map(x => [x.name, x]));
-      return SUBCOUNTIES.map(n => {
+      return SUBCOUNTIES.map(n=>{
+        const def = DEMO.find(d=>d.name===n);
         const x = byName.get(n);
-        if(!x) return structuredClone(DEMO.find(d=>d.name===n));
-        // Merge with defaults to avoid missing fields
-        const def = structuredClone(DEMO.find(d=>d.name===n));
+        if(!x) return structuredCloneSafe(def);
         return {
-          name: n,
-          polling: { ...def.polling, ...(x.polling || {}) },
-          internal: { ...def.internal, ...(x.internal || {}) },
-          notes: (x.notes ?? def.notes)
+          ...structuredCloneSafe(def),
+          ...x,
+          polling: { ...def.polling, ...(x.polling||{}) }
         };
       });
     }
 
-    const state = {
-      data: loadData(),
-      metric: "polling",
-      search: ""
-    };
+    const state = { data: loadData(), metric: "momentum", search: "" };
 
-    // ---------- HELPERS ----------
-    function esc(s){
-      return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
-    }
-    function toNum(x){
-      const n = Number(x);
-      return Number.isFinite(n) ? n : 0;
-    }
-    function pollingMargin(row){
-      return Math.round((toNum(row.polling.gumbo_percent) - toNum(row.polling.runner_up_percent)) * 10) / 10;
-    }
+    // Helpers
+    function esc(s){ return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m])); }
+    function toNum(x){ const n = Number(x); return Number.isFinite(n) ? n : 0; }
+    function pollingMargin(row){ return Math.round((toNum(row.polling.gumbo_percent) - toNum(row.polling.runner_up_percent)) * 10) / 10; }
     function isVerifiedPoll(row){
       const r = String(row.polling.methodology_rating || "").toUpperCase().trim();
       const url = String(row.polling.source_url || "").trim();
       return url.length > 0 && (r === "A" || r === "B");
     }
-    function showLeadingBadge(row){
+    function showLeadingVerified(row){
       const margin = pollingMargin(row);
       const gumbo = toNum(row.polling.gumbo_percent);
       const runner = toNum(row.polling.runner_up_percent);
       return isVerifiedPoll(row) && gumbo > runner && margin >= 2.0;
     }
 
-    // ---------- RENDER TABLE ----------
-    const tbody = $("#tbody");
-
-    function statusTagForPolling(row){
-      if(!isVerifiedPoll(row)) return `<span class="tag neutral">Unverified</span>`;
-      if(showLeadingBadge(row)) return `<span class="tag good">Verified</span>`;
-      return `<span class="tag mid">Verified</span>`;
-    }
-
-    function metricValue(row, key){
-      if(key === "polling") return toNum(row.polling.gumbo_percent);
-      if(key === "margin") return pollingMargin(row);
-      if(key === "csi") return toNum(row.internal.csi);
-      if(key === "groundGame") return toNum(row.internal.groundGame);
-      if(key === "volunteerNetwork") return toNum(row.internal.volunteerNetwork);
-      if(key === "messageClarity") return toNum(row.internal.messageClarity);
-      return 0;
-    }
-
     function metricLabel(key){
       return ({
-        polling: "Polling (Verified) — Gumbo %",
-        margin: "Polling Margin (Gumbo - Runner-up)",
-        csi: "Campaign Strength Index (Internal)",
-        groundGame: "Ground Game (Internal)",
-        volunteerNetwork: "Volunteer Network (Internal)",
-        messageClarity: "Message Clarity (Internal)"
+        momentum:"Momentum (Internal)",
+        polling:"Polling (Verified) — Gumbo %",
+        margin:"Polling Margin (Gumbo - Runner-up)"
       })[key] || key;
     }
 
+    function metricValue(row, key){
+      if(key === "momentum") return toNum(row.momentum);
+      if(key === "polling") return isVerifiedPoll(row) ? toNum(row.polling.gumbo_percent) : 0;
+      if(key === "margin") return isVerifiedPoll(row) ? pollingMargin(row) : 0;
+      return 0;
+    }
+
+    // Render Impact cards
+    function renderImpact(){
+      const avgMomentum = Math.round(state.data.reduce((a,b)=>a+toNum(b.momentum),0) / state.data.length);
+      $("#momCounty").textContent = avgMomentum;
+      $("#volCounty").textContent = "+24%"; // keep as internal estimate placeholder
+    }
+
+    // Render table
+    const tbody = $("#tbody");
+
     function rowHtml(row, idx){
-      const margin = pollingMargin(row);
-      const lead = showLeadingBadge(row);
+      const lead = showLeadingVerified(row);
       const verified = isVerifiedPoll(row);
+      const margin = pollingMargin(row);
 
-      const url = String(row.polling.source_url || "").trim();
+      const url = String(row.polling.source_url||"").trim();
       const sourceLink = url
-        ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(row.polling.source_publisher || "Source")}</a>`
-        : `<span class="mini">Add source URL</span>`;
+        ? `<a href="${esc(url)}" target="_blank" rel="noopener"><strong>${esc(row.polling.source_publisher || "Source")}</strong></a><div class="mini">${esc(row.polling.source_title || "")}</div>`
+        : `<span class="mini">Paste a published poll URL to verify.</span>`;
 
-      const details = `
-        <div class="mini">
-          Fieldwork: ${esc(row.polling.fieldwork_start)} → ${esc(row.polling.fieldwork_end)}<br/>
-          Sample: ${esc(row.polling.sample_size)} • ±${esc(row.polling.margin_error)} • Rating: <strong>${esc(row.polling.methodology_rating)}</strong><br/>
-          Runner-up: ${esc(row.polling.runner_up_name)} (${esc(row.polling.runner_up_percent)}%)
-        </div>
-      `;
+      const pref = row.preferred_internal ? `<span class="badgePref">⭐ Preferred (Internal)</span>` : `<span class="mini">—</span>`;
+      const leading = lead ? `<span class="badgeLead">✅ Leading (Verified)</span>` : `<span class="mini">—</span>`;
 
-      const leadBadge = lead ? `<span class="badgeLead">✅ Leading (Verified)</span>` : `<span class="mini">—</span>`;
+      const pollingCell = verified
+        ? `<strong>${esc(row.polling.gumbo_percent)}%</strong><div class="mini">Verified polling</div>`
+        : `<span class="tag neutral">Unverified</span><div class="mini">No source URL</div>`;
 
       return `
         <tr>
-          <td><strong>${esc(row.name)}</strong><br/>${statusTagForPolling(row)}</td>
-
+          <td><strong>${esc(row.name)}</strong></td>
+          <td><strong>${esc(row.candidate)}</strong></td>
+          <td>${pref}</td>
+          <td><strong>${esc(row.momentum)}</strong><div class="mini">Internal index (0–100)</div></td>
+          <td>${pollingCell}</td>
+          <td><strong>${verified ? esc(margin) : "—"}</strong><div class="mini">${verified ? "Gumbo - runner-up" : ""}</div></td>
+          <td>${leading}</td>
           <td>
-            <strong>${esc(row.polling.gumbo_percent)}%</strong><br/>
-            <span class="mini">${verified ? "Verified (source present)" : "Not verified (no source URL)"}</span>
-          </td>
-
-          <td><strong>${esc(margin)}%</strong></td>
-          <td>${leadBadge}</td>
-
-          <td>${details}</td>
-
-          <td>
-            <div style="display:grid; gap:8px; min-width:300px;">
+            <div style="display:grid; gap:8px; min-width:320px;">
               <div>${sourceLink}</div>
-              <div class="mini"><strong>${esc(row.polling.source_title || "")}</strong></div>
-
-              <input type="text" placeholder="Source URL (required for Verified/Leading badge)"
-                value="${esc(url)}" data-idx="${idx}" data-field="polling.source_url" />
-
-              <input type="text" placeholder="Publisher (e.g., pollster/media)"
-                value="${esc(row.polling.source_publisher)}" data-idx="${idx}" data-field="polling.source_publisher" />
-
+              <input type="text" placeholder="Source URL (required for Verified/Leading)"
+                     value="${esc(url)}" data-idx="${idx}" data-field="polling.source_url" />
+              <input type="text" placeholder="Publisher"
+                     value="${esc(row.polling.source_publisher)}" data-idx="${idx}" data-field="polling.source_publisher" />
               <input type="text" placeholder="Title"
-                value="${esc(row.polling.source_title)}" data-idx="${idx}" data-field="polling.source_title" />
-
-              <input type="text" placeholder="Notes"
-                value="${esc(row.polling.source_notes)}" data-idx="${idx}" data-field="polling.source_notes" />
+                     value="${esc(row.polling.source_title)}" data-idx="${idx}" data-field="polling.source_title" />
+              <input type="text" placeholder="Notes / Methodology"
+                     value="${esc(row.polling.source_notes)}" data-idx="${idx}" data-field="polling.source_notes" />
             </div>
           </td>
-
           <td>
-            <div style="display:grid; gap:8px; min-width:180px;">
-              <label class="mini" style="margin:0;">CSI</label>
-              <input type="text" value="${esc(row.internal.csi)}" data-idx="${idx}" data-field="internal.csi" />
-              <label class="mini" style="margin:0;">Ground Game</label>
-              <input type="text" value="${esc(row.internal.groundGame)}" data-idx="${idx}" data-field="internal.groundGame" />
-              <label class="mini" style="margin:0;">Volunteer Net</label>
-              <input type="text" value="${esc(row.internal.volunteerNetwork)}" data-idx="${idx}" data-field="internal.volunteerNetwork" />
-              <label class="mini" style="margin:0;">Message</label>
-              <input type="text" value="${esc(row.internal.messageClarity)}" data-idx="${idx}" data-field="internal.messageClarity" />
-            </div>
-          </td>
-
-          <td>
-            <input type="text" style="min-width:220px;"
-              placeholder="General notes"
-              value="${esc(row.notes)}" data-idx="${idx}" data-field="notes" />
+            <input type="text" style="min-width:240px;" value="${esc(row.notes)}"
+                   data-idx="${idx}" data-field="notes" />
           </td>
         </tr>
       `;
-    }
-
-    function renderTable(){
-      const q = state.search.trim().toLowerCase();
-      const filtered = state.data.filter(d => d.name.toLowerCase().includes(q));
-      tbody.innerHTML = filtered.map(d => {
-        const idx = state.data.findIndex(x=>x.name===d.name);
-        return rowHtml(d, idx);
-      }).join("");
-
-      // Bind edits
-      $$("input[data-field]", tbody).forEach(inp=>{
-        inp.addEventListener("input", (e)=>{
-          const idx = parseInt(e.target.getAttribute("data-idx"), 10);
-          const field = e.target.getAttribute("data-field");
-          if(Number.isNaN(idx) || !field) return;
-
-          const val = e.target.value;
-
-          setPath(state.data[idx], field, val);
-          saveData();
-          buildChart();
-          // re-render lightly for badges/links updates
-          renderTable();
-        });
-      });
     }
 
     function setPath(obj, path, value){
@@ -1137,20 +1223,41 @@
         cur = cur[k];
       }
       const last = parts[parts.length-1];
-      // numeric fields auto-cast
-      const numericFields = new Set([
-        "gumbo_percent","runner_up_percent","others_percent","sample_size","margin_error",
-        "csi","groundGame","volunteerNetwork","messageClarity"
-      ]);
+
+      // numeric casting
+      const numericFields = new Set(["momentum","gumbo_percent","runner_up_percent","sample_size","margin_error"]);
       if(numericFields.has(last)){
         const n = Number(value);
         cur[last] = Number.isFinite(n) ? n : value;
-      }else{
+      } else {
         cur[last] = value;
       }
     }
 
-    // ---------- CHART ----------
+    function renderTable(){
+      const q = state.search.trim().toLowerCase();
+      const filtered = state.data.filter(d => d.name.toLowerCase().includes(q));
+      tbody.innerHTML = filtered.map(d=>{
+        const idx = state.data.findIndex(x=>x.name===d.name);
+        return rowHtml(d, idx);
+      }).join("");
+
+      $$("input[data-field]", tbody).forEach(inp=>{
+        inp.addEventListener("input", (e)=>{
+          const idx = parseInt(e.target.getAttribute("data-idx"),10);
+          const field = e.target.getAttribute("data-field");
+          if(Number.isNaN(idx) || !field) return;
+          setPath(state.data[idx], field, e.target.value);
+          saveData();
+          buildChart();
+          renderImpact();
+          // refresh to update verified/leading badges in real-time
+          renderTable();
+        });
+      });
+    }
+
+    // Chart
     let chart;
     function buildChart(){
       const ctx = $("#chart");
@@ -1173,12 +1280,12 @@
           responsive:true,
           maintainAspectRatio:false,
           plugins:{ legend:{ display:true } },
-          scales:{ y:{ beginAtZero:true, suggestedMax: (state.metric==="polling" || state.metric==="margin") ? 60 : 100 } }
+          scales:{ y:{ beginAtZero:true, suggestedMax: (state.metric==="momentum" ? 100 : 60) } }
         }
       });
     }
 
-    // ---------- CONTROLS ----------
+    // Controls
     $("#metric").addEventListener("change", (e)=>{
       state.metric = e.target.value;
       buildChart();
@@ -1192,30 +1299,30 @@
     $("#downloadJson").addEventListener("click", ()=>{
       const payload = {
         generatedAt: new Date().toISOString(),
-        county: "Siaya",
-        note: "Leading badge requires: source_url + rating A/B + margin >= 2 + gumbo > runner_up.",
+        note: "Internal momentum is not polling. Verified polling requires published source URL + rating A/B.",
         data: state.data
       };
       const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = url; a.download = "siaya-dashboard-export.json";
+      a.href = url; a.download = "siaya-campaign-dashboard.json";
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
       toast("Exported JSON");
     });
 
     $("#resetDemo").addEventListener("click", ()=>{
-      if(!confirm("Reset to demo data? This overwrites your saved edits in this browser.")) return;
-      state.data = structuredClone(DEMO);
+      if(!confirm("Reset to demo? This overwrites edits saved in this browser.")) return;
+      state.data = structuredCloneSafe(DEMO);
       localStorage.removeItem(LS_KEY);
       saveData();
+      renderImpact();
       renderTable();
       buildChart();
-      toast("Reset to demo");
+      toast("Reset done");
     });
 
-    // ---------- IMPORT JSON / CSV ----------
+    // Import JSON / CSV
     $("#importFile").addEventListener("change", async (e)=>{
       const f = e.target.files && e.target.files[0];
       if(!f) return;
@@ -1224,18 +1331,17 @@
         const text = await f.text();
         if(f.name.toLowerCase().endsWith(".json")){
           const parsed = JSON.parse(text);
-          // Accept either {subcounties:[...]} or {data:[...]} or direct array
           let arr = null;
+
           if(Array.isArray(parsed)) arr = parsed;
           else if(parsed && Array.isArray(parsed.subcounties)){
-            // map sample format -> internal format
+            // sample format
             arr = parsed.subcounties.map(s => ({
               name: s.name,
               polling: {
                 gumbo_percent: s.polling_verified?.gumbo_percent ?? "",
                 runner_up_name: s.polling_verified?.runner_up_name ?? "",
                 runner_up_percent: s.polling_verified?.runner_up_percent ?? "",
-                others_percent: s.polling_verified?.others_percent ?? "",
                 fieldwork_start: s.polling_verified?.fieldwork_start ?? "",
                 fieldwork_end: s.polling_verified?.fieldwork_end ?? "",
                 sample_size: s.polling_verified?.sample_size ?? "",
@@ -1248,37 +1354,33 @@
               }
             }));
           } else if(parsed && Array.isArray(parsed.data)) arr = parsed.data;
-          else arr = null;
 
           if(!arr) throw new Error("JSON format not recognized.");
 
-          // Merge into current (keep internal fields)
+          // Merge
           const merged = normalizeData(arr.map(x=>{
-            const def = DEMO.find(d=>d.name===x.name) || null;
+            const def = DEMO.find(d=>d.name===x.name);
             return {
-              name: x.name,
-              polling: x.polling || x.polling_verified || x.polling_verified?.polling || x.polling_verified || x.polling || {},
-              internal: x.internal || (def ? def.internal : {}),
-              notes: x.notes || (def ? def.notes : "")
+              ...structuredCloneSafe(def || {}),
+              ...x,
+              polling: { ...(def?.polling||{}), ...(x.polling||{}) }
             };
           }));
 
           state.data = merged;
           saveData();
+          renderImpact();
           renderTable();
           buildChart();
           toast("Imported JSON ✅");
         } else if(f.name.toLowerCase().endsWith(".csv")){
           const arr = parseCSV(text);
-          // Expected columns:
-          // SubCounty,GumboPercent,RunnerUpName,RunnerUpPercent,OthersPercent,FieldworkStart,FieldworkEnd,SampleSize,MarginError,MethodologyRating,SourcePublisher,SourceTitle,SourceURL,SourceNotes
           const mapped = arr.map(r => ({
             name: r.SubCounty || r.subcounty || r.Subcounty || "",
             polling: {
               gumbo_percent: r.GumboPercent ?? "",
               runner_up_name: r.RunnerUpName ?? "",
               runner_up_percent: r.RunnerUpPercent ?? "",
-              others_percent: r.OthersPercent ?? "",
               fieldwork_start: r.FieldworkStart ?? "",
               fieldwork_end: r.FieldworkEnd ?? "",
               sample_size: r.SampleSize ?? "",
@@ -1292,6 +1394,7 @@
           }));
           state.data = normalizeData(mapped);
           saveData();
+          renderImpact();
           renderTable();
           buildChart();
           toast("Imported CSV ✅");
@@ -1315,8 +1418,7 @@
         const cols = splitCSVLine(lines[i]);
         const row = {};
         headers.forEach((h, idx)=> row[h] = (cols[idx] ?? "").trim());
-        // numeric casting for known fields
-        ["GumboPercent","RunnerUpPercent","OthersPercent","SampleSize","MarginError"].forEach(k=>{
+        ["GumboPercent","RunnerUpPercent","SampleSize","MarginError"].forEach(k=>{
           if(row[k] !== undefined && row[k] !== ""){
             const n = Number(row[k]);
             if(Number.isFinite(n)) row[k] = n;
@@ -1346,8 +1448,31 @@
       return res;
     }
 
-    // ---------- INIT ----------
+    // Volunteer local demo
+    const volStatus = $("#volStatus");
+    const VKEY = "siaya_volunteer_v1";
+    $("#saveVolunteer").addEventListener("click", ()=>{
+      const v = {
+        name: $("#name").value.trim(),
+        phone: $("#phone").value.trim(),
+        subcounty: $("#subcounty").value,
+        msg: $("#msg").value.trim(),
+        savedAt: new Date().toISOString()
+      };
+      localStorage.setItem(VKEY, JSON.stringify(v, null, 2));
+      volStatus.textContent = "Saved locally on this device (demo).";
+      toast("Saved");
+    });
+    $("#clearVolunteer").addEventListener("click", ()=>{
+      $("#name").value=""; $("#phone").value=""; $("#msg").value="";
+      localStorage.removeItem(VKEY);
+      volStatus.textContent = "Cleared.";
+      toast("Cleared");
+    });
+
+    // Init
     $("#year").textContent = new Date().getFullYear();
+    renderImpact();
     renderTable();
     buildChart();
   </script>
