@@ -4,6 +4,650 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
+  <title>Eng. Gumbo Wajonya | Siaya Governor</title>
+  <meta name="description" content="Premium campaign dashboard for Eng. Gumbo Wajonya — Siaya County. Clean sub-county stats + verified polling support." />
+  <meta name="theme-color" content="#006600" />
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 img-src 'self' data: https:;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com data:;
+                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://translate.google.com;
+                 connect-src 'self' https:;
+                 frame-src https://translate.google.com https://translate.googleapis.com;
+                 base-uri 'self';
+                 object-src 'none';
+                 frame-ancestors 'none';
+                 upgrade-insecure-requests">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ke-black:#000; --ke-red:#BB0000; --ke-green:#006600; --ke-white:#fff;
+      --siaya-gold:#D08810;
+
+      --bg:#070A10;
+      --card:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 22px 56px rgba(0,0,0,.55);
+      --shadow2: 0 14px 34px rgba(0,0,0,.35);
+      --radius:18px; --radius2:26px; --max:1180px;
+      --focus:0 0 0 4px rgba(0,102,0,.32);
+    }
+    [data-theme="light"]{
+      --bg:#f6f8ff;
+      --card:#fff;
+      --text:#0b1020;
+      --muted:rgba(11,16,32,.70);
+      --border:rgba(11,16,32,.12);
+      --shadow:0 22px 56px rgba(2,6,23,.12);
+      --shadow2:0 14px 34px rgba(2,6,23,.10);
+      --focus:0 0 0 4px rgba(187,0,0,.20);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 650px at 12% 10%, rgba(0,102,0,.18), transparent 58%),
+        radial-gradient(900px 620px at 85% 18%, rgba(187,0,0,.14), transparent 58%),
+        radial-gradient(900px 650px at 55% 88%, rgba(208,136,16,.12), transparent 62%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline;text-underline-offset:4px}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    :focus-visible{outline:none;box-shadow:var(--focus);border-radius:12px}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.18));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    [data-theme="light"] header{
+      background: linear-gradient(to bottom, rgba(246,248,255,.92), rgba(246,248,255,.70));
+      border-bottom:1px solid rgba(11,16,32,.10);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:42px;height:42px;border-radius:16px;
+      background: linear-gradient(135deg, var(--ke-black) 0 20%, var(--ke-red) 20% 45%, var(--ke-white) 45% 52%, var(--ke-green) 52% 100%);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 18px 42px rgba(0,102,0,.18);
+    }
+    [data-theme="light"] .logo{border:1px solid rgba(11,16,32,.12)}
+    .brand h1{margin:0;line-height:1.15}
+    .brand h1 .t{font-weight:950;font-size:14px}
+    .brand h1 .s{font-weight:800;font-size:12px;color:var(--muted)}
+    nav ul{margin:0;padding:0;list-style:none;display:flex;gap:8px;flex-wrap:wrap}
+    nav a{padding:10px 12px;border-radius:14px;border:1px solid transparent;color:var(--muted);font-weight:900}
+    nav a:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:var(--text);text-decoration:none}
+    [data-theme="light"] nav a:hover{background:rgba(11,16,32,.04);border-color:rgba(11,16,32,.12)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 12px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);color:var(--text);font-weight:950;cursor:pointer
+    }
+    [data-theme="light"] .btn{background:#fff}
+    .btn.primary{
+      border-color: rgba(0,102,0,.35);
+      background: linear-gradient(135deg, rgba(0,102,0,.52), rgba(187,0,0,.22));
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(0,102,0,.62), rgba(187,0,0,.28))}
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 10px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);color:var(--muted);font-weight:900
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    [data-theme="light"] .card{background: linear-gradient(180deg, #fff, #f9fbff)}
+    .pad{padding:20px}
+    section{padding:18px 0}
+    .hero{padding:38px 0 18px}
+    .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+    @media(max-width:980px){.heroGrid{grid-template-columns:1fr}}
+    .headline{margin:10px 0 10px;font-weight:980;letter-spacing:-1px;font-size:clamp(28px,3.2vw,46px);line-height:1.05}
+    .subhead{margin:0 0 14px;color:var(--muted);font-weight:750;max-width:72ch}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+    @media(max-width:680px){.kpis{grid-template-columns:1fr}}
+    .kpi{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:12px;
+      box-shadow:var(--shadow2);
+    }
+    [data-theme="light"] .kpi{background:rgba(11,16,32,.03)}
+    .kpi .n{font-weight:980;font-size:22px}
+    .kpi .l{font-weight:820;font-size:12px;color:var(--muted);margin-top:4px}
+
+    .slideshow{
+      min-height:320px;border-radius:var(--radius2);border:1px solid var(--border);
+      position:relative;overflow:hidden;background:#000;box-shadow:var(--shadow)
+    }
+    .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease;filter:saturate(1.05) contrast(1.05);transform:scale(1.02)}
+    .slide.on{opacity:.92}
+    .overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72));
+    }
+    .caption{position:absolute;left:16px;right:16px;bottom:16px}
+    .caption .name{font-weight:980;font-size:18px;letter-spacing:-.4px}
+    .caption .title{color:var(--muted);font-weight:850;font-size:13px;margin-top:4px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    .sectionTitle{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:10px 0 12px;flex-wrap:wrap}
+    .sectionTitle h2{margin:0;font-weight:980;letter-spacing:-.3px;font-size:clamp(20px,2vw,28px)}
+    .sectionTitle p{margin:0;color:var(--muted);font-weight:750;font-size:13px;max-width:74ch}
+
+    .mini{font-size:12px;color:rgba(255,255,255,.55);font-weight:750}
+    [data-theme="light"] .mini{color:rgba(11,16,32,.55)}
+
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between}
+    label{display:block;font-size:12px;color:var(--muted);font-weight:950;margin:0 0 6px}
+    select,input[type="search"],input[type="text"]{
+      width:100%;border-radius:14px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);color:var(--text);
+      padding:10px 12px;font:inherit;outline:none
+    }
+    [data-theme="light"] select,[data-theme="light"] input[type="search"],[data-theme="light"] input[type="text"]{background:#fff}
+
+    .chartBox{height:210px}
+    .tableWrap{
+      overflow:auto;border-radius:18px;border:1px solid var(--border);
+      background:rgba(255,255,255,.04)
+    }
+    [data-theme="light"] .tableWrap{background:rgba(11,16,32,.02)}
+    table{border-collapse:separate;border-spacing:0;width:100%;min-width:920px}
+    th,td{padding:12px 12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle}
+    th{
+      position:sticky;top:0;z-index:2;
+      background:rgba(0,0,0,.28);backdrop-filter:blur(10px);
+      color:var(--muted);font-weight:980
+    }
+    [data-theme="light"] th{background:rgba(246,248,255,.92)}
+    tr:hover td{background:rgba(255,255,255,.04)}
+    [data-theme="light"] tr:hover td{background:rgba(11,16,32,.03)}
+
+    .badgePref{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(208,136,16,.55);
+      background:linear-gradient(135deg, rgba(208,136,16,.18), rgba(0,102,0,.14));
+      font-weight:980;font-size:12px;white-space:nowrap
+    }
+    .badgeLead{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(0,102,0,.45);
+      background:linear-gradient(135deg, rgba(0,102,0,.24), rgba(208,136,16,.14));
+      font-weight:980;font-size:12px;white-space:nowrap
+    }
+    .tagNeutral{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background:rgba(255,255,255,.08);
+      color:var(--muted);font-weight:980;font-size:12px;white-space:nowrap
+    }
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+
+    .toast{
+      position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+      background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.14);
+      color:#fff;padding:10px 12px;border-radius:14px;box-shadow:var(--shadow2);
+      opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60;font-weight:900
+    }
+    [data-theme="light"] .toast{background:rgba(11,16,32,.78)}
+    .toast.show{opacity:1}
+
+    footer{padding:26px 0 40px;color:var(--muted);font-size:13px}
+    .hr{height:1px;background:var(--border);margin:16px 0}
+  </style>
+</head>
+
+<body data-theme="dark">
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>
+        <div class="t">Eng. Gumbo Wajonya</div>
+        <div class="s">Governor of Siaya • Campaign Dashboard</div>
+      </h1>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#translate">Translate</a></li>
+      </ul>
+    </nav>
+
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="btn" id="themeBtn" type="button">🌗 Theme</button>
+      <a class="btn primary" href="#dashboard">View Stats</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="home">
+    <div class="wrap heroGrid">
+      <article class="card">
+        <div class="pad">
+          <span class="pill">Clean stats • Small chart • Verified polling support</span>
+          <h2 class="headline">Siaya’s preferred choice—by delivery and momentum.</h2>
+          <p class="subhead">
+            Simple dashboard per sub-county. “Preferred” shows internal momentum.
+            “Leading (Verified)” only appears after you add a real poll link + numbers.
+          </p>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="n" id="kpiMomentum">88</div>
+              <div class="l">Avg Momentum (Internal)</div>
+            </div>
+            <div class="kpi">
+              <div class="n" id="kpiVoters">—</div>
+              <div class="l">Registered Voters (Total)</div>
+            </div>
+            <div class="kpi">
+              <div class="n">6</div>
+              <div class="l">Sub-counties covered</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <a class="btn primary" href="#dashboard">Open Dashboard</a>
+            <a class="btn" href="#translate">Translate</a>
+          </div>
+
+          <div class="mini" style="margin-top:10px;">
+            Tip: Keep it truthful. Use internal momentum now; add verified polls later.
+          </div>
+        </div>
+      </article>
+
+      <aside class="card slideshow" aria-label="Campaign gallery">
+        <div class="slide on" style="background-image:url('1.jpg')"></div>
+        <div class="slide" style="background-image:url('2.jpg')"></div>
+        <div class="slide" style="background-image:url('3.jpg')"></div>
+        <div class="slide" style="background-image:url('4.jpg')"></div>
+        <div class="slide" style="background-image:url('5.jpg')"></div>
+        <div class="slide" style="background-image:url('6.jpg')"></div>
+        <div class="slide" style="background-image:url('7.jpg')"></div>
+        <div class="overlay" aria-hidden="true"></div>
+        <div class="caption">
+          <div class="name">Eng. Gumbo Wajonya</div>
+          <div class="title">People • Delivery • Integrity</div>
+          <div class="cta">
+            <a class="btn primary" href="#dashboard">Sub-county Stats</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Sub-county dashboard</h2>
+        <p>Only the essentials: momentum + baseline stats + a spot for verified polling link.</p>
+      </div>
+
+      <div class="card">
+        <div class="pad">
+          <div class="controls">
+            <div style="min-width:240px;flex:1;">
+              <label for="metric">Metric</label>
+              <select id="metric">
+                <option value="momentum">Momentum (Internal)</option>
+                <option value="voters">Registered Voters (Baseline)</option>
+                <option value="population">Population 2019 (Baseline)</option>
+                <option value="polling">Polling (Verified) — Gumbo %</option>
+              </select>
+            </div>
+            <div style="min-width:240px;flex:1;">
+              <label for="search">Search</label>
+              <input id="search" type="search" placeholder="Type: Bondo, Gem..." />
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn" id="downloadJson" type="button">⬇️ Export</button>
+              <button class="btn" id="resetDemo" type="button">↩️ Reset</button>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="chartBox">
+            <canvas id="chart" height="110" aria-label="Metric chart" role="img"></canvas>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="tableWrap" aria-label="Sub-county table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Sub-county</th>
+                  <th>Preferred</th>
+                  <th>Momentum</th>
+                  <th>Population (2019)</th>
+                  <th>Voters (2022)</th>
+                  <th>Polling (Verified)</th>
+                  <th>Leading</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="mini" style="margin-top:10px;">
+            To enable “Leading (Verified)”, click “Edit Poll” on a row and add a real poll URL + rating A/B + numbers.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="translate">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Translate</h2>
+        <p>Make the site accessible to all visitors.</p>
+      </div>
+      <div class="card">
+        <div class="pad">
+          <div id="google_translate_element" aria-label="Google Translate widget"></div>
+          <div class="mini" style="margin-top:10px;">
+            If it doesn’t load, your browser may block translate.google.com frames.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="hr"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;">
+      <div>© <span id="year"></span> Eng. Gumbo Wajonya • Siaya County</div>
+      <div class="mini">Clean stats • Verified polling support • Kenya + Siaya colors</div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  function googleTranslateElementInit() {
+    try{
+      new google.translate.TranslateElement(
+        { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+        'google_translate_element'
+      );
+    }catch(e){}
+  }
+
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const toastEl = $("#toast");
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    setTimeout(()=>toastEl.classList.remove("show"), 2200);
+  }
+
+  // Theme
+  $("#themeBtn").addEventListener("click", ()=>{
+    const t = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.body.setAttribute("data-theme", t);
+    localStorage.setItem("theme", t);
+    toast(`Theme: ${t}`);
+  });
+  (function initTheme(){ const t = localStorage.getItem("theme"); if(t) document.body.setAttribute("data-theme", t); })();
+
+  // Slideshow
+  const slides = $$(".slide"); let si=0;
+  setInterval(()=>{
+    slides[si].classList.remove("on");
+    si = (si+1) % slides.length;
+    slides[si].classList.add("on");
+  }, 4300);
+
+  // Data (baseline + internal momentum)
+  const DEMO = [
+    { name:"Alego Usonga", momentum:91, population2019:224343, registeredVoters2022:122002,
+      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Bondo",        momentum:90, population2019:197883, registeredVoters2022:104035,
+      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Gem",          momentum:89, population2019:179792, registeredVoters2022:93568,
+      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Rarieda",      momentum:88, population2019:152570, registeredVoters2022:84849,
+      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Ugenya",       momentum:87, population2019:134354, registeredVoters2022:69027,
+      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Ugunja",       momentum:86, population2019:104241, registeredVoters2022:60114,
+      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+  ];
+
+  const LS_KEY = "siaya_gumbo_simple_v1";
+  const clone = (x)=> (window.structuredClone ? structuredClone(x) : JSON.parse(JSON.stringify(x)));
+  function loadData(){
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return clone(DEMO);
+    try{
+      const j = JSON.parse(raw);
+      if(Array.isArray(j) && j.length) return j;
+    }catch(e){}
+    return clone(DEMO);
+  }
+  function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data)); }
+
+  const state = { data: loadData(), metric: "momentum", search: "" };
+
+  // Helpers
+  const fmt = (n)=> Number.isFinite(n) ? n.toLocaleString() : "—";
+  const toNum = (x)=> { const n = Number(x); return Number.isFinite(n) ? n : 0; };
+  const isVerified = (r)=> (String(r.poll.url||"").trim().length>0) && ["A","B"].includes(String(r.poll.rating||"").toUpperCase().trim());
+  const leadVerified = (r)=> isVerified(r) && (toNum(r.poll.gumbo) - toNum(r.poll.runner)) >= 2.0 && toNum(r.poll.gumbo) > toNum(r.poll.runner);
+
+  function metricLabel(m){
+    return ({
+      momentum:"Momentum (Internal)",
+      voters:"Registered Voters (Baseline)",
+      population:"Population 2019 (Baseline)",
+      polling:"Polling (Verified) — Gumbo %"
+    })[m] || m;
+  }
+  function metricValue(r, m){
+    if(m==="momentum") return toNum(r.momentum);
+    if(m==="voters") return toNum(r.registeredVoters2022);
+    if(m==="population") return toNum(r.population2019);
+    if(m==="polling") return isVerified(r) ? toNum(r.poll.gumbo) : 0;
+    return 0;
+  }
+
+  // KPI
+  function renderKpi(){
+    const avg = Math.round(state.data.reduce((a,b)=>a+toNum(b.momentum),0)/state.data.length);
+    $("#kpiMomentum").textContent = avg;
+    const voters = state.data.reduce((a,b)=>a+toNum(b.registeredVoters2022),0);
+    $("#kpiVoters").textContent = voters ? voters.toLocaleString() : "—";
+  }
+
+  // Simple table (no huge side inputs)
+  const tbody = $("#tbody");
+
+  function rowTemplate(r, idx){
+    const polling = isVerified(r)
+      ? `<a href="${escapeHtml(r.poll.url)}" target="_blank" rel="noopener"><strong>${escapeHtml(r.poll.gumbo)}%</strong></a>`
+      : `<span class="tagNeutral">Unverified</span>`;
+
+    const leading = leadVerified(r)
+      ? `<span class="badgeLead">✅ Leading</span>`
+      : `<span class="mini">—</span>`;
+
+    return `
+      <tr>
+        <td><strong>${escapeHtml(r.name)}</strong></td>
+        <td>${r.preferred ? `<span class="badgePref">⭐ Preferred</span>` : `<span class="mini">—</span>`}</td>
+        <td><strong>${escapeHtml(r.momentum)}</strong></td>
+        <td>${fmt(toNum(r.population2019))}</td>
+        <td>${fmt(toNum(r.registeredVoters2022))}</td>
+        <td>${polling}</td>
+        <td style="display:flex;gap:10px;align-items:center;">
+          ${leading}
+          <button class="btn" type="button" data-edit="${idx}" style="padding:8px 10px;border-radius:12px;">Edit Poll</button>
+        </td>
+      </tr>
+    `;
+  }
+
+  function renderTable(){
+    const q = state.search.trim().toLowerCase();
+    const filtered = state.data
+      .map((r,i)=>({r,i}))
+      .filter(x=> x.r.name.toLowerCase().includes(q));
+
+    tbody.innerHTML = filtered.map(x=>rowTemplate(x.r, x.i)).join("");
+
+    $$("button[data-edit]").forEach(b=>{
+      b.addEventListener("click", ()=>{
+        const idx = parseInt(b.getAttribute("data-edit"),10);
+        openPollEditor(idx);
+      });
+    });
+  }
+
+  // Minimal poll editor (prompt-based: fast + clean)
+  function openPollEditor(idx){
+    const r = state.data[idx];
+    const url = prompt(`${r.name} — Poll source URL (required for Verified):`, r.poll.url || "");
+    if(url === null) return;
+
+    const rating = prompt(`${r.name} — Methodology rating (A or B):`, r.poll.rating || "");
+    if(rating === null) return;
+
+    const gumbo = prompt(`${r.name} — Gumbo % (numbers):`, r.poll.gumbo || "");
+    if(gumbo === null) return;
+
+    const runner = prompt(`${r.name} — Runner-up % (numbers):`, r.poll.runner || "");
+    if(runner === null) return;
+
+    r.poll.url = (url || "").trim();
+    r.poll.rating = (rating || "").trim().toUpperCase();
+    r.poll.gumbo = (gumbo || "").trim();
+    r.poll.runner = (runner || "").trim();
+
+    saveData();
+    buildChart();
+    renderKpi();
+    renderTable();
+    toast("Poll updated");
+  }
+
+  function escapeHtml(s){
+    return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+  }
+
+  // Chart
+  let chart;
+  function buildChart(){
+    const ctx = $("#chart");
+    const labels = state.data.map(d=>d.name);
+    const vals = state.data.map(d=>metricValue(d, state.metric));
+
+    if(chart) chart.destroy();
+
+    const suggestedMax =
+      (state.metric==="momentum") ? 100 :
+      (state.metric==="polling") ? 60 :
+      undefined;
+
+    chart = new Chart(ctx, {
+      type: "bar",
+      data: { labels, datasets: [{ label: metricLabel(state.metric), data: vals, borderWidth:1, borderRadius:10 }] },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{ display:true, labels:{ boxWidth:12, font:{ size:11, weight:"bold" } } } },
+        scales:{
+          x:{ ticks:{ font:{ size:11 } }, grid:{ display:false } },
+          y:{ beginAtZero:true, suggestedMax, ticks:{ font:{ size:11 } }, grid:{ color:"rgba(255,255,255,.08)" } }
+        }
+      }
+    });
+  }
+
+  // Controls
+  $("#metric").addEventListener("change", (e)=>{
+    state.metric = e.target.value;
+    buildChart();
+    toast(`Metric: ${metricLabel(state.metric)}`);
+  });
+  $("#search").addEventListener("input", (e)=>{
+    state.search = e.target.value;
+    renderTable();
+  });
+
+  $("#downloadJson").addEventListener("click", ()=>{
+    const payload = { generatedAt:new Date().toISOString(), data: state.data };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "siaya-dashboard-data.json";
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    toast("Exported");
+  });
+
+  $("#resetDemo").addEventListener("click", ()=>{
+    if(!confirm("Reset to demo?")) return;
+    state.data = clone(DEMO);
+    localStorage.removeItem(LS_KEY);
+    saveData();
+    renderKpi(); renderTable(); buildChart();
+    toast("Reset done");
+  });
+
+  // Init
+  document.getElementById("year").textContent = new Date().getFullYear();
+  renderKpi();
+  renderTable();
+  buildChart();
+</script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
   <title>Eng. Gumbo Wajonya | Governor of Siaya</title>
   <meta name="description" content="Campaign site for Eng. Gumbo Wajonya for Governor of Siaya County. Premium visuals, sub-county dashboard, and verified polling support." />
   <meta name="theme-color" content="#006600" />
