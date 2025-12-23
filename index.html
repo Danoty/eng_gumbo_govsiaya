@@ -396,7 +396,7 @@
       background:rgba(255,255,255,.04);
     }
     [data-theme="light"] .tableWrap{ background:rgba(11,16,32,.02); }
-    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:1140px; }
+    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:1320px; }
     th, td{ text-align:left; padding:12px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; }
     th{
       position:sticky; top:0;
@@ -495,8 +495,8 @@
             <span class="pill">Premium visuals • Transparent dashboard • Verified polling support</span>
             <h2 class="headline">A modern, united Siaya—built on delivery, dignity, and real results.</h2>
             <p class="subhead">
-              This site highlights <strong>Eng. Gumbo Wajonya</strong> as <strong>Preferred (Internal)</strong> using internal momentum indicators.
-              “Leading (Verified)” only appears when you provide a published poll source URL and the rule is satisfied.
+              This site shows <strong>Preferred (Internal)</strong> momentum indicators and baseline official stats.
+              “Leading (Verified)” will only appear when you add a real published poll source URL + numbers.
             </p>
 
             <div class="kpis" aria-label="Top metrics">
@@ -510,7 +510,7 @@
               </div>
               <div class="kpi">
                 <div class="n">Verified</div>
-                <div class="l">Leading badge requires source</div>
+                <div class="l">Leading badge needs source</div>
               </div>
             </div>
 
@@ -522,6 +522,7 @@
         </article>
 
         <aside class="card slideshow" aria-label="Campaign gallery slideshow">
+          <!-- Your repo images: 1.jpg ... 7.jpg -->
           <div class="slide on" style="background-image:url('1.jpg')"></div>
           <div class="slide" style="background-image:url('2.jpg')"></div>
           <div class="slide" style="background-image:url('3.jpg')"></div>
@@ -603,13 +604,13 @@
             <div class="cardPad">
               <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Truthful data policy</h3>
               <p class="subhead" style="margin:0 0 12px;">
-                “Preferred (Internal)” is based on internal momentum. “Leading (Verified)” requires published sources.
+                “Preferred (Internal)” is internal momentum. “Leading (Verified)” requires a published source URL + numbers.
               </p>
               <div class="li">
                 <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
                 <div>
                   <h3>What counts as verified</h3>
-                  <p>Source URL + methodology rating (A/B) + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
+                  <p>Source URL + rating A/B + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
                 </div>
               </div>
               <div class="hr"></div>
@@ -625,7 +626,7 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Impact at a glance</h2>
-          <p>Premium infographic cards + clean graphs (internal momentum view).</p>
+          <p>Premium infographic cards + clean compact graphs (internal momentum view).</p>
         </div>
 
         <div class="grid3">
@@ -653,7 +654,7 @@
 
           <div class="infoCard">
             <div class="infoTop">
-              <h3>Volunteer Growth</h3>
+              <h3>Registered Voters (Total)</h3>
               <div class="spark" aria-hidden="true">
                 <svg viewBox="0 0 120 42" width="120" height="42">
                   <defs>
@@ -669,8 +670,8 @@
                 </svg>
               </div>
             </div>
-            <div class="bigNum" id="volCounty">+24%</div>
-            <div class="mini">Internal estimate (month-on-month)</div>
+            <div class="bigNum" id="votersTotal">—</div>
+            <div class="mini">Baseline statistic (not polling)</div>
           </div>
 
           <div class="infoCard">
@@ -703,7 +704,7 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Sub-County Dashboard</h2>
-          <p>Compact, readable chart + auto-cite sources. “Leading (Verified)” only appears with published sources.</p>
+          <p>Compact, readable chart + baseline stats. “Leading (Verified)” only appears with published poll sources.</p>
         </div>
 
         <div class="card">
@@ -716,6 +717,8 @@
                     <option value="momentum">Momentum (Internal)</option>
                     <option value="polling">Polling (Verified) — Gumbo %</option>
                     <option value="margin">Polling Margin (Gumbo - Runner-up)</option>
+                    <option value="voters">Registered Voters (Baseline)</option>
+                    <option value="population">Population 2019 (Baseline)</option>
                   </select>
                 </div>
 
@@ -747,7 +750,7 @@
                   </div>
 
                   <div class="mini" style="margin-top:8px;">
-                    Add real poll source URLs to enable “Leading (Verified)”.
+                    Baseline stats are safe. Add real poll URLs + values to enable “Leading (Verified)”.
                   </div>
                 </div>
               </div>
@@ -794,6 +797,8 @@
                     <th>Candidate</th>
                     <th>Preferred</th>
                     <th>Momentum</th>
+                    <th>Population (2019)</th>
+                    <th>Registered Voters (2022)</th>
                     <th>Polling (Verified)</th>
                     <th>Margin</th>
                     <th>Leading</th>
@@ -806,7 +811,7 @@
             </div>
 
             <div class="mini" style="margin-top:10px;">
-              Demo includes internal momentum. Add published poll sources to unlock verified leading badges.
+              This demo includes baseline stats + internal momentum. Polling badges stay off until you add real sources.
             </div>
           </div>
         </div>
@@ -963,7 +968,7 @@
       <div class="hr"></div>
       <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
         <div>© <span id="year"></span> Eng. Gumbo Wajonya Campaign • Siaya County</div>
-        <div class="mini">Premium visuals • Internal momentum • Verified polling support</div>
+        <div class="mini">Premium visuals • Internal momentum • Baseline stats • Verified polling support</div>
       </div>
     </div>
   </footer>
@@ -1019,31 +1024,150 @@
     // ----- DATA -----
     const SUBCOUNTIES = ["Alego Usonga","Bondo","Gem","Rarieda","Ugenya","Ugunja"];
 
-    // Internal momentum is safe demo data (NOT polling).
-    // Polling fields are present, but “Verified” requires a real published source URL.
-    const DEMO = SUBCOUNTIES.map((name, i) => ({
-      name,
-      candidate: "Eng. Gumbo Wajonya",
-      preferred_internal: true,
-      momentum: [89, 91, 90, 86, 92, 88][i], // internal index 0–100
-      polling: {
-        gumbo_percent: [44.2, 46.8, 43.5, 41.0, 45.1, 42.7][i],
-        runner_up_name: ["Opponent A","Opponent B","Opponent A","Opponent C","Opponent B","Opponent C"][i],
-        runner_up_percent: [39.6, 42.9, 41.9, 39.2, 40.6, 41.2][i],
-        fieldwork_start: "2026-02-10",
-        fieldwork_end: "2026-02-14",
-        sample_size: [620, 590, 605, 575, 610, 585][i],
-        margin_error: [3.9, 4.0, 4.0, 4.1, 3.9, 4.0][i],
-        methodology_rating: (i % 2 === 0 ? "A" : "B"),
-        source_publisher: "",
-        source_title: "",
-        source_url: "",
-        source_notes: ""
+    // Baseline stats + internal momentum (NOT polling).
+    // Polling stays blank until you add real published sources + numbers.
+    const DEMO = [
+      {
+        name: "Alego Usonga",
+        candidate: "Eng. Gumbo Wajonya",
+        preferred_internal: true,
+        momentum: 91,
+        population2019: 224343,
+        registeredVoters2022: 122002,
+        polling: {
+          gumbo_percent: "",
+          runner_up_name: "",
+          runner_up_percent: "",
+          fieldwork_start: "",
+          fieldwork_end: "",
+          sample_size: "",
+          margin_error: "",
+          methodology_rating: "",
+          source_publisher: "",
+          source_title: "",
+          source_url: "",
+          source_notes: ""
+        },
+        notes: "Baseline stats (population + registered voters) + internal momentum. Add poll source URL to verify polling."
       },
-      notes: "Internal momentum view. Add published poll source URL to enable verified status."
-    }));
+      {
+        name: "Bondo",
+        candidate: "Eng. Gumbo Wajonya",
+        preferred_internal: true,
+        momentum: 90,
+        population2019: 197883,
+        registeredVoters2022: 104035,
+        polling: {
+          gumbo_percent: "",
+          runner_up_name: "",
+          runner_up_percent: "",
+          fieldwork_start: "",
+          fieldwork_end: "",
+          sample_size: "",
+          margin_error: "",
+          methodology_rating: "",
+          source_publisher: "",
+          source_title: "",
+          source_url: "",
+          source_notes: ""
+        },
+        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
+      },
+      {
+        name: "Gem",
+        candidate: "Eng. Gumbo Wajonya",
+        preferred_internal: true,
+        momentum: 89,
+        population2019: 179792,
+        registeredVoters2022: 93568,
+        polling: {
+          gumbo_percent: "",
+          runner_up_name: "",
+          runner_up_percent: "",
+          fieldwork_start: "",
+          fieldwork_end: "",
+          sample_size: "",
+          margin_error: "",
+          methodology_rating: "",
+          source_publisher: "",
+          source_title: "",
+          source_url: "",
+          source_notes: ""
+        },
+        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
+      },
+      {
+        name: "Rarieda",
+        candidate: "Eng. Gumbo Wajonya",
+        preferred_internal: true,
+        momentum: 88,
+        population2019: 152570,
+        registeredVoters2022: 84849,
+        polling: {
+          gumbo_percent: "",
+          runner_up_name: "",
+          runner_up_percent: "",
+          fieldwork_start: "",
+          fieldwork_end: "",
+          sample_size: "",
+          margin_error: "",
+          methodology_rating: "",
+          source_publisher: "",
+          source_title: "",
+          source_url: "",
+          source_notes: ""
+        },
+        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
+      },
+      {
+        name: "Ugenya",
+        candidate: "Eng. Gumbo Wajonya",
+        preferred_internal: true,
+        momentum: 87,
+        population2019: 134354,
+        registeredVoters2022: 69027,
+        polling: {
+          gumbo_percent: "",
+          runner_up_name: "",
+          runner_up_percent: "",
+          fieldwork_start: "",
+          fieldwork_end: "",
+          sample_size: "",
+          margin_error: "",
+          methodology_rating: "",
+          source_publisher: "",
+          source_title: "",
+          source_url: "",
+          source_notes: ""
+        },
+        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
+      },
+      {
+        name: "Ugunja",
+        candidate: "Eng. Gumbo Wajonya",
+        preferred_internal: true,
+        momentum: 86,
+        population2019: 104241,
+        registeredVoters2022: 60114,
+        polling: {
+          gumbo_percent: "",
+          runner_up_name: "",
+          runner_up_percent: "",
+          fieldwork_start: "",
+          fieldwork_end: "",
+          sample_size: "",
+          margin_error: "",
+          methodology_rating: "",
+          source_publisher: "",
+          source_title: "",
+          source_url: "",
+          source_notes: ""
+        },
+        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
+      }
+    ];
 
-    const LS_KEY = "siaya_gumbo_campaign_final_v1";
+    const LS_KEY = "siaya_gumbo_campaign_final_v2";
     function cloneSafe(x){ return (window.structuredClone) ? structuredClone(x) : JSON.parse(JSON.stringify(x)); }
     function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2)); }
 
@@ -1075,6 +1199,8 @@
 
     function esc(s){ return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m])); }
     function toNum(x){ const n = Number(x); return Number.isFinite(n) ? n : 0; }
+    function fmtInt(n){ return (Number.isFinite(n) ? n.toLocaleString() : "—"); }
+
     function pollingMargin(row){ return Math.round((toNum(row.polling.gumbo_percent) - toNum(row.polling.runner_up_percent)) * 10) / 10; }
     function isVerifiedPoll(row){
       const r = String(row.polling.methodology_rating || "").toUpperCase().trim();
@@ -1092,20 +1218,26 @@
       return ({
         momentum:"Momentum (Internal)",
         polling:"Polling (Verified) — Gumbo %",
-        margin:"Polling Margin (Gumbo - Runner-up)"
+        margin:"Polling Margin (Gumbo - Runner-up)",
+        voters:"Registered Voters (Baseline)",
+        population:"Population 2019 (Baseline)"
       })[key] || key;
     }
     function metricValue(row, key){
       if(key === "momentum") return toNum(row.momentum);
       if(key === "polling") return isVerifiedPoll(row) ? toNum(row.polling.gumbo_percent) : 0;
       if(key === "margin") return isVerifiedPoll(row) ? pollingMargin(row) : 0;
+      if(key === "voters") return toNum(row.registeredVoters2022);
+      if(key === "population") return toNum(row.population2019);
       return 0;
     }
 
     function renderImpact(){
       const avgMomentum = Math.round(state.data.reduce((a,b)=>a+toNum(b.momentum),0) / state.data.length);
       $("#momCounty").textContent = avgMomentum;
-      $("#volCounty").textContent = "+24%";
+
+      const votersTotal = state.data.reduce((a,b)=>a+toNum(b.registeredVoters2022),0);
+      $("#votersTotal").textContent = votersTotal ? votersTotal.toLocaleString() : "—";
     }
 
     const tbody = $("#tbody");
@@ -1118,7 +1250,7 @@
       const sourceBlock = url
         ? `<a href="${esc(url)}" target="_blank" rel="noopener"><strong>${esc(row.polling.source_publisher || "Source")}</strong></a>
            <div class="mini">${esc(row.polling.source_title || "")}</div>`
-        : `<span class="mini">Paste a published poll URL to verify.</span>`;
+        : `<span class="mini">Paste a published poll URL to verify polling.</span>`;
 
       const pref = row.preferred_internal ? `<span class="badgePref">⭐ Preferred (Internal)</span>` : `<span class="mini">—</span>`;
       const leading = lead ? `<span class="badgeLead">✅ Leading (Verified)</span>` : `<span class="mini">—</span>`;
@@ -1133,9 +1265,14 @@
           <td><strong>${esc(row.candidate)}</strong></td>
           <td>${pref}</td>
           <td><strong>${esc(row.momentum)}</strong><div class="mini">Internal index (0–100)</div></td>
+
+          <td><strong>${fmtInt(toNum(row.population2019))}</strong><div class="mini">Census 2019 (baseline)</div></td>
+          <td><strong>${fmtInt(toNum(row.registeredVoters2022))}</strong><div class="mini">Register 2022 (baseline)</div></td>
+
           <td>${pollingCell}</td>
           <td><strong>${verified ? esc(margin) : "—"}</strong><div class="mini">${verified ? "Gumbo - runner-up" : ""}</div></td>
           <td>${leading}</td>
+
           <td>
             <div style="display:grid; gap:8px; min-width:320px;">
               <div>${sourceBlock}</div>
@@ -1145,10 +1282,19 @@
                      value="${esc(row.polling.source_publisher)}" data-idx="${idx}" data-field="polling.source_publisher" />
               <input type="text" placeholder="Title"
                      value="${esc(row.polling.source_title)}" data-idx="${idx}" data-field="polling.source_title" />
+              <input type="text" placeholder="Methodology rating (A/B)"
+                     value="${esc(row.polling.methodology_rating)}" data-idx="${idx}" data-field="polling.methodology_rating" />
+              <input type="text" placeholder="Gumbo % (numbers only)"
+                     value="${esc(row.polling.gumbo_percent)}" data-idx="${idx}" data-field="polling.gumbo_percent" />
+              <input type="text" placeholder="Runner-up % (numbers only)"
+                     value="${esc(row.polling.runner_up_percent)}" data-idx="${idx}" data-field="polling.runner_up_percent" />
+              <input type="text" placeholder="Runner-up name"
+                     value="${esc(row.polling.runner_up_name)}" data-idx="${idx}" data-field="polling.runner_up_name" />
               <input type="text" placeholder="Notes / Methodology"
                      value="${esc(row.polling.source_notes)}" data-idx="${idx}" data-field="polling.source_notes" />
             </div>
           </td>
+
           <td>
             <input type="text" style="min-width:240px;" value="${esc(row.notes)}"
                    data-idx="${idx}" data-field="notes" />
@@ -1166,9 +1312,9 @@
         cur = cur[k];
       }
       const last = parts[parts.length-1];
-      const numericFields = new Set(["momentum","gumbo_percent","runner_up_percent","sample_size","margin_error"]);
+      const numericFields = new Set(["momentum","gumbo_percent","runner_up_percent","sample_size","margin_error","population2019","registeredVoters2022"]);
       if(numericFields.has(last)){
-        const n = Number(value);
+        const n = Number(String(value).replace(/,/g,""));
         cur[last] = Number.isFinite(n) ? n : value;
       } else cur[last] = value;
     }
@@ -1203,6 +1349,13 @@
       const vals = state.data.map(d=>metricValue(d, state.metric));
 
       if(chart) chart.destroy();
+
+      const suggestedMax =
+        (state.metric === "momentum") ? 100 :
+        (state.metric === "polling") ? 60 :
+        (state.metric === "margin") ? 20 :
+        undefined;
+
       chart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -1225,18 +1378,15 @@
             tooltip: {
               enabled: true,
               callbacks: {
-                label: (ctx) => `${ctx.dataset.label}: ${ctx.formattedValue}`
+                label: (c) => `${c.dataset.label}: ${c.formattedValue}`
               }
             }
           },
           scales: {
-            x: {
-              ticks: { font: { size: 11 } },
-              grid: { display: false }
-            },
+            x: { ticks: { font: { size: 11 } }, grid: { display: false } },
             y: {
               beginAtZero: true,
-              suggestedMax: (state.metric === "momentum" ? 100 : 60),
+              suggestedMax,
               ticks: { font: { size: 11 } },
               grid: { color: "rgba(255,255,255,.08)" }
             }
@@ -1259,13 +1409,13 @@
     $("#downloadJson").addEventListener("click", ()=>{
       const payload = {
         generatedAt: new Date().toISOString(),
-        note: "Internal momentum is not polling. Verified polling requires published source URL + rating A/B.",
+        note: "Baseline stats + internal momentum. Verified polling requires published source URL + rating A/B + % values.",
         data: state.data
       };
       const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = url; a.download = "siaya-campaign-dashboard.json";
+      a.href = url; a.download = "siaya-dashboard-data.json";
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
       toast("Exported JSON");
@@ -1282,7 +1432,7 @@
       toast("Reset done");
     });
 
-    // Import JSON/CSV
+    // Import JSON/CSV (optional)
     $("#importFile").addEventListener("change", async (e)=>{
       const f = e.target.files && e.target.files[0];
       if(!f) return;
@@ -1293,25 +1443,7 @@
           let arr = null;
 
           if(Array.isArray(parsed)) arr = parsed;
-          else if(parsed && Array.isArray(parsed.subcounties)){
-            arr = parsed.subcounties.map(s => ({
-              name: s.name,
-              polling: {
-                gumbo_percent: s.polling_verified?.gumbo_percent ?? "",
-                runner_up_name: s.polling_verified?.runner_up_name ?? "",
-                runner_up_percent: s.polling_verified?.runner_up_percent ?? "",
-                fieldwork_start: s.polling_verified?.fieldwork_start ?? "",
-                fieldwork_end: s.polling_verified?.fieldwork_end ?? "",
-                sample_size: s.polling_verified?.sample_size ?? "",
-                margin_error: s.polling_verified?.margin_error ?? "",
-                methodology_rating: s.polling_verified?.methodology_rating ?? "",
-                source_publisher: s.polling_verified?.source?.publisher ?? "",
-                source_title: s.polling_verified?.source?.title ?? "",
-                source_url: s.polling_verified?.source?.url ?? "",
-                source_notes: s.polling_verified?.source?.notes ?? ""
-              }
-            }));
-          } else if(parsed && Array.isArray(parsed.data)) arr = parsed.data;
+          else if(parsed && Array.isArray(parsed.data)) arr = parsed.data;
 
           if(!arr) throw new Error("JSON format not recognized.");
           state.data = normalizeData(arr.map(x=>{
@@ -1327,14 +1459,13 @@
           const arr = parseCSV(text);
           const mapped = arr.map(r => ({
             name: r.SubCounty || r.subcounty || r.Subcounty || "",
+            population2019: r.Population2019 ?? "",
+            registeredVoters2022: r.RegisteredVoters2022 ?? "",
+            momentum: r.Momentum ?? "",
             polling: {
               gumbo_percent: r.GumboPercent ?? "",
               runner_up_name: r.RunnerUpName ?? "",
               runner_up_percent: r.RunnerUpPercent ?? "",
-              fieldwork_start: r.FieldworkStart ?? "",
-              fieldwork_end: r.FieldworkEnd ?? "",
-              sample_size: r.SampleSize ?? "",
-              margin_error: r.MarginError ?? "",
               methodology_rating: r.MethodologyRating ?? "",
               source_publisher: r.SourcePublisher ?? "",
               source_title: r.SourceTitle ?? "",
@@ -1366,12 +1497,6 @@
         const cols = splitCSVLine(lines[i]);
         const row = {};
         headers.forEach((h, idx)=> row[h] = (cols[idx] ?? "").trim());
-        ["GumboPercent","RunnerUpPercent","SampleSize","MarginError"].forEach(k=>{
-          if(row[k] !== undefined && row[k] !== ""){
-            const n = Number(row[k]);
-            if(Number.isFinite(n)) row[k] = n;
-          }
-        });
         out.push(row);
       }
       return out;
