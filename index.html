@@ -4,10 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>Eng. Gumbo Wajonya | Siaya Governor</title>
-  <meta name="description" content="Premium campaign dashboard for Eng. Gumbo Wajonya — Siaya County. Clean sub-county stats + verified polling support." />
+  <title>Eng. Gumbo Wajonya | Governor of Siaya</title>
+  <meta name="description" content="Official campaign dashboard for Eng. Gumbo Wajonya — Governor of Siaya. Track momentum, baseline county stats, priorities, events, and verified polling sources." />
   <meta name="theme-color" content="#006600" />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Eng. Gumbo Wajonya | Governor of Siaya" />
+  <meta property="og:description" content="Premium campaign site: priorities, county dashboard, events, and verified polling support." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="1.jpg" />
+
+  <!-- Security (static hosting friendly) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' data: https:;
@@ -17,9 +24,13 @@
                  connect-src 'self' https:;
                  frame-src https://translate.google.com https://translate.googleapis.com;
                  base-uri 'self';
+                 form-action 'self';
                  object-src 'none';
                  frame-ancestors 'none';
                  upgrade-insecure-requests">
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,16 +38,19 @@
 
   <style>
     :root{
+      /* Kenya colors */
       --ke-black:#000; --ke-red:#BB0000; --ke-green:#006600; --ke-white:#fff;
+      /* Siaya-inspired accent */
       --siaya-gold:#D08810;
 
       --bg:#070A10;
       --card:rgba(255,255,255,.06);
       --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.68);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
       --border:rgba(255,255,255,.12);
-      --shadow: 0 22px 56px rgba(0,0,0,.55);
-      --shadow2: 0 14px 34px rgba(0,0,0,.35);
+      --shadow:0 22px 56px rgba(0,0,0,.55);
+      --shadow2:0 14px 34px rgba(0,0,0,.35);
       --radius:18px; --radius2:26px; --max:1180px;
       --focus:0 0 0 4px rgba(0,102,0,.32);
     }
@@ -45,14 +59,18 @@
       --card:#fff;
       --text:#0b1020;
       --muted:rgba(11,16,32,.70);
+      --muted2:rgba(11,16,32,.55);
       --border:rgba(11,16,32,.12);
       --shadow:0 22px 56px rgba(2,6,23,.12);
       --shadow2:0 14px 34px rgba(2,6,23,.10);
       --focus:0 0 0 4px rgba(187,0,0,.20);
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
         radial-gradient(1100px 650px at 12% 10%, rgba(0,102,0,.18), transparent 58%),
@@ -60,12 +78,28 @@
         radial-gradient(900px 650px at 55% 88%, rgba(208,136,16,.12), transparent 62%),
         var(--bg);
       overflow-x:hidden;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
+
     a{color:inherit;text-decoration:none}
     a:hover{text-decoration:underline;text-underline-offset:4px}
     img{max-width:100%;display:block}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+
+    /* Accessibility */
+    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{
+      left:16px;top:16px;width:auto;height:auto;overflow:visible;
+      background:var(--card);border:1px solid var(--border);
+      padding:10px 12px;border-radius:12px;box-shadow:var(--shadow2);
+      outline:none;z-index:1000
+    }
     :focus-visible{outline:none;box-shadow:var(--focus);border-radius:12px}
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+    }
 
     header{
       position:sticky;top:0;z-index:50;
@@ -77,6 +111,7 @@
       background: linear-gradient(to bottom, rgba(246,248,255,.92), rgba(246,248,255,.70));
       border-bottom:1px solid rgba(11,16,32,.10);
     }
+
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{
@@ -93,10 +128,12 @@
     nav a{padding:10px 12px;border-radius:14px;border:1px solid transparent;color:var(--muted);font-weight:900}
     nav a:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:var(--text);text-decoration:none}
     [data-theme="light"] nav a:hover{background:rgba(11,16,32,.04);border-color:rgba(11,16,32,.12)}
+
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:10px 12px;border-radius:14px;border:1px solid var(--border);
-      background:rgba(255,255,255,.06);color:var(--text);font-weight:950;cursor:pointer
+      background:rgba(255,255,255,.06);color:var(--text);font-weight:950;cursor:pointer;
+      user-select:none
     }
     [data-theme="light"] .btn{background:#fff}
     .btn.primary{
@@ -104,6 +141,9 @@
       background: linear-gradient(135deg, rgba(0,102,0,.52), rgba(187,0,0,.22));
     }
     .btn.primary:hover{background: linear-gradient(135deg, rgba(0,102,0,.62), rgba(187,0,0,.28))}
+    .btn.ghost:hover{background:rgba(255,255,255,.10)}
+    [data-theme="light"] .btn.ghost:hover{background:rgba(11,16,32,.04)}
+
     .pill{
       display:inline-flex;align-items:center;gap:10px;
       padding:8px 10px;border-radius:999px;border:1px solid var(--border);
@@ -119,14 +159,18 @@
     }
     [data-theme="light"] .card{background: linear-gradient(180deg, #fff, #f9fbff)}
     .pad{padding:20px}
+
     section{padding:18px 0}
-    .hero{padding:38px 0 18px}
+    .hero{padding:40px 0 18px}
     .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
     @media(max-width:980px){.heroGrid{grid-template-columns:1fr}}
+
     .headline{margin:10px 0 10px;font-weight:980;letter-spacing:-1px;font-size:clamp(28px,3.2vw,46px);line-height:1.05}
-    .subhead{margin:0 0 14px;color:var(--muted);font-weight:750;max-width:72ch}
+    .subhead{margin:0 0 14px;color:var(--muted);font-weight:750;max-width:74ch}
+
     .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
     @media(max-width:680px){.kpis{grid-template-columns:1fr}}
+
     .kpi{
       border:1px solid var(--border);
       background:rgba(255,255,255,.06);
@@ -142,12 +186,14 @@
       min-height:320px;border-radius:var(--radius2);border:1px solid var(--border);
       position:relative;overflow:hidden;background:#000;box-shadow:var(--shadow)
     }
-    .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease;filter:saturate(1.05) contrast(1.05);transform:scale(1.02)}
-    .slide.on{opacity:.92}
-    .overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72));
+    .slide{
+      position:absolute;inset:0;background-size:cover;background-position:center;
+      opacity:0;transition:opacity .9s ease;
+      filter:saturate(1.05) contrast(1.05);
+      transform:scale(1.02)
     }
+    .slide.on{opacity:.92}
+    .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72))}
     .caption{position:absolute;left:16px;right:16px;bottom:16px}
     .caption .name{font-weight:980;font-size:18px;letter-spacing:-.4px}
     .caption .title{color:var(--muted);font-weight:850;font-size:13px;margin-top:4px}
@@ -157,17 +203,34 @@
     .sectionTitle h2{margin:0;font-weight:980;letter-spacing:-.3px;font-size:clamp(20px,2vw,28px)}
     .sectionTitle p{margin:0;color:var(--muted);font-weight:750;font-size:13px;max-width:74ch}
 
-    .mini{font-size:12px;color:rgba(255,255,255,.55);font-weight:750}
-    [data-theme="light"] .mini{color:rgba(11,16,32,.55)}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:900px){.grid3{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+
+    .feature{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:var(--shadow2);
+      position:relative;overflow:hidden
+    }
+    [data-theme="light"] .feature{background:rgba(11,16,32,.03)}
+    .feature h3{margin:0 0 6px;font-size:14px;font-weight:980}
+    .feature p{margin:0;color:var(--muted);font-weight:740;font-size:13px}
+
+    .mini{font-size:12px;color:var(--muted2);font-weight:750}
+    .hr{height:1px;background:var(--border);margin:16px 0}
 
     .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between}
     label{display:block;font-size:12px;color:var(--muted);font-weight:950;margin:0 0 6px}
-    select,input[type="search"],input[type="text"]{
+    select,input[type="search"],input[type="text"],textarea{
       width:100%;border-radius:14px;border:1px solid var(--border);
       background:rgba(255,255,255,.06);color:var(--text);
       padding:10px 12px;font:inherit;outline:none
     }
-    [data-theme="light"] select,[data-theme="light"] input[type="search"],[data-theme="light"] input[type="text"]{background:#fff}
+    [data-theme="light"] select,[data-theme="light"] input[type="search"],[data-theme="light"] input[type="text"],[data-theme="light"] textarea{background:#fff}
+    textarea{resize:vertical}
 
     .chartBox{height:210px}
     .tableWrap{
@@ -175,7 +238,7 @@
       background:rgba(255,255,255,.04)
     }
     [data-theme="light"] .tableWrap{background:rgba(11,16,32,.02)}
-    table{border-collapse:separate;border-spacing:0;width:100%;min-width:920px}
+    table{border-collapse:separate;border-spacing:0;width:100%;min-width:980px}
     th,td{padding:12px 12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle}
     th{
       position:sticky;top:0;z-index:2;
@@ -207,62 +270,103 @@
       background:rgba(255,255,255,.08);
       color:var(--muted);font-weight:980;font-size:12px;white-space:nowrap
     }
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+
+    .modalOverlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.55);
+      display:none;align-items:center;justify-content:center;
+      padding:18px;z-index:999
+    }
+    .modal{
+      width:min(680px, 100%);
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border-radius:20px;box-shadow:var(--shadow);
+      overflow:hidden
+    }
+    [data-theme="light"] .modal{background:linear-gradient(180deg, #fff, #f7f9ff)}
+    .modalHead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border)}
+    .modalHead strong{font-weight:980}
+    .modalBody{padding:16px}
+    .modalGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:720px){.modalGrid{grid-template-columns:1fr}}
+    .modalFoot{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;padding:14px 16px;border-top:1px solid var(--border)}
+    .hint{padding:10px 12px;border:1px dashed rgba(255,255,255,.18);border-radius:14px;background:rgba(255,255,255,.05);color:var(--muted);font-weight:760;font-size:12px}
 
     .toast{
       position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
       background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.14);
       color:#fff;padding:10px 12px;border-radius:14px;box-shadow:var(--shadow2);
-      opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60;font-weight:900
+      opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:60;font-weight:900;
+      max-width:min(820px, calc(100vw - 36px))
     }
     [data-theme="light"] .toast{background:rgba(11,16,32,.78)}
     .toast.show{opacity:1}
 
     footer{padding:26px 0 40px;color:var(--muted);font-size:13px}
-    .hr{height:1px;background:var(--border);margin:16px 0}
+
+    .floatingBar{
+      position:fixed;right:16px;bottom:16px;z-index:80;
+      display:flex;flex-direction:column;gap:10px
+    }
+    .fab{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 14px;border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.08);
+      box-shadow:var(--shadow2);
+      font-weight:950;cursor:pointer
+    }
+    [data-theme="light"] .fab{background:#fff}
+    .fab small{font-weight:850;color:var(--muted)}
   </style>
 </head>
 
 <body data-theme="dark">
+<a class="skip" href="#main">Skip to content</a>
+
 <header>
   <div class="wrap nav">
-    <div class="brand">
+    <div class="brand" aria-label="Campaign brand">
       <div class="logo" aria-hidden="true"></div>
       <h1>
         <div class="t">Eng. Gumbo Wajonya</div>
-        <div class="s">Governor of Siaya • Campaign Dashboard</div>
+        <div class="s">Governor of Siaya • People • Delivery • Integrity</div>
       </h1>
     </div>
 
     <nav aria-label="Primary">
       <ul>
         <li><a href="#home">Home</a></li>
+        <li><a href="#priorities">Priorities</a></li>
         <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
         <li><a href="#translate">Translate</a></li>
       </ul>
     </nav>
 
-    <div style="display:flex;gap:10px;align-items:center;">
-      <button class="btn" id="themeBtn" type="button">🌗 Theme</button>
-      <a class="btn primary" href="#dashboard">View Stats</a>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <button class="btn ghost" id="themeBtn" type="button" aria-label="Toggle theme">🌗 Theme</button>
+      <button class="btn ghost" id="textBtn" type="button" aria-label="Toggle larger text">🔎 Text</button>
+      <a class="btn primary" href="#volunteer">Join the Movement</a>
     </div>
   </div>
 </header>
 
 <main id="main">
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="wrap heroGrid">
       <article class="card">
         <div class="pad">
-          <span class="pill">Clean stats • Small chart • Verified polling support</span>
-          <h2 class="headline">Siaya’s preferred choice—by delivery and momentum.</h2>
+          <span class="pill">Premium campaign HQ • Clean stats • Verified polling support</span>
+          <h2 class="headline">A winning plan for Siaya — practical delivery in every sub-county.</h2>
           <p class="subhead">
-            Simple dashboard per sub-county. “Preferred” shows internal momentum.
-            “Leading (Verified)” only appears after you add a real poll link + numbers.
+            This is a modern campaign platform: priorities, events, and a simple dashboard.
+            <strong>Preferred</strong> shows internal momentum. <strong>Leading (Verified)</strong> is shown only when you add a real published poll source URL + rating (A/B) + numbers.
           </p>
 
-          <div class="kpis">
+          <div class="kpis" aria-label="Campaign KPIs">
             <div class="kpi">
               <div class="n" id="kpiMomentum">88</div>
               <div class="l">Avg Momentum (Internal)</div>
@@ -278,12 +382,13 @@
           </div>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
-            <a class="btn primary" href="#dashboard">Open Dashboard</a>
-            <a class="btn" href="#translate">Translate</a>
+            <a class="btn primary" href="#dashboard">See the Dashboard</a>
+            <button class="btn" id="shareBtn" type="button">📣 Share</button>
+            <a class="btn" href="#events">📅 Events</a>
           </div>
 
           <div class="mini" style="margin-top:10px;">
-            Tip: Keep it truthful. Use internal momentum now; add verified polls later.
+            Campaign message: stronger services, stronger economy, transparent delivery.
           </div>
         </div>
       </article>
@@ -299,20 +404,59 @@
         <div class="overlay" aria-hidden="true"></div>
         <div class="caption">
           <div class="name">Eng. Gumbo Wajonya</div>
-          <div class="title">People • Delivery • Integrity</div>
+          <div class="title">A modern, united Siaya — from Ugunja to Ugenya, Bondo to Gem.</div>
           <div class="cta">
-            <a class="btn primary" href="#dashboard">Sub-county Stats</a>
+            <a class="btn primary" href="#volunteer">Volunteer</a>
+            <a class="btn" href="#priorities">Priorities</a>
           </div>
         </div>
       </aside>
     </div>
   </section>
 
+  <!-- PRIORITIES -->
+  <section id="priorities">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>What we will deliver</h2>
+        <p>Simple, measurable priorities that touch households directly — and a dashboard culture of accountability.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="feature">
+          <h3>Health & Dignity</h3>
+          <p>Stronger primary care, staffed facilities, reliable medicine supply, and emergency response readiness.</p>
+        </div>
+        <div class="feature">
+          <h3>Jobs & MSMEs</h3>
+          <p>Youth skills, market linkages, business support, and value chains that grow income locally.</p>
+        </div>
+        <div class="feature">
+          <h3>Water & Roads</h3>
+          <p>Functional water systems, maintenance culture, and roads that unlock schools, farms, and markets.</p>
+        </div>
+        <div class="feature">
+          <h3>Farm Prosperity</h3>
+          <p>Inputs, extension services, storage & processing support, and fair market access.</p>
+        </div>
+        <div class="feature">
+          <h3>Transparent Delivery</h3>
+          <p>Citizen-facing progress updates: budgets, timelines, and completion status per project.</p>
+        </div>
+        <div class="feature">
+          <h3>Digital County</h3>
+          <p>Service digitization, open dashboards, and a responsive help & feedback channel for citizens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
   <section id="dashboard">
     <div class="wrap">
       <div class="sectionTitle">
         <h2>Sub-county dashboard</h2>
-        <p>Only the essentials: momentum + baseline stats + a spot for verified polling link.</p>
+        <p>Only what matters: momentum + baseline stats + verified polling (if you add credible sources).</p>
       </div>
 
       <div class="card">
@@ -356,6 +500,7 @@
                   <th>Voters (2022)</th>
                   <th>Polling (Verified)</th>
                   <th>Leading</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="tbody"></tbody>
@@ -363,18 +508,153 @@
           </div>
 
           <div class="mini" style="margin-top:10px;">
-            To enable “Leading (Verified)”, click “Edit Poll” on a row and add a real poll URL + rating A/B + numbers.
+            Verified polling rule: needs <strong>Source URL</strong> + <strong>Rating A/B</strong> + numbers.
+            Leading appears only when Gumbo% − runner-up% ≥ 2.0.
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Events & Mobilization</h2>
+        <p>Add rallies, meetings, and community engagements. Visitors can download a calendar file (ICS).</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="pad">
+            <h3 style="margin:0 0 10px;font-weight:980;font-size:16px;">Upcoming events (demo)</h3>
+            <div class="mini" style="margin-bottom:10px;">Edit these in code later or export to share.</div>
+
+            <div class="feature">
+              <h3>Townhall • Siaya</h3>
+              <p><strong>Date:</strong> Next Saturday • <strong>Time:</strong> 10:00 AM • <strong>Theme:</strong> Jobs & MSMEs</p>
+            </div>
+            <div style="height:10px"></div>
+            <div class="feature">
+              <h3>Community Baraza • Bondo</h3>
+              <p><strong>Date:</strong> Next Week • <strong>Time:</strong> 2:00 PM • <strong>Theme:</strong> Water & Roads</p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+              <button class="btn primary" id="downloadIcs" type="button">📅 Download Calendar</button>
+              <button class="btn" id="copyEvents" type="button">📋 Copy Text</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <h3 style="margin:0 0 10px;font-weight:980;font-size:16px;">Campaign promise</h3>
+            <div class="feature">
+              <h3>Respectful campaigning</h3>
+              <p>We win with ideas, delivery record, and evidence — not misinformation.</p>
+            </div>
+            <div style="height:10px"></div>
+            <div class="feature">
+              <h3>Open feedback</h3>
+              <p>Citizens report issues and suggestions, and we respond with action and timelines.</p>
+            </div>
+            <div class="hr"></div>
+            <div class="mini">
+              Add official phone/email/socials when ready (footer + floating buttons).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER -->
+  <section id="volunteer">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Join the Movement</h2>
+        <p>Volunteer, host a meeting, or share verified sources for polling. (Demo saves locally on device.)</p>
+      </div>
+
+      <div class="card">
+        <div class="pad">
+          <div class="grid2">
+            <div>
+              <div class="hint">
+                For real data collection, connect a form service later. This demo saves locally only.
+              </div>
+              <div style="height:12px"></div>
+
+              <div class="grid2">
+                <div>
+                  <label for="vName">Full name</label>
+                  <input id="vName" type="text" placeholder="Your name" autocomplete="name" />
+                </div>
+                <div>
+                  <label for="vPhone">Phone</label>
+                  <input id="vPhone" type="text" placeholder="+254..." autocomplete="tel" />
+                </div>
+              </div>
+
+              <div style="margin-top:12px;">
+                <label for="vSub">Sub-county</label>
+                <select id="vSub">
+                  <option>Alego Usonga</option>
+                  <option>Bondo</option>
+                  <option>Gem</option>
+                  <option>Rarieda</option>
+                  <option>Ugenya</option>
+                  <option>Ugunja</option>
+                </select>
+              </div>
+
+              <div style="margin-top:12px;">
+                <label for="vMsg">How would you like to help?</label>
+                <textarea id="vMsg" rows="4" placeholder="Volunteer, mobilize, logistics, data verification, media, etc."></textarea>
+              </div>
+
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+                <button class="btn primary" id="saveVolunteer" type="button">Save locally</button>
+                <button class="btn" id="clearVolunteer" type="button">Clear</button>
+                <button class="btn" id="downloadVolunteer" type="button">⬇️ Download</button>
+              </div>
+
+              <div class="mini" style="margin-top:10px;" id="volStatus" aria-live="polite"></div>
+            </div>
+
+            <div>
+              <h3 style="margin:0 0 10px;font-weight:980;font-size:16px;">Quick actions</h3>
+              <div class="feature">
+                <h3>Spread the message</h3>
+                <p>Share this site, invite friends, and host a small community conversation.</p>
+              </div>
+              <div style="height:10px"></div>
+              <div class="feature">
+                <h3>Verified polling sources</h3>
+                <p>If you have credible polling links, add them in the dashboard to enable “Leading (Verified)”.</p>
+              </div>
+              <div style="height:10px"></div>
+              <div class="feature">
+                <h3>Accessibility first</h3>
+                <p>Theme toggle, larger text toggle, translate widget, and clean contrast.</p>
+              </div>
+              <div class="hr"></div>
+              <div class="mini">
+                Add donation links later (M-PESA/Till/Paybill) only if official & approved.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSLATE -->
   <section id="translate">
     <div class="wrap">
       <div class="sectionTitle">
         <h2>Translate</h2>
-        <p>Make the site accessible to all visitors.</p>
+        <p>Make the message accessible to everyone.</p>
       </div>
       <div class="card">
         <div class="pad">
@@ -393,10 +673,62 @@
     <div class="hr"></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;">
       <div>© <span id="year"></span> Eng. Gumbo Wajonya • Siaya County</div>
-      <div class="mini">Clean stats • Verified polling support • Kenya + Siaya colors</div>
+      <div class="mini">Campaign HQ • Clean stats • Verified polling support</div>
     </div>
   </div>
 </footer>
+
+<!-- Floating bar -->
+<div class="floatingBar" aria-label="Quick actions">
+  <button class="fab" id="fabShare" type="button">📣 <span>Share</span> <small>WhatsApp</small></button>
+  <a class="fab" href="#volunteer">🤝 <span>Volunteer</span> <small>Join</small></a>
+  <button class="fab" id="fabTop" type="button">⬆️ <span>Top</span> <small>Back</small></button>
+</div>
+
+<!-- Poll Editor Modal -->
+<div class="modalOverlay" id="pollModal" role="dialog" aria-modal="true" aria-labelledby="pollTitle">
+  <div class="modal">
+    <div class="modalHead">
+      <strong id="pollTitle">Edit Verified Poll</strong>
+      <button class="btn" id="closeModal" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="hint" style="margin-bottom:12px;">
+        “Leading (Verified)” is shown only when:
+        Source URL exists + Rating is A/B + (Gumbo% − Runner-up%) ≥ 2.0.
+      </div>
+
+      <div class="modalGrid">
+        <div>
+          <label for="pSub">Sub-county</label>
+          <input id="pSub" type="text" readonly />
+        </div>
+        <div>
+          <label for="pRating">Methodology rating (A/B)</label>
+          <input id="pRating" type="text" placeholder="A or B" />
+        </div>
+        <div style="grid-column:1/-1">
+          <label for="pUrl">Source URL (required)</label>
+          <input id="pUrl" type="text" placeholder="https://..." />
+        </div>
+        <div>
+          <label for="pGumbo">Gumbo %</label>
+          <input id="pGumbo" type="text" placeholder="e.g. 52" />
+        </div>
+        <div>
+          <label for="pRunner">Runner-up %</label>
+          <input id="pRunner" type="text" placeholder="e.g. 45" />
+        </div>
+      </div>
+
+      <div class="mini" id="pStatus" style="margin-top:10px;"></div>
+    </div>
+    <div class="modalFoot">
+      <button class="btn" id="clearPoll" type="button">Clear</button>
+      <button class="btn primary" id="savePoll" type="button">Save</button>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -416,6 +748,7 @@
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => [...r.querySelectorAll(s)];
   const toastEl = $("#toast");
+
   function toast(msg){
     toastEl.textContent = msg;
     toastEl.classList.add("show");
@@ -429,34 +762,56 @@
     localStorage.setItem("theme", t);
     toast(`Theme: ${t}`);
   });
-  (function initTheme(){ const t = localStorage.getItem("theme"); if(t) document.body.setAttribute("data-theme", t); })();
+  (function initTheme(){
+    const t = localStorage.getItem("theme");
+    if(t) document.body.setAttribute("data-theme", t);
+  })();
+
+  // Larger text toggle
+  $("#textBtn").addEventListener("click", ()=>{
+    const big = document.body.getAttribute("data-text") === "big";
+    document.body.setAttribute("data-text", big ? "normal" : "big");
+    document.documentElement.style.fontSize = big ? "16px" : "18px";
+    localStorage.setItem("textSize", big ? "normal" : "big");
+    toast(big ? "Text: normal" : "Text: large");
+  });
+  (function initText(){
+    const t = localStorage.getItem("textSize");
+    if(t === "big"){
+      document.body.setAttribute("data-text","big");
+      document.documentElement.style.fontSize = "18px";
+    }
+  })();
 
   // Slideshow
-  const slides = $$(".slide"); let si=0;
+  const slides = $$(".slide");
+  let si = 0;
   setInterval(()=>{
     slides[si].classList.remove("on");
-    si = (si+1) % slides.length;
+    si = (si + 1) % slides.length;
     slides[si].classList.add("on");
   }, 4300);
 
-  // Data (baseline + internal momentum)
+  // --------- DATA (baseline + internal momentum) ----------
+  // NOTE: Polling is blank by default. Do not claim verified polling without real sources.
   const DEMO = [
-    { name:"Alego Usonga", momentum:91, population2019:224343, registeredVoters2022:122002,
-      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
-    { name:"Bondo",        momentum:90, population2019:197883, registeredVoters2022:104035,
-      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
-    { name:"Gem",          momentum:89, population2019:179792, registeredVoters2022:93568,
-      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
-    { name:"Rarieda",      momentum:88, population2019:152570, registeredVoters2022:84849,
-      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
-    { name:"Ugenya",       momentum:87, population2019:134354, registeredVoters2022:69027,
-      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
-    { name:"Ugunja",       momentum:86, population2019:104241, registeredVoters2022:60114,
-      preferred:true, poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Alego Usonga", momentum:91, population2019:224343, registeredVoters2022:122002, preferred:true,
+      poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Bondo",  momentum:90, population2019:197883, registeredVoters2022:104035, preferred:true,
+      poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Gem",    momentum:89, population2019:179792, registeredVoters2022:93568, preferred:true,
+      poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Rarieda",momentum:88, population2019:152570, registeredVoters2022:84849, preferred:true,
+      poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Ugenya", momentum:87, population2019:134354, registeredVoters2022:69027, preferred:true,
+      poll:{ gumbo:"", runner:"", rating:"", url:"" } },
+    { name:"Ugunja", momentum:86, population2019:104241, registeredVoters2022:60114, preferred:true,
+      poll:{ gumbo:"", runner:"", rating:"", url:"" } },
   ];
 
-  const LS_KEY = "siaya_gumbo_simple_v1";
+  const LS_KEY = "siaya_gumbo_campaign_pro_v1";
   const clone = (x)=> (window.structuredClone ? structuredClone(x) : JSON.parse(JSON.stringify(x)));
+
   function loadData(){
     const raw = localStorage.getItem(LS_KEY);
     if(!raw) return clone(DEMO);
@@ -472,9 +827,11 @@
 
   // Helpers
   const fmt = (n)=> Number.isFinite(n) ? n.toLocaleString() : "—";
-  const toNum = (x)=> { const n = Number(x); return Number.isFinite(n) ? n : 0; };
+  const toNum = (x)=> { const n = Number(String(x).trim()); return Number.isFinite(n) ? n : 0; };
+  const esc = (s)=> String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
   const isVerified = (r)=> (String(r.poll.url||"").trim().length>0) && ["A","B"].includes(String(r.poll.rating||"").toUpperCase().trim());
-  const leadVerified = (r)=> isVerified(r) && (toNum(r.poll.gumbo) - toNum(r.poll.runner)) >= 2.0 && toNum(r.poll.gumbo) > toNum(r.poll.runner);
+  const margin = (r)=> Math.round((toNum(r.poll.gumbo) - toNum(r.poll.runner)) * 10) / 10;
+  const leadingVerified = (r)=> isVerified(r) && margin(r) >= 2.0 && toNum(r.poll.gumbo) > toNum(r.poll.runner);
 
   function metricLabel(m){
     return ({
@@ -500,79 +857,43 @@
     $("#kpiVoters").textContent = voters ? voters.toLocaleString() : "—";
   }
 
-  // Simple table (no huge side inputs)
+  // Table (simple)
   const tbody = $("#tbody");
-
-  function rowTemplate(r, idx){
-    const polling = isVerified(r)
-      ? `<a href="${escapeHtml(r.poll.url)}" target="_blank" rel="noopener"><strong>${escapeHtml(r.poll.gumbo)}%</strong></a>`
-      : `<span class="tagNeutral">Unverified</span>`;
-
-    const leading = leadVerified(r)
-      ? `<span class="badgeLead">✅ Leading</span>`
-      : `<span class="mini">—</span>`;
-
-    return `
-      <tr>
-        <td><strong>${escapeHtml(r.name)}</strong></td>
-        <td>${r.preferred ? `<span class="badgePref">⭐ Preferred</span>` : `<span class="mini">—</span>`}</td>
-        <td><strong>${escapeHtml(r.momentum)}</strong></td>
-        <td>${fmt(toNum(r.population2019))}</td>
-        <td>${fmt(toNum(r.registeredVoters2022))}</td>
-        <td>${polling}</td>
-        <td style="display:flex;gap:10px;align-items:center;">
-          ${leading}
-          <button class="btn" type="button" data-edit="${idx}" style="padding:8px 10px;border-radius:12px;">Edit Poll</button>
-        </td>
-      </tr>
-    `;
-  }
-
   function renderTable(){
     const q = state.search.trim().toLowerCase();
-    const filtered = state.data
-      .map((r,i)=>({r,i}))
-      .filter(x=> x.r.name.toLowerCase().includes(q));
+    const filtered = state.data.map((r,i)=>({r,i})).filter(x=>x.r.name.toLowerCase().includes(q));
 
-    tbody.innerHTML = filtered.map(x=>rowTemplate(x.r, x.i)).join("");
+    tbody.innerHTML = filtered.map(({r,i})=>{
+      const pollingCell = isVerified(r)
+        ? `<a href="${esc(r.poll.url)}" target="_blank" rel="noopener"><strong>${esc(r.poll.gumbo)}%</strong></a><div class="mini">Verified</div>`
+        : `<span class="tagNeutral">Unverified</span><div class="mini">No source URL</div>`;
+
+      const leadCell = leadingVerified(r)
+        ? `<span class="badgeLead">✅ Leading</span><div class="mini">Margin ${esc(margin(r))} pts</div>`
+        : `<span class="mini">—</span>`;
+
+      return `
+        <tr>
+          <td><strong>${esc(r.name)}</strong></td>
+          <td>${r.preferred ? `<span class="badgePref">⭐ Preferred</span>` : `<span class="mini">—</span>`}</td>
+          <td><strong>${esc(r.momentum)}</strong></td>
+          <td>${fmt(toNum(r.population2019))}</td>
+          <td>${fmt(toNum(r.registeredVoters2022))}</td>
+          <td>${pollingCell}</td>
+          <td>${leadCell}</td>
+          <td>
+            <button class="btn" type="button" data-edit="${i}" style="padding:8px 10px;border-radius:12px;">Edit Poll</button>
+          </td>
+        </tr>
+      `;
+    }).join("");
 
     $$("button[data-edit]").forEach(b=>{
       b.addEventListener("click", ()=>{
         const idx = parseInt(b.getAttribute("data-edit"),10);
-        openPollEditor(idx);
+        openPollModal(idx);
       });
     });
-  }
-
-  // Minimal poll editor (prompt-based: fast + clean)
-  function openPollEditor(idx){
-    const r = state.data[idx];
-    const url = prompt(`${r.name} — Poll source URL (required for Verified):`, r.poll.url || "");
-    if(url === null) return;
-
-    const rating = prompt(`${r.name} — Methodology rating (A or B):`, r.poll.rating || "");
-    if(rating === null) return;
-
-    const gumbo = prompt(`${r.name} — Gumbo % (numbers):`, r.poll.gumbo || "");
-    if(gumbo === null) return;
-
-    const runner = prompt(`${r.name} — Runner-up % (numbers):`, r.poll.runner || "");
-    if(runner === null) return;
-
-    r.poll.url = (url || "").trim();
-    r.poll.rating = (rating || "").trim().toUpperCase();
-    r.poll.gumbo = (gumbo || "").trim();
-    r.poll.runner = (runner || "").trim();
-
-    saveData();
-    buildChart();
-    renderKpi();
-    renderTable();
-    toast("Poll updated");
-  }
-
-  function escapeHtml(s){
-    return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
   }
 
   // Chart
@@ -584,10 +905,7 @@
 
     if(chart) chart.destroy();
 
-    const suggestedMax =
-      (state.metric==="momentum") ? 100 :
-      (state.metric==="polling") ? 60 :
-      undefined;
+    const suggestedMax = (state.metric==="momentum") ? 100 : (state.metric==="polling") ? 60 : undefined;
 
     chart = new Chart(ctx, {
       type: "bar",
@@ -614,8 +932,9 @@
     renderTable();
   });
 
+  // Export
   $("#downloadJson").addEventListener("click", ()=>{
-    const payload = { generatedAt:new Date().toISOString(), data: state.data };
+    const payload = { generatedAt:new Date().toISOString(), note:"Polling is only verified when a real published source URL + rating A/B + numbers are provided.", data: state.data };
     const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -634,1561 +953,165 @@
     toast("Reset done");
   });
 
+  // Share buttons (WhatsApp + native share if available)
+  function shareText(){
+    return `Eng. Gumbo Wajonya for Governor of Siaya.\n\nPeople • Delivery • Integrity\nExplore the sub-county dashboard and join the movement:\n${location.href}`;
+  }
+  async function doShare(){
+    const text = shareText();
+    if(navigator.share){
+      try{ await navigator.share({ title: document.title, text, url: location.href }); return; }catch(e){}
+    }
+    const wa = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(wa, "_blank", "noopener");
+  }
+  $("#shareBtn").addEventListener("click", doShare);
+  $("#fabShare").addEventListener("click", doShare);
+  $("#fabTop").addEventListener("click", ()=> window.scrollTo({ top:0, behavior:"smooth" }));
+
+  // Events: ICS download + copy
+  function buildICS(){
+    // Demo events (edit as needed)
+    const events = [
+      { title:"Townhall • Siaya (Jobs & MSMEs)", start:"20260110T070000Z", end:"20260110T093000Z", location:"Siaya", desc:"Campaign townhall meeting." },
+      { title:"Community Baraza • Bondo (Water & Roads)", start:"20260114T110000Z", end:"20260114T130000Z", location:"Bondo", desc:"Community engagement." }
+    ];
+    const lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//GumboCampaign//Siaya//EN"
+    ];
+    events.forEach(e=>{
+      lines.push("BEGIN:VEVENT");
+      lines.push(`UID:${crypto?.randomUUID ? crypto.randomUUID() : (Date.now()+Math.random())}@gumbosiaya`);
+      lines.push(`DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+Z/,"Z")}`);
+      lines.push(`DTSTART:${e.start}`);
+      lines.push(`DTEND:${e.end}`);
+      lines.push(`SUMMARY:${e.title}`);
+      lines.push(`LOCATION:${e.location}`);
+      lines.push(`DESCRIPTION:${e.desc}`);
+      lines.push("END:VEVENT");
+    });
+    lines.push("END:VCALENDAR");
+    return lines.join("\r\n");
+  }
+  $("#downloadIcs").addEventListener("click", ()=>{
+    const ics = buildICS();
+    const blob = new Blob([ics], {type:"text/calendar"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "campaign-events.ics";
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    toast("Calendar downloaded");
+  });
+  $("#copyEvents").addEventListener("click", async ()=>{
+    const text = "Upcoming events:\n- Townhall • Siaya (Jobs & MSMEs)\n- Community Baraza • Bondo (Water & Roads)\n\nJoin the movement: " + location.href;
+    try{ await navigator.clipboard.writeText(text); toast("Copied"); }catch(e){ toast("Copy failed"); }
+  });
+
+  // Volunteer local demo
+  const volStatus = $("#volStatus");
+  const VKEY = "siaya_volunteer_v1";
+  $("#saveVolunteer").addEventListener("click", ()=>{
+    const v = {
+      name: $("#vName").value.trim(),
+      phone: $("#vPhone").value.trim(),
+      subcounty: $("#vSub").value,
+      msg: $("#vMsg").value.trim(),
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem(VKEY, JSON.stringify(v, null, 2));
+    volStatus.textContent = "Saved locally on this device (demo).";
+    toast("Saved");
+  });
+  $("#clearVolunteer").addEventListener("click", ()=>{
+    $("#vName").value=""; $("#vPhone").value=""; $("#vMsg").value="";
+    localStorage.removeItem(VKEY);
+    volStatus.textContent = "Cleared.";
+    toast("Cleared");
+  });
+  $("#downloadVolunteer").addEventListener("click", ()=>{
+    const raw = localStorage.getItem(VKEY);
+    if(!raw){ toast("Nothing saved"); return; }
+    const blob = new Blob([raw], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "volunteer-info.json";
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    toast("Downloaded");
+  });
+
+  // Poll modal
+  const pollModal = $("#pollModal");
+  const pSub = $("#pSub"), pUrl = $("#pUrl"), pRating = $("#pRating"), pGumbo = $("#pGumbo"), pRunner = $("#pRunner"), pStatus = $("#pStatus");
+  let currentIdx = -1;
+
+  function openPollModal(idx){
+    currentIdx = idx;
+    const r = state.data[idx];
+    $("#pollTitle").textContent = `Edit Verified Poll • ${r.name}`;
+    pSub.value = r.name;
+    pUrl.value = r.poll.url || "";
+    pRating.value = r.poll.rating || "";
+    pGumbo.value = r.poll.gumbo || "";
+    pRunner.value = r.poll.runner || "";
+    pStatus.textContent = "";
+    pollModal.style.display = "flex";
+    pUrl.focus();
+  }
+  function closePollModal(){
+    pollModal.style.display = "none";
+    currentIdx = -1;
+  }
+  $("#closeModal").addEventListener("click", closePollModal);
+  pollModal.addEventListener("click", (e)=>{ if(e.target === pollModal) closePollModal(); });
+  document.addEventListener("keydown", (e)=>{ if(e.key === "Escape" && pollModal.style.display === "flex") closePollModal(); });
+
+  function validatePollInputs(){
+    const url = String(pUrl.value||"").trim();
+    const rating = String(pRating.value||"").trim().toUpperCase();
+    const g = toNum(pGumbo.value);
+    const r = toNum(pRunner.value);
+
+    if(!url) return "Add a source URL to verify polling.";
+    if(!(rating==="A" || rating==="B")) return "Rating must be A or B to mark as verified.";
+    if(!(g>0) || !(r>=0)) return "Enter valid numbers for Gumbo% and runner-up%.";
+    const m = Math.round((g - r)*10)/10;
+    return leadingVerified({ poll:{ url, rating, gumbo:g, runner:r } }) ? `Leading verified ✅ (margin ${m} pts).` : `Verified saved. Not marked leading (margin ${m} pts).`;
+  }
+
+  $("#savePoll").addEventListener("click", ()=>{
+    if(currentIdx < 0) return;
+    const msg = validatePollInputs();
+    pStatus.textContent = msg;
+
+    // Save regardless; logic still controls badges
+    const r = state.data[currentIdx];
+    r.poll.url = String(pUrl.value||"").trim();
+    r.poll.rating = String(pRating.value||"").trim().toUpperCase();
+    r.poll.gumbo = String(pGumbo.value||"").trim();
+    r.poll.runner = String(pRunner.value||"").trim();
+
+    saveData();
+    renderTable();
+    buildChart();
+    renderKpi();
+    toast("Poll saved");
+    // keep modal open so user can read message; close on next click if they want
+  });
+
+  $("#clearPoll").addEventListener("click", ()=>{
+    pUrl.value=""; pRating.value=""; pGumbo.value=""; pRunner.value="";
+    pStatus.textContent = "Cleared. (No verified polling unless you add a source URL + rating + numbers.)";
+  });
+
   // Init
   document.getElementById("year").textContent = new Date().getFullYear();
   renderKpi();
   renderTable();
   buildChart();
 </script>
-</body>
-</html>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title>Eng. Gumbo Wajonya | Governor of Siaya</title>
-  <meta name="description" content="Campaign site for Eng. Gumbo Wajonya for Governor of Siaya County. Premium visuals, sub-county dashboard, and verified polling support." />
-  <meta name="theme-color" content="#006600" />
-
-  <!-- Security (static hosting friendly) -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 img-src 'self' data: https:;
-                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-                 font-src https://fonts.gstatic.com data:;
-                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://translate.google.com;
-                 connect-src 'self' https:;
-                 frame-src https://translate.google.com https://translate.googleapis.com;
-                 base-uri 'self';
-                 form-action 'self';
-                 object-src 'none';
-                 frame-ancestors 'none';
-                 upgrade-insecure-requests">
-
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      /* Kenya flag colors */
-      --ke-black:#000000;
-      --ke-red:#BB0000;
-      --ke-green:#006600;
-      --ke-white:#FFFFFF;
-
-      /* Siaya-inspired accent */
-      --siaya-green:#48B038;
-      --siaya-gold:#D08810;
-
-      --brand: var(--ke-green);
-      --brand2: var(--ke-red);
-      --brand3: var(--siaya-gold);
-
-      --bg:#070A10;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --border: rgba(255,255,255,.12);
-      --shadow: 0 28px 70px rgba(0,0,0,.55);
-      --shadow2: 0 18px 44px rgba(0,0,0,.35);
-
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1180px;
-      --focus: 0 0 0 4px rgba(0,102,0,.35);
-      --fz: 16px;
-    }
-    [data-theme="light"]{
-      --bg:#f6f8ff;
-      --card:#ffffff;
-      --card2:#f1f5ff;
-      --text:#0b1020;
-      --muted: rgba(11,16,32,.72);
-      --muted2: rgba(11,16,32,.55);
-      --border: rgba(11,16,32,.12);
-      --shadow: 0 24px 60px rgba(2,6,23,.12);
-      --shadow2: 0 16px 40px rgba(2,6,23,.10);
-      --focus: 0 0 0 4px rgba(187,0,0,.22);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size:var(--fz);
-      line-height:1.55;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 700px at 12% 10%, rgba(72,176,56,.20), transparent 58%),
-        radial-gradient(1000px 700px at 85% 18%, rgba(187,0,0,.16), transparent 58%),
-        radial-gradient(900px 650px at 55% 85%, rgba(208,136,16,.14), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.18), transparent 22%),
-        var(--bg);
-      overflow-x:hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ text-decoration:underline; text-underline-offset:4px; }
-    img{ max-width:100%; display:block; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
-
-    /* Accessibility */
-    .skip{ position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus{
-      left:16px; top:16px; width:auto; height:auto; overflow:visible;
-      background:var(--card); border:1px solid var(--border);
-      padding:10px 12px; border-radius:12px; box-shadow:var(--shadow2);
-      outline:none;
-    }
-    :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
-    @media (prefers-reduced-motion: reduce){
-      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
-    }
-
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.18));
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    [data-theme="light"] header{
-      background: linear-gradient(to bottom, rgba(246,248,255,.92), rgba(246,248,255,.70));
-      border-bottom:1px solid rgba(11,16,32,.10);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:12px 0; gap:12px;
-    }
-    .brand{ display:flex; align-items:center; gap:12px; min-width:260px; }
-    .logo{
-      width:42px; height:42px; border-radius:16px;
-      background: linear-gradient(135deg, var(--ke-black) 0 20%, var(--ke-red) 20% 45%, var(--ke-white) 45% 52%, var(--ke-green) 52% 100%);
-      box-shadow: 0 18px 42px rgba(0,102,0,.22);
-      border:1px solid rgba(255,255,255,.14);
-    }
-    [data-theme="light"] .logo{ border:1px solid rgba(11,16,32,.12); }
-    .brand h1{
-      font-size:14px; margin:0; letter-spacing:.2px;
-      display:flex; flex-direction:column; line-height:1.15;
-    }
-    .brand h1 span:first-child{ font-weight:950; font-size:14px; }
-    .brand h1 span:last-child{ font-weight:750; font-size:12px; color:var(--muted); }
-
-    nav ul{
-      list-style:none; margin:0; padding:0;
-      display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;
-    }
-    nav a{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px; border-radius:14px;
-      border:1px solid transparent; color:var(--muted); font-weight:850;
-    }
-    nav a:hover{
-      text-decoration:none; border-color:rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06); color:var(--text);
-    }
-    [data-theme="light"] nav a:hover{
-      border-color:rgba(11,16,32,.12);
-      background:rgba(11,16,32,.04);
-    }
-
-    .actions{ display:flex; align-items:center; gap:10px; justify-content:flex-end; min-width:260px; }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 12px; border-radius:14px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      color:var(--text); font-weight:900;
-      cursor:pointer; user-select:none;
-    }
-    .btn:hover{ background:rgba(255,255,255,.10); }
-    [data-theme="light"] .btn{ background:#fff; }
-    [data-theme="light"] .btn:hover{ background:rgba(11,16,32,.04); }
-
-    .btn.primary{
-      border-color: rgba(0,102,0,.35);
-      background: linear-gradient(135deg, rgba(0,102,0,.52), rgba(187,0,0,.22));
-    }
-    .btn.primary:hover{ background: linear-gradient(135deg, rgba(0,102,0,.62), rgba(187,0,0,.28)); }
-
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 10px; border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      color:var(--muted); font-weight:850; white-space:nowrap;
-    }
-
-    section{ padding:18px 0; }
-    .hero{ padding:44px 0 18px; }
-
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){ .heroGrid{ grid-template-columns:1fr; } .brand,.actions{ min-width:auto; } }
-
-    .card{
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    [data-theme="light"] .card{ background: linear-gradient(180deg, #ffffff, #f9fbff); }
-    .cardPad{ padding:22px; }
-
-    .heroCard::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(900px 520px at 20% 15%, rgba(0,102,0,.28), transparent 60%),
-        radial-gradient(900px 520px at 82% 18%, rgba(187,0,0,.22), transparent 60%),
-        radial-gradient(900px 520px at 52% 90%, rgba(208,136,16,.18), transparent 62%);
-      pointer-events:none;
-      opacity:.9;
-    }
-    .heroCard .cardPad{ position:relative; }
-
-    .headline{
-      font-size: clamp(30px, 3.35vw, 50px);
-      line-height:1.03;
-      margin:10px 0 12px;
-      letter-spacing:-1px;
-      font-weight:980;
-    }
-    .subhead{
-      color:var(--muted);
-      font-size: clamp(14px, 1.4vw, 17px);
-      max-width: 74ch;
-      margin:0 0 16px;
-      font-weight:700;
-    }
-
-    .kpis{
-      display:grid; grid-template-columns:repeat(3,1fr);
-      gap:12px; margin-top:16px;
-    }
-    @media (max-width: 680px){ .kpis{ grid-template-columns:1fr; } nav ul{ justify-content:flex-start; } }
-
-    .kpi{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      border-radius:18px;
-      padding:14px;
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-    }
-    [data-theme="light"] .kpi{ background:rgba(11,16,32,.03); }
-    .kpi::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: linear-gradient(135deg, rgba(0,102,0,.18), rgba(187,0,0,.12), rgba(208,136,16,.10));
-      opacity:.7;
-      filter: blur(8px);
-      pointer-events:none;
-    }
-    .kpi > *{ position:relative; }
-    .kpi .n{ font-size:22px; font-weight:980; letter-spacing:-.4px; }
-    .kpi .l{ color:var(--muted); font-weight:780; font-size:12px; margin-top:4px; }
-
-    .slideshow{
-      min-height: 340px;
-      border-radius: var(--radius2);
-      border:1px solid var(--border);
-      position:relative;
-      overflow:hidden;
-      background:#000;
-      box-shadow: var(--shadow);
-    }
-    .slide{
-      position:absolute; inset:0;
-      background-size:cover;
-      background-position:center;
-      opacity:0;
-      transition: opacity .9s ease;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-    }
-    .slide.on{ opacity:.92; }
-    .overlay{
-      position:absolute; inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72)),
-        radial-gradient(900px 520px at 22% 18%, rgba(0,102,0,.30), transparent 58%),
-        radial-gradient(900px 520px at 80% 18%, rgba(187,0,0,.22), transparent 58%),
-        radial-gradient(900px 520px at 52% 92%, rgba(208,136,16,.18), transparent 62%);
-    }
-    .slideshow .badge{ position:absolute; left:16px; top:16px; }
-    .slideshow .caption{
-      position:absolute; left:16px; right:16px; bottom:16px;
-      display:flex; flex-direction:column; gap:8px;
-    }
-    .caption .name{ font-weight:980; letter-spacing:-.4px; font-size:18px; }
-    .caption .title{ color:var(--muted); font-weight:850; font-size:13px; }
-    .caption .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
-
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin:10px 0 12px;
-    }
-    .sectionTitle h2{
-      margin:0; font-size: clamp(20px, 2vw, 28px);
-      letter-spacing:-.3px; font-weight:980;
-    }
-    .sectionTitle p{
-      margin:0; color:var(--muted);
-      max-width:72ch; font-weight:700; font-size:13px;
-    }
-
-    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
-    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
-    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } .grid3{ grid-template-columns:1fr; } }
-
-    .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
-    .li{
-      display:flex; gap:12px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      border-radius:18px; padding:14px;
-      align-items:flex-start;
-      box-shadow: var(--shadow2);
-    }
-    [data-theme="light"] .li{ background:rgba(11,16,32,.03); }
-    .dot{
-      width:10px; height:10px; border-radius:99px; margin-top:6px;
-      background: var(--brand);
-      box-shadow: 0 0 0 4px rgba(0,102,0,.12);
-      flex:0 0 auto;
-    }
-    .li h3{ margin:0 0 4px; font-size:14px; font-weight:980; }
-    .li p{ margin:0; color:var(--muted); font-weight:720; font-size:13px; }
-
-    .mini{ font-size:12px; color:var(--muted2); font-weight:750; }
-
-    .infoCard{
-      padding:16px;
-      border-radius:20px;
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-    }
-    [data-theme="light"] .infoCard{ background: linear-gradient(180deg, #fff, rgba(11,16,32,.02)); }
-    .infoCard::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(600px 260px at 25% 15%, rgba(0,102,0,.18), transparent 58%),
-                  radial-gradient(600px 260px at 80% 25%, rgba(187,0,0,.14), transparent 58%),
-                  radial-gradient(600px 260px at 55% 90%, rgba(208,136,16,.14), transparent 62%);
-      pointer-events:none;
-      filter: blur(6px);
-      opacity:.85;
-    }
-    .infoCard > *{ position:relative; }
-    .infoTop{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
-    .infoTop h3{ margin:0; font-size:14px; font-weight:980; }
-    .bigNum{ font-size:28px; font-weight:980; letter-spacing:-.6px; margin-top:6px; }
-    .spark{
-      width:120px; height:42px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.22);
-      overflow:hidden;
-      box-shadow: var(--shadow2);
-    }
-    [data-theme="light"] .spark{ background: rgba(11,16,32,.04); }
-
-    .dashTop{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; justify-content:space-between; margin-bottom:12px; }
-    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
-    select, input[type="search"], input[type="text"], textarea{
-      width:100%;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      padding:10px 12px;
-      font: inherit;
-      outline:none;
-    }
-    [data-theme="light"] select,
-    [data-theme="light"] input[type="search"],
-    [data-theme="light"] input[type="text"],
-    [data-theme="light"] textarea{ background:#fff; }
-    label{ font-size:12px; color:var(--muted); font-weight:980; display:block; margin:0 0 6px; }
-
-    .tableWrap{
-      overflow:auto;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-    }
-    [data-theme="light"] .tableWrap{ background:rgba(11,16,32,.02); }
-    table{ border-collapse:separate; border-spacing:0; width:100%; min-width:1320px; }
-    th, td{ text-align:left; padding:12px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; }
-    th{
-      position:sticky; top:0;
-      background: rgba(0,0,0,.28);
-      backdrop-filter: blur(10px);
-      color: var(--muted);
-      font-weight:980;
-      letter-spacing:.2px;
-      z-index:2;
-    }
-    [data-theme="light"] th{ background: rgba(246,248,255,.92); }
-    tr:hover td{ background: rgba(255,255,255,.04); }
-    [data-theme="light"] tr:hover td{ background: rgba(11,16,32,.03); }
-
-    .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      font-weight:980;
-      font-size:12px;
-      white-space:nowrap;
-    }
-    .tag.neutral{ border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.08); color:var(--muted); }
-
-    .badgeLead{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(0,102,0,.45);
-      background: linear-gradient(135deg, rgba(0,102,0,.24), rgba(208,136,16,.14));
-      font-weight:980; font-size:12px; white-space:nowrap;
-    }
-    .badgePref{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(208,136,16,.55);
-      background: linear-gradient(135deg, rgba(208,136,16,.18), rgba(0,102,0,.14));
-      font-weight:980; font-size:12px; white-space:nowrap;
-    }
-
-    .hr{ height:1px; background:var(--border); margin:18px 0; }
-    footer{ padding:28px 0 40px; color:var(--muted); font-size:13px; }
-
-    .toast{
-      position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
-      background:rgba(0,0,0,.62);
-      border:1px solid rgba(255,255,255,.14);
-      color:#fff; padding:10px 12px; border-radius:14px;
-      box-shadow:var(--shadow2); opacity:0; pointer-events:none;
-      transition: opacity .25s ease; max-width:min(760px, calc(100vw - 36px)); z-index:60;
-      font-weight:800;
-    }
-    [data-theme="light"] .toast{ background:rgba(11,16,32,.78); }
-    .toast.show{ opacity:1; }
-  </style>
-</head>
-
-<body data-theme="dark">
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header>
-    <div class="wrap nav">
-      <div class="brand" aria-label="Campaign brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>
-          <span>Eng. Gumbo Wajonya</span>
-          <span>Governor of Siaya • Campaign HQ</span>
-        </h1>
-      </div>
-
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#home" aria-current="page">Home</a></li>
-          <li><a href="#vision">Vision</a></li>
-          <li><a href="#impact">Impact</a></li>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#agenda">Agenda</a></li>
-          <li><a href="#getinvolved">Get Involved</a></li>
-        </ul>
-      </nav>
-
-      <div class="actions">
-        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">🌗 Theme</button>
-        <a class="btn primary" href="#getinvolved" role="button">Join the Movement</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="wrap heroGrid">
-        <article class="card heroCard">
-          <div class="cardPad">
-            <span class="pill">Premium visuals • Transparent dashboard • Verified polling support</span>
-            <h2 class="headline">A modern, united Siaya—built on delivery, dignity, and real results.</h2>
-            <p class="subhead">
-              This site shows <strong>Preferred (Internal)</strong> momentum indicators and baseline official stats.
-              “Leading (Verified)” will only appear when you add a real published poll source URL + numbers.
-            </p>
-
-            <div class="kpis" aria-label="Top metrics">
-              <div class="kpi">
-                <div class="n">Preferred</div>
-                <div class="l">Candidate (internal momentum)</div>
-              </div>
-              <div class="kpi">
-                <div class="n">6</div>
-                <div class="l">Sub-counties covered</div>
-              </div>
-              <div class="kpi">
-                <div class="n">Verified</div>
-                <div class="l">Leading badge needs source</div>
-              </div>
-            </div>
-
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
-              <a class="btn primary" href="#dashboard">Explore Dashboard</a>
-              <a class="btn" href="#impact">View Impact</a>
-            </div>
-          </div>
-        </article>
-
-        <aside class="card slideshow" aria-label="Campaign gallery slideshow">
-          <!-- Your repo images: 1.jpg ... 7.jpg -->
-          <div class="slide on" style="background-image:url('1.jpg')"></div>
-          <div class="slide" style="background-image:url('2.jpg')"></div>
-          <div class="slide" style="background-image:url('3.jpg')"></div>
-          <div class="slide" style="background-image:url('4.jpg')"></div>
-          <div class="slide" style="background-image:url('5.jpg')"></div>
-          <div class="slide" style="background-image:url('6.jpg')"></div>
-          <div class="slide" style="background-image:url('7.jpg')"></div>
-          <div class="overlay" aria-hidden="true"></div>
-
-          <div class="badge pill">Siaya • Kenya • Service</div>
-          <div class="caption">
-            <div class="name">Eng. Gumbo Wajonya</div>
-            <div class="title">People • Delivery • Integrity</div>
-            <div class="ctaRow">
-              <a class="btn primary" href="#getinvolved" role="button">Volunteer</a>
-              <a class="btn" href="#vision" role="button">Our Vision</a>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- TRANSLATE -->
-    <section>
-      <div class="wrap">
-        <div class="card">
-          <div class="cardPad">
-            <div class="sectionTitle" style="margin:0 0 10px;">
-              <h2 style="margin:0;">Translate</h2>
-              <p style="margin:0;">Instant language access for global visitors.</p>
-            </div>
-            <div id="google_translate_element" aria-label="Google Translate widget"></div>
-            <div class="mini" style="margin-top:10px;">
-              If translate doesn’t load, allow translate.google.com frames in your browser.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VISION -->
-    <section id="vision">
-      <div class="wrap">
-        <div class="sectionTitle">
-          <h2>Vision for Siaya</h2>
-          <p>Clear priorities, measurable outcomes, and dignity for every family.</p>
-        </div>
-
-        <div class="grid2">
-          <div class="card">
-            <div class="cardPad">
-              <ul class="list">
-                <li class="li">
-                  <span class="dot" aria-hidden="true"></span>
-                  <div>
-                    <h3>Transparent delivery</h3>
-                    <p>Citizen-facing progress updates: budgets, timelines, milestones, and outcomes.</p>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
-                  <div>
-                    <h3>Jobs & enterprise</h3>
-                    <p>Strong local economy: youth skills, MSMEs, market access, and agriculture value chains.</p>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
-                  <div>
-                    <h3>Health, water, roads</h3>
-                    <p>Reliable primary care, water access, and functional roads that unlock opportunity.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Truthful data policy</h3>
-              <p class="subhead" style="margin:0 0 12px;">
-                “Preferred (Internal)” is internal momentum. “Leading (Verified)” requires a published source URL + numbers.
-              </p>
-              <div class="li">
-                <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
-                <div>
-                  <h3>What counts as verified</h3>
-                  <p>Source URL + rating A/B + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
-                </div>
-              </div>
-              <div class="hr"></div>
-              <div class="mini">Sub-counties: Alego Usonga, Bondo, Gem, Rarieda, Ugenya, Ugunja.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMPACT -->
-    <section id="impact">
-      <div class="wrap">
-        <div class="sectionTitle">
-          <h2>Impact at a glance</h2>
-          <p>Premium infographic cards + clean compact graphs (internal momentum view).</p>
-        </div>
-
-        <div class="grid3">
-          <div class="infoCard">
-            <div class="infoTop">
-              <h3>County Momentum</h3>
-              <div class="spark" aria-hidden="true">
-                <svg viewBox="0 0 120 42" width="120" height="42">
-                  <defs>
-                    <linearGradient id="g1" x1="0" x2="1">
-                      <stop offset="0" stop-color="rgba(0,102,0,.85)"/>
-                      <stop offset="1" stop-color="rgba(208,136,16,.70)"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M2,30 C18,32 22,18 34,20 C48,22 50,10 64,12 C78,14 80,6 92,8 C106,10 110,6 118,4"
-                        fill="none" stroke="url(#g1)" stroke-width="3.2" stroke-linecap="round"/>
-                  <path d="M2,40 L2,30 C18,32 22,18 34,20 C48,22 50,10 64,12 C78,14 80,6 92,8 C106,10 110,6 118,4 L118,40 Z"
-                        fill="rgba(0,102,0,.16)"/>
-                </svg>
-              </div>
-            </div>
-            <div class="bigNum" id="momCounty">88</div>
-            <div class="mini">Internal Momentum Index (0–100)</div>
-          </div>
-
-          <div class="infoCard">
-            <div class="infoTop">
-              <h3>Registered Voters (Total)</h3>
-              <div class="spark" aria-hidden="true">
-                <svg viewBox="0 0 120 42" width="120" height="42">
-                  <defs>
-                    <linearGradient id="g2" x1="0" x2="1">
-                      <stop offset="0" stop-color="rgba(187,0,0,.85)"/>
-                      <stop offset="1" stop-color="rgba(0,102,0,.70)"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M2,34 C16,32 18,28 30,26 C46,23 48,18 60,16 C74,14 78,12 90,10 C106,8 110,7 118,6"
-                        fill="none" stroke="url(#g2)" stroke-width="3.2" stroke-linecap="round"/>
-                  <path d="M2,40 L2,34 C16,32 18,28 30,26 C46,23 48,18 60,16 C74,14 78,12 90,10 C106,8 110,7 118,6 L118,40 Z"
-                        fill="rgba(187,0,0,.14)"/>
-                </svg>
-              </div>
-            </div>
-            <div class="bigNum" id="votersTotal">—</div>
-            <div class="mini">Baseline statistic (not polling)</div>
-          </div>
-
-          <div class="infoCard">
-            <div class="infoTop">
-              <h3>Preferred Candidate</h3>
-              <div class="spark" aria-hidden="true">
-                <svg viewBox="0 0 120 42" width="120" height="42">
-                  <defs>
-                    <linearGradient id="g3" x1="0" x2="1">
-                      <stop offset="0" stop-color="rgba(208,136,16,.85)"/>
-                      <stop offset="1" stop-color="rgba(0,102,0,.70)"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M2,28 C16,26 20,24 30,22 C44,19 52,18 62,15 C76,12 82,10 92,9 C106,8 110,7 118,7"
-                        fill="none" stroke="url(#g3)" stroke-width="3.2" stroke-linecap="round"/>
-                  <path d="M2,40 L2,28 C16,26 20,24 30,22 C44,19 52,18 62,15 C76,12 82,10 92,9 C106,8 110,7 118,7 L118,40 Z"
-                        fill="rgba(208,136,16,.14)"/>
-                </svg>
-              </div>
-            </div>
-            <div class="bigNum">Gumbo Wajonya</div>
-            <div class="mini"><span class="badgePref">⭐ Preferred (Internal)</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DASHBOARD -->
-    <section id="dashboard">
-      <div class="wrap">
-        <div class="sectionTitle">
-          <h2>Sub-County Dashboard</h2>
-          <p>Compact, readable chart + baseline stats. “Leading (Verified)” only appears with published poll sources.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardPad">
-            <div class="dashTop">
-              <div class="controls" style="flex:1; min-width:260px;">
-                <div style="min-width:260px; flex:1;">
-                  <label for="metric">Graph Metric</label>
-                  <select id="metric">
-                    <option value="momentum">Momentum (Internal)</option>
-                    <option value="polling">Polling (Verified) — Gumbo %</option>
-                    <option value="margin">Polling Margin (Gumbo - Runner-up)</option>
-                    <option value="voters">Registered Voters (Baseline)</option>
-                    <option value="population">Population 2019 (Baseline)</option>
-                  </select>
-                </div>
-
-                <div style="min-width:260px; flex:1;">
-                  <label for="search">Search sub-county</label>
-                  <input id="search" type="search" placeholder="Type: Bondo, Gem..." />
-                </div>
-
-                <div class="filebox">
-                  <label for="importFile">Import Poll File (JSON/CSV)</label>
-                  <input id="importFile" type="file" accept=".json,.csv,application/json,text/csv" />
-                </div>
-              </div>
-
-              <div class="controls">
-                <button class="btn" id="downloadJson" type="button">⬇️ Export JSON</button>
-                <button class="btn" id="resetDemo" type="button">↩️ Reset Demo</button>
-              </div>
-            </div>
-
-            <div class="grid2" style="margin-top:12px;">
-              <div class="card" style="box-shadow:none;">
-                <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Graphs</h3>
-
-                  <!-- Compact / viewable chart -->
-                  <div style="height:220px;">
-                    <canvas id="chart" height="110" aria-label="Metric chart" role="img"></canvas>
-                  </div>
-
-                  <div class="mini" style="margin-top:8px;">
-                    Baseline stats are safe. Add real poll URLs + values to enable “Leading (Verified)”.
-                  </div>
-                </div>
-              </div>
-
-              <div class="card" style="box-shadow:none;">
-                <div class="cardPad">
-                  <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Verification rules</h3>
-                  <ul class="list">
-                    <li class="li">
-                      <span class="dot" aria-hidden="true"></span>
-                      <div>
-                        <h3>Leading (Verified)</h3>
-                        <p>Source URL exists + rating A/B + Gumbo% &gt; runner-up% + margin ≥ 2.0.</p>
-                      </div>
-                    </li>
-                    <li class="li">
-                      <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
-                      <div>
-                        <h3>Preferred (Internal)</h3>
-                        <p>Shown as internal momentum. Not polling.</p>
-                      </div>
-                    </li>
-                    <li class="li">
-                      <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
-                      <div>
-                        <h3>Auto-cite sources</h3>
-                        <p>Paste a source URL and the table turns it into a citation link.</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="hr"></div>
-
-            <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">Sub-county table</h3>
-
-            <div class="tableWrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Sub-county</th>
-                    <th>Candidate</th>
-                    <th>Preferred</th>
-                    <th>Momentum</th>
-                    <th>Population (2019)</th>
-                    <th>Registered Voters (2022)</th>
-                    <th>Polling (Verified)</th>
-                    <th>Margin</th>
-                    <th>Leading</th>
-                    <th>Source (auto-cite)</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody"></tbody>
-              </table>
-            </div>
-
-            <div class="mini" style="margin-top:10px;">
-              This demo includes baseline stats + internal momentum. Polling badges stay off until you add real sources.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AGENDA -->
-    <section id="agenda">
-      <div class="wrap">
-        <div class="sectionTitle">
-          <h2>Agenda</h2>
-          <p>Practical deliverables that citizens can measure.</p>
-        </div>
-
-        <div class="grid2">
-          <div class="card">
-            <div class="cardPad">
-              <ul class="list">
-                <li class="li">
-                  <span class="dot" aria-hidden="true"></span>
-                  <div>
-                    <h3>Service Delivery Tracker</h3>
-                    <p>Public progress tracker and monthly updates per sub-county.</p>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
-                  <div>
-                    <h3>Jobs & MSMEs</h3>
-                    <p>Skills, markets, financing access, and entrepreneurship support.</p>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
-                  <div>
-                    <h3>Health + Water + Roads</h3>
-                    <p>Reliable services and maintenance that improves daily life.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="cardPad">
-              <h3 style="margin:0 0 10px; font-size:16px; font-weight:980;">One message</h3>
-              <p class="subhead" style="margin:0 0 10px;">
-                People • Delivery • Integrity — and measurable outcomes in every sub-county.
-              </p>
-              <div class="li">
-                <span class="dot" aria-hidden="true" style="background:var(--ke-black); box-shadow:0 0 0 4px rgba(255,255,255,.10);"></span>
-                <div>
-                  <h3>Respectful campaigning</h3>
-                  <p>Win with ideas and evidence—avoid false numbers.</p>
-                </div>
-              </div>
-              <div class="hr"></div>
-              <div class="mini">Add manifesto PDF + endorsements (with permission) + event calendar for full campaign power.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GET INVOLVED -->
-    <section id="getinvolved">
-      <div class="wrap">
-        <div class="sectionTitle">
-          <h2>Get involved</h2>
-          <p>Volunteer, host a meeting, or submit verified sources for the dashboard.</p>
-        </div>
-
-        <div class="card">
-          <div class="cardPad" style="display:grid; grid-template-columns:1.15fr .85fr; gap:14px;">
-            <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:980;">Volunteer form (demo)</h3>
-              <p class="mini" style="margin:0 0 12px;">
-                This demo stores in your browser only. For real collection, connect a form service.
-              </p>
-
-              <div class="grid2" style="gap:12px;">
-                <div>
-                  <label for="name">Full name</label>
-                  <input id="name" type="text" placeholder="Your name" autocomplete="name" />
-                </div>
-                <div>
-                  <label for="phone">Phone</label>
-                  <input id="phone" type="text" placeholder="+254..." autocomplete="tel" />
-                </div>
-              </div>
-
-              <div style="margin-top:12px;">
-                <label for="subcounty">Sub-county</label>
-                <select id="subcounty">
-                  <option>Alego Usonga</option>
-                  <option>Bondo</option>
-                  <option>Gem</option>
-                  <option>Rarieda</option>
-                  <option>Ugenya</option>
-                  <option>Ugunja</option>
-                </select>
-              </div>
-
-              <div style="margin-top:12px;">
-                <label for="msg">How would you like to help?</label>
-                <textarea id="msg" rows="4" placeholder="Volunteer, host meeting, share verified data sources, etc."></textarea>
-              </div>
-
-              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
-                <button class="btn primary" id="saveVolunteer" type="button">Save locally</button>
-                <button class="btn" id="clearVolunteer" type="button">Clear</button>
-              </div>
-
-              <div class="mini" style="margin-top:10px;" id="volStatus" aria-live="polite"></div>
-            </div>
-
-            <div>
-              <h3 style="margin:0 0 8px; font-size:16px; font-weight:980;">Contacts & Links</h3>
-              <div class="li">
-                <span class="dot" aria-hidden="true"></span>
-                <div>
-                  <h3>Campaign HQ</h3>
-                  <p>Add official phone, email, office address, and socials here.</p>
-                </div>
-              </div>
-              <div class="li" style="margin-top:10px;">
-                <span class="dot" aria-hidden="true" style="background:var(--ke-red); box-shadow:0 0 0 4px rgba(187,0,0,.12);"></span>
-                <div>
-                  <h3>Press kit</h3>
-                  <p>Upload PDFs: manifesto, bio, photos, policy briefs—then link them.</p>
-                </div>
-              </div>
-              <div class="li" style="margin-top:10px;">
-                <span class="dot" aria-hidden="true" style="background:var(--siaya-gold); box-shadow:0 0 0 4px rgba(208,136,16,.14);"></span>
-                <div>
-                  <h3>Verified polling</h3>
-                  <p>Import JSON/CSV or paste sources in the table to auto-cite them.</p>
-                </div>
-              </div>
-
-              <div class="hr"></div>
-              <div class="mini">
-                Disclaimer: Ensure compliance with electoral/advertising rules and avoid false claims.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="hr"></div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
-        <div>© <span id="year"></span> Eng. Gumbo Wajonya Campaign • Siaya County</div>
-        <div class="mini">Premium visuals • Internal momentum • Baseline stats • Verified polling support</div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <!-- Google Translate -->
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <script>
-    function googleTranslateElementInit() {
-      try{
-        new google.translate.TranslateElement(
-          { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
-          'google_translate_element'
-        );
-      }catch(e){}
-    }
-
-    const $ = (s, r=document) => r.querySelector(s);
-    const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-    const toastEl = $("#toast");
-
-    function toast(msg){
-      toastEl.textContent = msg;
-      toastEl.classList.add("show");
-      setTimeout(()=>toastEl.classList.remove("show"), 2400);
-    }
-
-    // Theme
-    $("#themeBtn").addEventListener("click", ()=>{
-      const t = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      document.body.setAttribute("data-theme", t);
-      localStorage.setItem("theme", t);
-      toast(`Theme: ${t}`);
-    });
-    (function initTheme(){
-      const t = localStorage.getItem("theme");
-      if(t) document.body.setAttribute("data-theme", t);
-    })();
-
-    // Slideshow
-    const slides = $$(".slide");
-    let si = 0;
-    setInterval(()=>{
-      slides[si].classList.remove("on");
-      si = (si + 1) % slides.length;
-      slides[si].classList.add("on");
-    }, 4500);
-
-    // ----- DATA -----
-    const SUBCOUNTIES = ["Alego Usonga","Bondo","Gem","Rarieda","Ugenya","Ugunja"];
-
-    // Baseline stats + internal momentum (NOT polling).
-    // Polling stays blank until you add real published sources + numbers.
-    const DEMO = [
-      {
-        name: "Alego Usonga",
-        candidate: "Eng. Gumbo Wajonya",
-        preferred_internal: true,
-        momentum: 91,
-        population2019: 224343,
-        registeredVoters2022: 122002,
-        polling: {
-          gumbo_percent: "",
-          runner_up_name: "",
-          runner_up_percent: "",
-          fieldwork_start: "",
-          fieldwork_end: "",
-          sample_size: "",
-          margin_error: "",
-          methodology_rating: "",
-          source_publisher: "",
-          source_title: "",
-          source_url: "",
-          source_notes: ""
-        },
-        notes: "Baseline stats (population + registered voters) + internal momentum. Add poll source URL to verify polling."
-      },
-      {
-        name: "Bondo",
-        candidate: "Eng. Gumbo Wajonya",
-        preferred_internal: true,
-        momentum: 90,
-        population2019: 197883,
-        registeredVoters2022: 104035,
-        polling: {
-          gumbo_percent: "",
-          runner_up_name: "",
-          runner_up_percent: "",
-          fieldwork_start: "",
-          fieldwork_end: "",
-          sample_size: "",
-          margin_error: "",
-          methodology_rating: "",
-          source_publisher: "",
-          source_title: "",
-          source_url: "",
-          source_notes: ""
-        },
-        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
-      },
-      {
-        name: "Gem",
-        candidate: "Eng. Gumbo Wajonya",
-        preferred_internal: true,
-        momentum: 89,
-        population2019: 179792,
-        registeredVoters2022: 93568,
-        polling: {
-          gumbo_percent: "",
-          runner_up_name: "",
-          runner_up_percent: "",
-          fieldwork_start: "",
-          fieldwork_end: "",
-          sample_size: "",
-          margin_error: "",
-          methodology_rating: "",
-          source_publisher: "",
-          source_title: "",
-          source_url: "",
-          source_notes: ""
-        },
-        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
-      },
-      {
-        name: "Rarieda",
-        candidate: "Eng. Gumbo Wajonya",
-        preferred_internal: true,
-        momentum: 88,
-        population2019: 152570,
-        registeredVoters2022: 84849,
-        polling: {
-          gumbo_percent: "",
-          runner_up_name: "",
-          runner_up_percent: "",
-          fieldwork_start: "",
-          fieldwork_end: "",
-          sample_size: "",
-          margin_error: "",
-          methodology_rating: "",
-          source_publisher: "",
-          source_title: "",
-          source_url: "",
-          source_notes: ""
-        },
-        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
-      },
-      {
-        name: "Ugenya",
-        candidate: "Eng. Gumbo Wajonya",
-        preferred_internal: true,
-        momentum: 87,
-        population2019: 134354,
-        registeredVoters2022: 69027,
-        polling: {
-          gumbo_percent: "",
-          runner_up_name: "",
-          runner_up_percent: "",
-          fieldwork_start: "",
-          fieldwork_end: "",
-          sample_size: "",
-          margin_error: "",
-          methodology_rating: "",
-          source_publisher: "",
-          source_title: "",
-          source_url: "",
-          source_notes: ""
-        },
-        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
-      },
-      {
-        name: "Ugunja",
-        candidate: "Eng. Gumbo Wajonya",
-        preferred_internal: true,
-        momentum: 86,
-        population2019: 104241,
-        registeredVoters2022: 60114,
-        polling: {
-          gumbo_percent: "",
-          runner_up_name: "",
-          runner_up_percent: "",
-          fieldwork_start: "",
-          fieldwork_end: "",
-          sample_size: "",
-          margin_error: "",
-          methodology_rating: "",
-          source_publisher: "",
-          source_title: "",
-          source_url: "",
-          source_notes: ""
-        },
-        notes: "Baseline stats + internal momentum. Add poll source URL to verify polling."
-      }
-    ];
-
-    const LS_KEY = "siaya_gumbo_campaign_final_v2";
-    function cloneSafe(x){ return (window.structuredClone) ? structuredClone(x) : JSON.parse(JSON.stringify(x)); }
-    function saveData(){ localStorage.setItem(LS_KEY, JSON.stringify(state.data, null, 2)); }
-
-    function normalizeData(arr){
-      const byName = new Map(arr.map(x => [x.name, x]));
-      return SUBCOUNTIES.map(n=>{
-        const def = DEMO.find(d=>d.name===n);
-        const x = byName.get(n);
-        if(!x) return cloneSafe(def);
-        return {
-          ...cloneSafe(def),
-          ...x,
-          polling: { ...def.polling, ...(x.polling||{}) }
-        };
-      });
-    }
-
-    function loadData(){
-      const raw = localStorage.getItem(LS_KEY);
-      if(!raw) return cloneSafe(DEMO);
-      try{
-        const parsed = JSON.parse(raw);
-        if(Array.isArray(parsed) && parsed.length) return normalizeData(parsed);
-      }catch(e){}
-      return cloneSafe(DEMO);
-    }
-
-    const state = { data: loadData(), metric: "momentum", search: "" };
-
-    function esc(s){ return String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m])); }
-    function toNum(x){ const n = Number(x); return Number.isFinite(n) ? n : 0; }
-    function fmtInt(n){ return (Number.isFinite(n) ? n.toLocaleString() : "—"); }
-
-    function pollingMargin(row){ return Math.round((toNum(row.polling.gumbo_percent) - toNum(row.polling.runner_up_percent)) * 10) / 10; }
-    function isVerifiedPoll(row){
-      const r = String(row.polling.methodology_rating || "").toUpperCase().trim();
-      const url = String(row.polling.source_url || "").trim();
-      return url.length > 0 && (r === "A" || r === "B");
-    }
-    function showLeadingVerified(row){
-      const margin = pollingMargin(row);
-      const gumbo = toNum(row.polling.gumbo_percent);
-      const runner = toNum(row.polling.runner_up_percent);
-      return isVerifiedPoll(row) && gumbo > runner && margin >= 2.0;
-    }
-
-    function metricLabel(key){
-      return ({
-        momentum:"Momentum (Internal)",
-        polling:"Polling (Verified) — Gumbo %",
-        margin:"Polling Margin (Gumbo - Runner-up)",
-        voters:"Registered Voters (Baseline)",
-        population:"Population 2019 (Baseline)"
-      })[key] || key;
-    }
-    function metricValue(row, key){
-      if(key === "momentum") return toNum(row.momentum);
-      if(key === "polling") return isVerifiedPoll(row) ? toNum(row.polling.gumbo_percent) : 0;
-      if(key === "margin") return isVerifiedPoll(row) ? pollingMargin(row) : 0;
-      if(key === "voters") return toNum(row.registeredVoters2022);
-      if(key === "population") return toNum(row.population2019);
-      return 0;
-    }
-
-    function renderImpact(){
-      const avgMomentum = Math.round(state.data.reduce((a,b)=>a+toNum(b.momentum),0) / state.data.length);
-      $("#momCounty").textContent = avgMomentum;
-
-      const votersTotal = state.data.reduce((a,b)=>a+toNum(b.registeredVoters2022),0);
-      $("#votersTotal").textContent = votersTotal ? votersTotal.toLocaleString() : "—";
-    }
-
-    const tbody = $("#tbody");
-    function rowHtml(row, idx){
-      const lead = showLeadingVerified(row);
-      const verified = isVerifiedPoll(row);
-      const margin = pollingMargin(row);
-
-      const url = String(row.polling.source_url||"").trim();
-      const sourceBlock = url
-        ? `<a href="${esc(url)}" target="_blank" rel="noopener"><strong>${esc(row.polling.source_publisher || "Source")}</strong></a>
-           <div class="mini">${esc(row.polling.source_title || "")}</div>`
-        : `<span class="mini">Paste a published poll URL to verify polling.</span>`;
-
-      const pref = row.preferred_internal ? `<span class="badgePref">⭐ Preferred (Internal)</span>` : `<span class="mini">—</span>`;
-      const leading = lead ? `<span class="badgeLead">✅ Leading (Verified)</span>` : `<span class="mini">—</span>`;
-
-      const pollingCell = verified
-        ? `<strong>${esc(row.polling.gumbo_percent)}%</strong><div class="mini">Verified polling</div>`
-        : `<span class="tag neutral">Unverified</span><div class="mini">No source URL</div>`;
-
-      return `
-        <tr>
-          <td><strong>${esc(row.name)}</strong></td>
-          <td><strong>${esc(row.candidate)}</strong></td>
-          <td>${pref}</td>
-          <td><strong>${esc(row.momentum)}</strong><div class="mini">Internal index (0–100)</div></td>
-
-          <td><strong>${fmtInt(toNum(row.population2019))}</strong><div class="mini">Census 2019 (baseline)</div></td>
-          <td><strong>${fmtInt(toNum(row.registeredVoters2022))}</strong><div class="mini">Register 2022 (baseline)</div></td>
-
-          <td>${pollingCell}</td>
-          <td><strong>${verified ? esc(margin) : "—"}</strong><div class="mini">${verified ? "Gumbo - runner-up" : ""}</div></td>
-          <td>${leading}</td>
-
-          <td>
-            <div style="display:grid; gap:8px; min-width:320px;">
-              <div>${sourceBlock}</div>
-              <input type="text" placeholder="Source URL (required for Verified/Leading)"
-                     value="${esc(url)}" data-idx="${idx}" data-field="polling.source_url" />
-              <input type="text" placeholder="Publisher"
-                     value="${esc(row.polling.source_publisher)}" data-idx="${idx}" data-field="polling.source_publisher" />
-              <input type="text" placeholder="Title"
-                     value="${esc(row.polling.source_title)}" data-idx="${idx}" data-field="polling.source_title" />
-              <input type="text" placeholder="Methodology rating (A/B)"
-                     value="${esc(row.polling.methodology_rating)}" data-idx="${idx}" data-field="polling.methodology_rating" />
-              <input type="text" placeholder="Gumbo % (numbers only)"
-                     value="${esc(row.polling.gumbo_percent)}" data-idx="${idx}" data-field="polling.gumbo_percent" />
-              <input type="text" placeholder="Runner-up % (numbers only)"
-                     value="${esc(row.polling.runner_up_percent)}" data-idx="${idx}" data-field="polling.runner_up_percent" />
-              <input type="text" placeholder="Runner-up name"
-                     value="${esc(row.polling.runner_up_name)}" data-idx="${idx}" data-field="polling.runner_up_name" />
-              <input type="text" placeholder="Notes / Methodology"
-                     value="${esc(row.polling.source_notes)}" data-idx="${idx}" data-field="polling.source_notes" />
-            </div>
-          </td>
-
-          <td>
-            <input type="text" style="min-width:240px;" value="${esc(row.notes)}"
-                   data-idx="${idx}" data-field="notes" />
-          </td>
-        </tr>
-      `;
-    }
-
-    function setPath(obj, path, value){
-      const parts = path.split(".");
-      let cur = obj;
-      for(let i=0;i<parts.length-1;i++){
-        const k = parts[i];
-        if(typeof cur[k] !== "object" || cur[k] === null) cur[k] = {};
-        cur = cur[k];
-      }
-      const last = parts[parts.length-1];
-      const numericFields = new Set(["momentum","gumbo_percent","runner_up_percent","sample_size","margin_error","population2019","registeredVoters2022"]);
-      if(numericFields.has(last)){
-        const n = Number(String(value).replace(/,/g,""));
-        cur[last] = Number.isFinite(n) ? n : value;
-      } else cur[last] = value;
-    }
-
-    function renderTable(){
-      const q = state.search.trim().toLowerCase();
-      const filtered = state.data.filter(d => d.name.toLowerCase().includes(q));
-      tbody.innerHTML = filtered.map(d=>{
-        const idx = state.data.findIndex(x=>x.name===d.name);
-        return rowHtml(d, idx);
-      }).join("");
-
-      $$("input[data-field]", tbody).forEach(inp=>{
-        inp.addEventListener("input", (e)=>{
-          const idx = parseInt(e.target.getAttribute("data-idx"),10);
-          const field = e.target.getAttribute("data-field");
-          if(Number.isNaN(idx) || !field) return;
-          setPath(state.data[idx], field, e.target.value);
-          saveData();
-          buildChart();
-          renderImpact();
-          renderTable();
-        });
-      });
-    }
-
-    // Chart
-    let chart;
-    function buildChart(){
-      const ctx = $("#chart");
-      const labels = state.data.map(d=>d.name);
-      const vals = state.data.map(d=>metricValue(d, state.metric));
-
-      if(chart) chart.destroy();
-
-      const suggestedMax =
-        (state.metric === "momentum") ? 100 :
-        (state.metric === "polling") ? 60 :
-        (state.metric === "margin") ? 20 :
-        undefined;
-
-      chart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels,
-          datasets: [{
-            label: metricLabel(state.metric),
-            data: vals,
-            borderWidth: 1,
-            borderRadius: 10
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-              labels: { boxWidth: 12, font: { size: 11, weight: "bold" } }
-            },
-            tooltip: {
-              enabled: true,
-              callbacks: {
-                label: (c) => `${c.dataset.label}: ${c.formattedValue}`
-              }
-            }
-          },
-          scales: {
-            x: { ticks: { font: { size: 11 } }, grid: { display: false } },
-            y: {
-              beginAtZero: true,
-              suggestedMax,
-              ticks: { font: { size: 11 } },
-              grid: { color: "rgba(255,255,255,.08)" }
-            }
-          }
-        }
-      });
-    }
-
-    // Controls
-    $("#metric").addEventListener("change", (e)=>{
-      state.metric = e.target.value;
-      buildChart();
-      toast(`Metric: ${metricLabel(state.metric)}`);
-    });
-    $("#search").addEventListener("input", (e)=>{
-      state.search = e.target.value;
-      renderTable();
-    });
-
-    $("#downloadJson").addEventListener("click", ()=>{
-      const payload = {
-        generatedAt: new Date().toISOString(),
-        note: "Baseline stats + internal momentum. Verified polling requires published source URL + rating A/B + % values.",
-        data: state.data
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = "siaya-dashboard-data.json";
-      document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
-      toast("Exported JSON");
-    });
-
-    $("#resetDemo").addEventListener("click", ()=>{
-      if(!confirm("Reset to demo? This overwrites edits saved in this browser.")) return;
-      state.data = cloneSafe(DEMO);
-      localStorage.removeItem(LS_KEY);
-      saveData();
-      renderImpact();
-      renderTable();
-      buildChart();
-      toast("Reset done");
-    });
-
-    // Import JSON/CSV (optional)
-    $("#importFile").addEventListener("change", async (e)=>{
-      const f = e.target.files && e.target.files[0];
-      if(!f) return;
-      try{
-        const text = await f.text();
-        if(f.name.toLowerCase().endsWith(".json")){
-          const parsed = JSON.parse(text);
-          let arr = null;
-
-          if(Array.isArray(parsed)) arr = parsed;
-          else if(parsed && Array.isArray(parsed.data)) arr = parsed.data;
-
-          if(!arr) throw new Error("JSON format not recognized.");
-          state.data = normalizeData(arr.map(x=>{
-            const def = DEMO.find(d=>d.name===x.name);
-            return { ...cloneSafe(def||{}), ...x, polling: { ...(def?.polling||{}), ...(x.polling||{}) } };
-          }));
-          saveData();
-          renderImpact();
-          renderTable();
-          buildChart();
-          toast("Imported JSON ✅");
-        } else if(f.name.toLowerCase().endsWith(".csv")){
-          const arr = parseCSV(text);
-          const mapped = arr.map(r => ({
-            name: r.SubCounty || r.subcounty || r.Subcounty || "",
-            population2019: r.Population2019 ?? "",
-            registeredVoters2022: r.RegisteredVoters2022 ?? "",
-            momentum: r.Momentum ?? "",
-            polling: {
-              gumbo_percent: r.GumboPercent ?? "",
-              runner_up_name: r.RunnerUpName ?? "",
-              runner_up_percent: r.RunnerUpPercent ?? "",
-              methodology_rating: r.MethodologyRating ?? "",
-              source_publisher: r.SourcePublisher ?? "",
-              source_title: r.SourceTitle ?? "",
-              source_url: r.SourceURL ?? "",
-              source_notes: r.SourceNotes ?? ""
-            }
-          }));
-          state.data = normalizeData(mapped);
-          saveData();
-          renderImpact();
-          renderTable();
-          buildChart();
-          toast("Imported CSV ✅");
-        } else throw new Error("Only .json or .csv supported.");
-      }catch(err){
-        console.error(err);
-        toast(`Import failed: ${err.message || err}`);
-      }finally{
-        e.target.value = "";
-      }
-    });
-
-    function parseCSV(text){
-      const lines = text.replace(/\r/g,"").split("\n").filter(l=>l.trim().length);
-      if(lines.length < 2) return [];
-      const headers = splitCSVLine(lines[0]).map(h=>h.trim());
-      const out = [];
-      for(let i=1;i<lines.length;i++){
-        const cols = splitCSVLine(lines[i]);
-        const row = {};
-        headers.forEach((h, idx)=> row[h] = (cols[idx] ?? "").trim());
-        out.push(row);
-      }
-      return out;
-    }
-    function splitCSVLine(line){
-      const res = [];
-      let cur = "";
-      let inQ = false;
-      for(let i=0;i<line.length;i++){
-        const ch = line[i];
-        if(ch === '"'){
-          if(inQ && line[i+1] === '"'){ cur += '"'; i++; }
-          else inQ = !inQ;
-        } else if(ch === "," && !inQ){
-          res.push(cur); cur="";
-        } else cur += ch;
-      }
-      res.push(cur);
-      return res;
-    }
-
-    // Volunteer local demo
-    const volStatus = $("#volStatus");
-    const VKEY = "siaya_volunteer_v1";
-    $("#saveVolunteer").addEventListener("click", ()=>{
-      const v = {
-        name: $("#name").value.trim(),
-        phone: $("#phone").value.trim(),
-        subcounty: $("#subcounty").value,
-        msg: $("#msg").value.trim(),
-        savedAt: new Date().toISOString()
-      };
-      localStorage.setItem(VKEY, JSON.stringify(v, null, 2));
-      volStatus.textContent = "Saved locally on this device (demo).";
-      toast("Saved");
-    });
-    $("#clearVolunteer").addEventListener("click", ()=>{
-      $("#name").value=""; $("#phone").value=""; $("#msg").value="";
-      localStorage.removeItem(VKEY);
-      volStatus.textContent = "Cleared.";
-      toast("Cleared");
-    });
-
-    // Init
-    $("#year").textContent = new Date().getFullYear();
-    renderImpact();
-    renderTable();
-    buildChart();
-  </script>
 </body>
 </html>
